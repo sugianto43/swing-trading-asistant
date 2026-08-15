@@ -81,3 +81,43 @@ Consequences:
 Affected phases: 8 (built). Any future production go-live must re-run a real AI-provider
 evaluation (cost, rate limits, data-handling/privacy terms) before relying on this in a
 multi-user or commercial context.
+
+## ADR-0004 — No Authentication (Personal-Use, Final)
+Date: 2026-08-15
+Status: Accepted (final for this project's scope; not a decision that applies to any future
+multi-user or commercial deployment)
+Context: Every API route has been unauthenticated since Phase 1. This was raised again during
+Phase 10's planning (deferred, documented as a gap) and surfaced again during Phase 11 planning —
+the last phase on the roadmap (MASTER-PRD §23: `1 -> 2 -> ... -> 10 -> 11`, no Phase 12 exists to
+defer it into again). The application is single-user, runs locally (default CORS origin
+`http://localhost:3000`, default `DATABASE_URL` points at `localhost`), never executes trades
+(AI-GUARDRAILS.md: no automated order execution — every write is a human-initiated API call
+recording a decision already made outside the system), and is not exposed to the public internet
+in its documented deployment (`docker-compose.yml` binds to the host's own ports, not a public
+ingress). A code review of the entire `app/` tree found no raw/string-built SQL taking user
+input (the only `text()` usages are a static `SELECT 1` health check and static partial-index
+`WHERE` clauses in `models.py`), so the primary risk an unauthenticated single-user local API
+carries — arbitrary data exposure/mutation by an untrusted third party — has no network path to
+begin with under the documented deployment.
+Decision: Do not implement authentication. This is now a permanent, explicit architectural
+decision for this project's stated scope (personal, non-commercial, single-user, local), not an
+open gap to keep re-raising at each phase.
+Alternatives: API-key auth (single shared secret via a header) — rejected as security theater for
+a single local user with no network exposure, adding friction (every request, every CLI/worker
+call, every AI tool invocation would need to carry/manage a secret) without addressing a real
+threat in this deployment shape. Full multi-user auth (OAuth/JWT/sessions) — rejected as
+building infrastructure for a use case (multiple users, remote access) this project does not
+have and was never scoped for.
+Consequences:
+- If this application is ever exposed beyond `localhost` (a public server, a shared network, a
+  hosted deployment for more than one person), this decision must be revisited before that
+  happens — authentication becomes a hard blocker at that point, not an optional hardening step.
+- CORS stays scoped to `localhost:3000` by default (`app/config.py`); widening it to a public
+  origin without also adding authentication would materially change this decision's risk basis
+  and must not be done without re-opening this ADR.
+- No route, tool, or worker job in this codebase should ever assume a request is trusted because
+  it reached the API — the API itself is the trust boundary today, by design, only because its
+  deployment has no network exposure. That assumption breaks the moment deployment shape changes.
+Affected phases: all (1-11, retroactively formalizes what was already true); binding on any
+future phase or deployment change — re-run this evaluation before removing the localhost-only
+assumption above.
