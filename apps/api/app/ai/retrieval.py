@@ -10,12 +10,40 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-_REPO_ROOT = Path(__file__).resolve().parents[4]
+_REPO_ROOT_MARKER = "QUANT-TRADING-RULES.md"
+_MAX_REPO_ROOT_SEARCH_LEVELS = 8
 
-METHODOLOGY_DOCS = [
-    _REPO_ROOT / "QUANT-TRADING-RULES.md",
-    _REPO_ROOT / "MASTER-PRD.md",
-]
+
+def _find_repo_root(start: Path, marker: str = _REPO_ROOT_MARKER) -> Path | None:
+    """Walks upward from `start` looking for a directory containing
+    `marker`, instead of assuming a fixed parent-directory depth. A fixed
+    depth (e.g. `.parents[4]`) only holds in one specific checkout
+    layout — it raises IndexError in a Docker container, where this
+    package is copied to a shallower path (`/app/app/ai/retrieval.py`
+    vs. the local dev checkout's `.../swing-trader-assistant/apps/api/
+    app/ai/retrieval.py`). Returns None (never raises) if the marker
+    isn't found within `_MAX_REPO_ROOT_SEARCH_LEVELS` — same "return
+    nothing rather than guess" discipline as AI-GUARDRAILS.md's
+    DATA_UNAVAILABLE convention, applied to a missing local corpus
+    instead of missing market data.
+    """
+    current = start
+    for _ in range(_MAX_REPO_ROOT_SEARCH_LEVELS):
+        if (current / marker).exists():
+            return current
+        if current.parent == current:  # reached the filesystem root
+            return None
+        current = current.parent
+    return None
+
+
+_REPO_ROOT = _find_repo_root(Path(__file__).resolve().parent)
+
+METHODOLOGY_DOCS = (
+    [_REPO_ROOT / "QUANT-TRADING-RULES.md", _REPO_ROOT / "MASTER-PRD.md"]
+    if _REPO_ROOT is not None
+    else []
+)
 
 _WORD_RE = re.compile(r"[a-zA-Z][a-zA-Z0-9_-]*")
 

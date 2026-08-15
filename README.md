@@ -477,3 +477,61 @@ vulnerability scan.
 Documented posture, not automation: Postgres data lives in the `db_data` named volume (Docker
 Compose) — back it up with routine `pg_dump`/volume snapshots on whatever schedule the deployment
 environment requires. No backup automation is implemented by this phase.
+
+## Release Readiness (Phase 11 — E2E Hardening)
+
+Final phase on the roadmap (MASTER-PRD §23: `1 -> 2 -> ... -> 10 -> 11`). No new features, no new
+routes, no new DB schema — this phase validates that everything built across Phases 1-10 actually
+composes into the golden end-to-end journey (MASTER-PRD §24), and closes out the two open
+questions ("is auth in scope?", "is a frontend E2E test in scope?") that had been implicitly
+deferred at every prior phase.
+
+**Scope decisions**: `apps/web` remains the untouched Phase 1 scaffold — it was never built out
+across Phases 1-10, and building it now would be new frontend functionality, not hardening.
+Authentication is now permanently out of scope for this project (see `DECISION-LOG.md` ADR-0004),
+not a gap to keep re-raising — MASTER-PRD's journey ("Human Decision -> Manual Execution") maps
+entirely onto existing API calls, none of which require a browser.
+
+### Golden E2E journey test
+
+`apps/api/tests/e2e/test_golden_journey.py` drives the full MASTER-PRD §24 journey — IDX data,
+validation, indicators, market context, scanner, ranking, stock analysis, risk, trade plan, AI
+explanation, manual execution, position, exit, journal, performance, AI review — against one
+shared DB session. Compute stages that have no REST trigger by design (ingestion, indicators,
+scanner, and — unlike those three — breadth, which does have `POST /intelligence/breadth/compute`)
+run through the real service layer, exactly as the CLI/worker would call them; every
+user-actionable stage runs through the real FastAPI routes via `TestClient`. This catches
+integration defects a single phase's own isolated tests can't — a schema/field mismatch between
+what one stage writes and what the next stage reads.
+
+```bash
+python -m pytest -q tests/e2e/
+```
+
+### Production smoke test
+
+`scripts/smoke_test.sh` brings up the real `db`/`redis`/`api` containers via Docker Compose, waits
+for health, and checks `/api/v1/health`, `/api/v1/instruments` (Postgres-backed), and
+`/api/v1/ops/status` (Redis-backed) actually respond — proving the deployed containers can talk to
+each other, which nothing in the SQLite/fakeredis-backed `pytest` suite exercises. Tears itself
+down on exit.
+
+```bash
+./scripts/smoke_test.sh
+```
+
+### Rollback procedure
+
+1. **Schema rollback**: `alembic downgrade <previous-revision>` (from `apps/api`, with
+   `DATABASE_URL` pointed at the target database) — every migration in this project has a verified
+   `downgrade()`, exercised live at every phase's sign-off, most recently migration `0010` in
+   Phase 10.
+2. **Application rollback**: redeploy the prior image tag for `api`/`worker`/`scheduler` via
+   `docker compose up -d` after pointing the compose file (or an env override) at the previous
+   tag — no in-place mutation, no data migration required for an application-only rollback.
+3. **Data restore** (only if a bad migration already wrote data): restore the `db_data` volume or
+   the most recent `pg_dump` backup (see Backups above), then apply step 1 against the restored
+   database.
+
+Verified live at Phase 11 sign-off: a real `pg_dump`/restore round-trip and a full
+`alembic downgrade base && alembic upgrade head` cycle against a live Postgres container.
