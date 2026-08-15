@@ -138,3 +138,29 @@ results stay traceable to the exact formula/parameter set that produced them —
 string, never redefine what an existing version means. Re-running is idempotent.
 
 Read-only API endpoint: `GET /api/v1/instruments/{symbol}/indicators`.
+
+## Swing Scanner (Phase 4)
+
+Five canonical setups (breakout, pullback continuation, momentum continuation, moving-average
+reclaim, volatility contraction → expansion) detected against Phase 3's indicator snapshots —
+`apps/api/app/scanner/setups/`. Each is a pure function with documented prerequisites, qualifying
+conditions, and invalidation conditions. Qualifying setups get a 7-component explainable score
+(trend, momentum, volume, price structure, volatility, setup quality, risk/reward — weights and
+thresholds versioned in `app/scanner/scoring_config.py`'s `SCORE_VERSION`).
+
+**Market context/regime is intentionally absent** — no market-wide/breadth data source exists yet
+(Phase 9 scope); omitting it is a documented gap, not a fabricated placeholder.
+
+Symbols with stale price data (per Phase 2's freshness check) are skipped, not scored — the skip
+is recorded in a `scan_runs` audit row, never silent.
+
+```bash
+python -m app.scanner.cli scan --symbols BBCA,BBRI,BMRI --date 2024-12-31
+```
+
+Read-only API endpoints: `GET /api/v1/scanner/candidates` (filters: `sector`, `setup`, `min_score`,
+`scan_date`; sort: `score`, `momentum`, `risk_reward`, `volume_score`) and
+`GET /api/v1/instruments/{symbol}/candidates`.
+
+Risk/reward here is a **ranking heuristic only** (ATR-based stop, structure- or ATR-projected
+target) — not a trade plan. Phase 6 owns real position sizing.

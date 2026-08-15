@@ -23,7 +23,14 @@ from sqlalchemy import (
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
-from app.db.enums import CorporateActionType, DataQualityStatus, IngestionStatus, ListingStatus
+from app.db.enums import (
+    CorporateActionType,
+    DataQualityStatus,
+    IngestionStatus,
+    ListingStatus,
+    ScanStatus,
+    SetupType,
+)
 
 
 class User(Base):
@@ -231,5 +238,72 @@ class IngestionRun(Base):
     )
     records_processed: Mapped[int] = mapped_column(Integer, default=0)
     records_flagged: Mapped[int] = mapped_column(Integer, default=0)
+    error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class ScanCandidate(Base):
+    """One qualifying setup for one instrument on one scan date.
+
+    Only persisted when the setup's qualifying conditions are actually
+    met — a symbol with no qualifying setup on a given date simply has no
+    row, it is not represented as a zero-score candidate. Score/version
+    fields make results traceable to the exact scoring configuration that
+    produced them (MASTER-PRD §21), mirroring indicator_version.
+    """
+
+    __tablename__ = "scan_candidates"
+    __table_args__ = (
+        UniqueConstraint(
+            "instrument_id",
+            "scan_date",
+            "setup_type",
+            "indicator_version",
+            "score_version",
+            name="uq_scan_candidate_identity",
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    instrument_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("instruments.id"), index=True)
+    scan_date: Mapped[date] = mapped_column(Date, index=True)
+    setup_type: Mapped[SetupType] = mapped_column(SqlEnum(SetupType, native_enum=False))
+    indicator_version: Mapped[str] = mapped_column(String(32))
+    score_version: Mapped[str] = mapped_column(String(32))
+
+    composite_score: Mapped[float] = mapped_column(Numeric(6, 2))
+    trend_score: Mapped[float] = mapped_column(Numeric(6, 2))
+    momentum_score: Mapped[float] = mapped_column(Numeric(6, 2))
+    volume_score: Mapped[float] = mapped_column(Numeric(6, 2))
+    price_structure_score: Mapped[float] = mapped_column(Numeric(6, 2))
+    volatility_score: Mapped[float] = mapped_column(Numeric(6, 2))
+    setup_quality_score: Mapped[float] = mapped_column(Numeric(6, 2))
+    risk_reward_score: Mapped[float] = mapped_column(Numeric(6, 2))
+
+    qualifying_conditions: Mapped[list[str]] = mapped_column(SqlJSON)
+    invalidation_conditions: Mapped[list[str]] = mapped_column(SqlJSON)
+
+    scan_run_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("scan_runs.id"), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class ScanRun(Base):
+    """Audit/lineage trail for each scan batch, same pattern as
+    IngestionRun. Records how many symbols were skipped due to stale data
+    so that gate is traceable, not silently invisible (MASTER-PRD §20)."""
+
+    __tablename__ = "scan_runs"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    scan_date: Mapped[date] = mapped_column(Date, index=True)
+    score_version: Mapped[str] = mapped_column(String(32))
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    status: Mapped[ScanStatus] = mapped_column(
+        SqlEnum(ScanStatus, native_enum=False), default=ScanStatus.RUNNING
+    )
+    symbols_scanned: Mapped[int] = mapped_column(Integer, default=0)
+    symbols_skipped_stale: Mapped[int] = mapped_column(Integer, default=0)
+    candidates_found: Mapped[int] = mapped_column(Integer, default=0)
     error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

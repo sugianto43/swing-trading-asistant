@@ -5,6 +5,7 @@ from app.db.enums import DataQualityStatus
 from app.db.models import CorporateAction, PriceBar
 from app.indicators import calculations, versioning
 from app.marketdata.adjustment import compute_split_adjusted_bars
+from app.marketdata.dedupe import dedupe_price_bars_by_trade_date
 
 
 @dataclass(frozen=True, slots=True)
@@ -32,21 +33,6 @@ class IndicatorSnapshotRow:
     volatility_20: float | None
 
 
-def _dedupe_by_trade_date(bars: list[PriceBar]) -> list[PriceBar]:
-    """Two PriceBar rows can legitimately coexist for the same
-    instrument+date if ingested from different sources (Phase 2's unique
-    constraint is instrument_id+trade_date+source, not just trade_date —
-    e.g. a symbol re-ingested from a different provider). A rolling-window
-    calculation cannot tolerate a repeated data point, so pick one bar per
-    date deterministically: the most recently ingested one wins."""
-    by_date: dict[date, PriceBar] = {}
-    for bar in bars:
-        existing = by_date.get(bar.trade_date)
-        if existing is None or bar.ingested_at >= existing.ingested_at:
-            by_date[bar.trade_date] = bar
-    return list(by_date.values())
-
-
 def compute_indicator_snapshot(
     bars: list[PriceBar], corporate_actions: list[CorporateAction]
 ) -> list[IndicatorSnapshotRow]:
@@ -58,7 +44,9 @@ def compute_indicator_snapshot(
     before any indicator math, so a split never shows up as a fake gap.
     """
     candidate_bars = [bar for bar in bars if bar.quality_status is not DataQualityStatus.INVALID]
-    usable_bars = sorted(_dedupe_by_trade_date(candidate_bars), key=lambda bar: bar.trade_date)
+    usable_bars = sorted(
+        dedupe_price_bars_by_trade_date(candidate_bars), key=lambda bar: bar.trade_date
+    )
     if not usable_bars:
         return []
 

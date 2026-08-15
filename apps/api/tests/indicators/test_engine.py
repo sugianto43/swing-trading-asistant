@@ -3,7 +3,7 @@ from datetime import UTC, date, datetime, timedelta
 
 from app.db.enums import CorporateActionType, DataQualityStatus
 from app.db.models import CorporateAction, PriceBar
-from app.indicators.engine import _dedupe_by_trade_date, compute_indicator_snapshot
+from app.indicators.engine import compute_indicator_snapshot
 from app.indicators.versioning import INDICATOR_VERSION
 
 
@@ -90,24 +90,6 @@ def test_compute_indicator_snapshot_handles_missing_day_gap() -> None:
     assert missing_date not in [r.trade_date for r in rows]
     # SMA20 should still populate using the 20 most-recent *available* bars
     assert rows[-1].sma_20 is not None
-
-
-def test_dedupe_by_trade_date_keeps_most_recently_ingested() -> None:
-    same_date = date(2024, 1, 5)
-    older = _bar(
-        same_date, 100.0, source="fixture", ingested_at=datetime(2024, 1, 5, 8, tzinfo=UTC)
-    )
-    newer = _bar(
-        same_date,
-        200.0,
-        source="yfinance",
-        ingested_at=datetime(2024, 1, 5, 20, tzinfo=UTC),
-    )
-
-    result = _dedupe_by_trade_date([older, newer])
-
-    assert len(result) == 1
-    assert result[0].close == 200.0
 
 
 def test_compute_indicator_snapshot_dedupes_multi_source_same_date() -> None:
