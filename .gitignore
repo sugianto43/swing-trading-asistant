@@ -1,1 +1,23 @@
 .DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Node
+node_modules/
+.next/
+next-env.d.ts
+
+# Env
+.env
+.env.local
+
+# OS/editor
+.vscode/
+.idea/
