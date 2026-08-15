@@ -83,8 +83,8 @@ cd apps/web
 npm ci
 npm run dev
 
-# quality gates
-npm run lint && npx tsc --noEmit && npm test && npm run build
+# quality gates (build before tsc: Next.js generates route types during build)
+npm run lint && npm run build && npx tsc --noEmit && npm test
 ```
 
 ### CI
