@@ -164,3 +164,36 @@ Read-only API endpoints: `GET /api/v1/scanner/candidates` (filters: `sector`, `s
 
 Risk/reward here is a **ranking heuristic only** (ATR-based stop, structure- or ATR-projected
 target) — not a trade plan. Phase 6 owns real position sizing.
+
+## Backtesting (Phase 5)
+
+Reproducible historical simulation over `ScanCandidate` signals — `apps/api/app/backtesting/`.
+Entry fills at the next trading day's open (`NEXT_OPEN`, the only non-leaking execution model given
+signals are computed EOD), stop/target derived from ATR at entry, a same-bar stop+target conflict
+resolved conservatively (**stop wins**), fixed-fractional position sizing (lot-aware, distinct from
+Phase 6's full risk engine), and fee/slippage costs applied to every fill.
+
+**Survivorship bias:** eligibility is checked against `Instrument.listing_date`/`delisting_date`
+(the actual exchange dates), not `InstrumentStatusHistory` alone — that table is stamped at
+ingestion wall-clock time, so relying on it alone would make every date before your first ingestion
+run look "not yet listed" and silently produce zero trades for any realistic historical backtest.
+`InstrumentStatusHistory` still refines the baseline for status changes observed during live
+operation (e.g. a suspension detected while the system was running).
+
+Each invocation creates a **new** `backtest_runs` row rather than upserting — a backtest is an
+experiment to compare (same config re-run for reproducibility, or different configs side by side),
+not data to keep in sync like ingestion/indicators/scanner.
+
+`scan_candidates` must already exist for the date range — run the scanner across each historical
+day first (a real backfill, not a single "as of today" scan):
+
+```bash
+python -m app.backtesting.cli run --setup BREAKOUT --start 2024-01-01 --end 2024-12-31
+```
+
+Read-only API: `GET /api/v1/backtests`, `/backtests/{id}` (includes metrics), `/backtests/{id}/trades`,
+`/backtests/{id}/equity-curve`.
+
+**Known limitation:** reproducibility means identical config + identical underlying DB state →
+identical results — there is no separate frozen dataset-snapshot system (an open MASTER-PRD
+decision), so results can change if you re-ingest/re-adjust historical data later.
