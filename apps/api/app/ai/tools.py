@@ -4,11 +4,14 @@ logic, no writes, no raw SQL exposed to the model. A tool that has
 nothing to report returns `{"status": "DATA_UNAVAILABLE", "reason": ...}`
 rather than fabricating a value (AI-GUARDRAILS.md "Unsupported Data").
 
-get_market_regime/get_market_events are present in the registry (so the
-model can ask and get an honest answer) but always return
-DATA_UNAVAILABLE — no market-wide/breadth/news data source exists yet
-(Phase 9 scope), the same documented gap as the scanner's missing market
-context since Phase 4.
+get_market_regime is backed by Phase 9's breadth/regime computation
+(a proxy for the locally-ingested universe, not the whole IDX market —
+see app/intelligence/breadth_engine.py). get_market_events is backed by
+Phase 9's canonicalized corporate-action events (splits, dividends,
+rights issues, etc.) — it still does NOT cover news/earnings-calendar/
+macro/regulatory events, since no viable free data source exists for
+those on IDX tickers (documented gap, not silently invented — see
+DECISION-LOG.md and app/intelligence/event_mapper.py).
 
 There is deliberately no tool here that writes anything, places an
 order, or runs arbitrary SQL — the guardrail against those is structural
@@ -34,6 +37,7 @@ from app.db.models import (
     ScanCandidate,
     TradePlan,
 )
+from app.intelligence.service import MarketIntelligenceService
 from app.marketdata.validation import is_stale
 from app.positions.performance_service import PerformanceService
 
@@ -248,14 +252,44 @@ def get_portfolio_risk(session: Session) -> dict[str, object]:
 
 
 def get_market_regime(session: Session, symbol: str | None = None) -> dict[str, object]:
-    return _unavailable(
-        "market regime/breadth data is not available yet (Phase 9 — Market Intelligence)"
+    snapshot = MarketIntelligenceService(session).get_breadth_snapshot()
+    if snapshot is None:
+        return _unavailable("no breadth/regime snapshot has been computed yet")
+    return _ok(
+        {
+            "as_of": snapshot.as_of.isoformat(),
+            "regime": snapshot.regime.value,
+            "universe_size": snapshot.universe_size,
+            "pct_above_sma50": float(snapshot.pct_above_sma50)
+            if snapshot.pct_above_sma50 is not None
+            else None,
+            "advancers": snapshot.advancers,
+            "decliners": snapshot.decliners,
+            "note": "proxy for the locally-ingested universe, not the whole IDX market",
+        }
     )
 
 
 def get_market_events(session: Session, symbol: str) -> dict[str, object]:
-    return _unavailable(
-        "market events/news data is not available yet (Phase 9 — Market Intelligence)"
+    events = MarketIntelligenceService(session).get_events(symbol=symbol, as_of=None)
+    if not events:
+        return _unavailable(f"no known corporate-action events for {symbol!r}")
+    return _ok(
+        {
+            "symbol": symbol.upper(),
+            "events": [
+                {
+                    "event_type": e.event_type,
+                    "announced_at": e.announced_at.isoformat(),
+                    "availability_is_estimated": e.availability_is_estimated,
+                    "ex_date": e.ex_date.isoformat(),
+                    "description": e.description,
+                }
+                for e in events[:10]
+            ],
+            "note": "corporate-action events only — news/earnings-calendar/macro/regulatory "
+            "events are not available yet (no viable free data source for IDX tickers)",
+        }
     )
 
 
@@ -333,7 +367,8 @@ TOOL_SPECS = [
     ),
     ToolSpec(
         name="get_market_regime",
-        description="Market-wide regime/breadth context, if available.",
+        description="Breadth/regime context for the locally-ingested universe (not the whole "
+        "market), if a snapshot has been computed.",
         parameters_schema={
             "type": "object",
             "properties": {"symbol": {"type": "string"}},
@@ -341,8 +376,8 @@ TOOL_SPECS = [
     ),
     ToolSpec(
         name="get_market_events",
-        description="Known market events (earnings, corporate actions, news) for a symbol, "
-        "if available.",
+        description="Known corporate-action events (splits, dividends, rights issues, etc.) "
+        "for a symbol. Does not include news/earnings-calendar/macro/regulatory events.",
         parameters_schema={
             "type": "object",
             "properties": {"symbol": {"type": "string"}},

@@ -34,6 +34,7 @@ from app.db.enums import (
     ExitReason,
     IngestionStatus,
     ListingStatus,
+    MarketRegime,
     PositionStatus,
     ScanStatus,
     SetupType,
@@ -620,4 +621,34 @@ class AnalysisSnapshot(Base):
     structured_data_snapshot: Mapped[list[dict[str, object]]] = mapped_column(SqlJSON, default=list)
     response: Mapped[str] = mapped_column(Text)
     guardrail_flags: Mapped[list[str]] = mapped_column(SqlJSON, default=list)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class BreadthSnapshot(Base):
+    """One day's market-breadth/regime computation over the local
+    ingested universe (MASTER-PRD §12). A proxy for the whole IDX
+    market only to the extent the ingested universe is representative —
+    documented, not silently overstated. Idempotent-upsert-by-natural-key
+    (as_of, breadth_version), same pattern as indicators/scanner/trade
+    plans — this is data to keep in sync for a given day/config, not an
+    experiment."""
+
+    __tablename__ = "breadth_snapshots"
+    __table_args__ = (
+        UniqueConstraint("as_of", "breadth_version", name="uq_breadth_snapshot_identity"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    as_of: Mapped[date] = mapped_column(Date, index=True)
+    breadth_version: Mapped[str] = mapped_column(String(32))
+    universe_size: Mapped[int] = mapped_column(Integer)
+    pct_above_sma50: Mapped[float | None] = mapped_column(Numeric(9, 6), nullable=True)
+    pct_above_sma200: Mapped[float | None] = mapped_column(Numeric(9, 6), nullable=True)
+    advancers: Mapped[int] = mapped_column(Integer)
+    decliners: Mapped[int] = mapped_column(Integer)
+    unchanged: Mapped[int] = mapped_column(Integer)
+    new_highs_20: Mapped[int] = mapped_column(Integer)
+    new_lows_20: Mapped[int] = mapped_column(Integer)
+    regime: Mapped[MarketRegime] = mapped_column(SqlEnum(MarketRegime, native_enum=False))
+    regime_version: Mapped[str] = mapped_column(String(32))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
