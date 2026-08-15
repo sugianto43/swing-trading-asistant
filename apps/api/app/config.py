@@ -29,6 +29,14 @@ class Settings(BaseSettings):
     gemini_api_key: str | None = Field(default=None)
     gemini_model: str = Field(default="gemini-2.0-flash")
 
+    redis_url: str = Field(default="redis://localhost:6379/0")
+
+    # Real portfolio capital used by the scheduled pipeline's risk/trade-plan
+    # stage (MASTER-PRD FR-011: position sizing must use portfolio capital,
+    # not a placeholder). Must be set explicitly for a real deployment —
+    # the default is illustrative only, same caveat as backtesting's.
+    pipeline_capital: float = Field(default=100_000_000.0)
+
     @field_validator("database_url")
     @classmethod
     def _validate_database_url(cls, value: str) -> str:

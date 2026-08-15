@@ -383,3 +383,97 @@ API: `POST /api/v1/intelligence/breadth/compute` (body: `as_of`), `GET /api/v1/i
 (`?as_of=`, latest if omitted), `GET /api/v1/intelligence/breadth/history` (`?start=&end=`),
 `GET /api/v1/intelligence/sector-performance` (`?as_of=&lookback_days=`),
 `GET /api/v1/intelligence/events` (`?symbol=&as_of=` — `as_of` enforces the Critical Rule cutoff).
+
+## Operations (Phase 10 — Production)
+
+Workers, scheduling, alerts, and observability — `apps/api/app/worker/`. Turns the daily
+ingestion → indicators → scanner → risk-plans → breadth pipeline (Phases 2–6, 9) plus a new
+alert-evaluation stage into something that runs unattended, with failure isolation, duplicate-run
+protection, and a way to see whether it's healthy — without executing trades, changing risk limits,
+or fabricating data (`AI-GUARDRAILS.md` still applies).
+
+**Stack**: Redis + RQ (task queue) + rq-scheduler (cron), chosen over Celery (too heavy for this
+scale) and a bare APScheduler (doesn't provide a distributable job queue). No email/SMS/webhook
+alert delivery vendor was introduced — alerts are persisted and queried via API/SSE only. `apps/web`
+is untouched; this phase is backend-only.
+
+**Authentication gap**: the API has been unauthenticated since Phase 1. This phase does not add
+auth — it's an explicitly deferred, documented gap, not an oversight.
+
+### Job pipeline
+
+Each stage is a plain, directly-testable function in `app/worker/jobs.py` (`run_ingestion`,
+`run_indicators`, `run_scanner`, `run_risk_plans`, `run_breadth`, `run_alerts`) that takes an
+already-open DB session — no Redis/RQ dependency in the function body. `app/worker/pipeline.py`'s
+`enqueue_pipeline()` is the actual unit of work RQ enqueues: it runs all six stages in order for a
+symbol universe, each guarded by a distributed lock (`app/worker/locks.py`, keyed on
+`(job_type, date)`) so an overlapping/duplicate enqueue is a safe no-op, not a double-run. Every
+stage invocation is recorded as a `JobRun` row (`RUNNING`→`SUCCEEDED`/`FAILED`/`PARTIAL`), the same
+audit-trail pattern as `IngestionRun`/`ScanRun`/`BacktestRun`.
+
+One symbol's ingestion/indicator failure does not abort the rest of the batch — `run_ingestion` and
+`run_indicators` isolate per-symbol failures and roll up to `PARTIAL` (some succeeded) or `FAILED`
+(all failed), addressing the TDD's "provider outage" reliability requirement. A second real
+market-data vendor to actually fall back to remains out of scope — no viable free alternative to
+yfinance was evaluated.
+
+### Alerts
+
+`app/worker/alert_engine.py` (pure functions, no DB access) evaluates: `SETUP_DETECTED`, `BREAKOUT`,
+`PRICE_NEAR_ENTRY`/`PRICE_NEAR_STOP`/`PRICE_NEAR_TARGET` (within `AlertConfig.near_price_threshold_pct`,
+default 2%), `UNUSUAL_VOLUME` (relative volume ≥ threshold), `STALE_DATA` (makes MASTER-PRD §20's
+"do not generate a fresh signal on stale data" visible instead of only silently skipping), and
+`IMPORTANT_EVENT` (from Phase 9's corporate-action events). **`SETUP_INVALIDATED` is deliberately
+NOT implemented** — Phase 4's `invalidation_conditions` are human-readable strings, not
+re-evaluatable predicates, so mechanically detecting invalidation isn't possible without new
+setup-detector logic. Documented gap, not fabricated.
+
+Alerts are deduplicated at the DB level — a `UniqueConstraint` on `(alert_type, instrument_id,
+trigger_date)`, not just an app-level check — so a re-run of `run_alerts` for the same day never
+creates duplicates, including under concurrent job runs. Every newly-persisted alert is published to
+a Redis pub/sub channel (`alerts:new`), consumed by `GET /api/v1/alerts/stream` (SSE).
+
+### CLI
+
+```bash
+python -m app.worker.cli run-worker [--burst]
+python -m app.worker.cli enqueue-pipeline --symbols BBCA,TLKM,ASII --date 2024-12-31
+python -m app.worker.cli register-scheduler --symbols BBCA,TLKM,ASII
+```
+
+`register-scheduler` registers `enqueue_pipeline` on a daily cron (`30 09 * * 1-5` — 09:30 UTC =
+16:30 WIB, after IDX close; expressed in UTC because rq-scheduler evaluates cron against the
+process's system clock, which is UTC in the deployed containers) via rq-scheduler; re-registering
+(e.g. on process restart) replaces the previous entry instead of creating a duplicate.
+
+`run_risk_plans`'s position sizing uses `Settings.pipeline_capital` (env var `PIPELINE_CAPITAL`,
+default `100_000_000.0` IDR — illustrative only, same caveat as the backtesting default) rather than
+a backtesting constant, so the scheduled pipeline's real trade plans are sized off a configurable,
+explicitly-named capital figure (MASTER-PRD FR-011).
+
+### API
+
+`GET /api/v1/alerts` (`?alert_type=&symbol=&trigger_date=`, paginated), `GET /api/v1/alerts/stream`
+(SSE), `GET /api/v1/ops/status` (queue depth, worker count, per-stage freshness/last-status, recent
+failure count — read from RQ's own registries and the `JobRun` table, not a separate metrics stack),
+`GET /api/v1/ops/job-runs` (`?job_type=&status=`, paginated).
+
+### Docker Compose
+
+`docker compose up` now also starts `redis`, `worker` (`run-worker`), and `scheduler`
+(`register-scheduler` + `rqscheduler`) alongside the existing `db`, `api`, `web` services.
+
+### Testing discipline
+
+`fakeredis[lua]` stands in for Redis in all automated tests (the `[lua]` extra is required — redis-py's
+`Lock.release()` uses a Lua script via EVALSHA, which plain fakeredis doesn't support). Real
+Redis/Postgres are verified live via Docker at sign-off, and CI's `worker-integration` job runs
+against a real Redis service container (mirroring `api-migrations`'s Postgres service-container
+pattern) to catch anything fakeredis's emulation might miss. `pip-audit` runs in CI as a dependency
+vulnerability scan.
+
+### Backups
+
+Documented posture, not automation: Postgres data lives in the `db_data` named volume (Docker
+Compose) — back it up with routine `pg_dump`/volume snapshots on whatever schedule the deployment
+environment requires. No backup automation is implemented by this phase.
