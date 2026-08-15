@@ -596,3 +596,28 @@ class JournalEntry(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
+
+
+class AnalysisSnapshot(Base):
+    """One AI-analyst invocation, fully auditable (MASTER-PRD §21:
+    "important AI analyses should persist the model/provider, prompt/
+    version, tool inputs, structured data snapshot, response, and
+    timestamp"). Append-only — no update/delete path exists, same
+    discipline as Execution, since this is an audit trail of what the
+    model was told and what it said, not editable state."""
+
+    __tablename__ = "analysis_snapshots"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    instrument_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("instruments.id"), nullable=True, index=True
+    )
+    provider: Mapped[str] = mapped_column(String(32))
+    model: Mapped[str] = mapped_column(String(64))
+    prompt_version: Mapped[str] = mapped_column(String(32))
+    question: Mapped[str] = mapped_column(Text)
+    tool_calls: Mapped[list[dict[str, object]]] = mapped_column(SqlJSON, default=list)
+    structured_data_snapshot: Mapped[list[dict[str, object]]] = mapped_column(SqlJSON, default=list)
+    response: Mapped[str] = mapped_column(Text)
+    guardrail_flags: Mapped[list[str]] = mapped_column(SqlJSON, default=list)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

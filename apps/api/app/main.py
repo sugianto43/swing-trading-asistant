@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from starlette.types import ExceptionHandler
 
+from app.api.v1.routes.ai import router as ai_router
 from app.api.v1.routes.backtests import router as backtests_router
 from app.api.v1.routes.calendar import router as calendar_router
 from app.api.v1.routes.health import router as health_router
@@ -51,6 +52,7 @@ def create_app() -> FastAPI:
     app.include_router(risk_router, prefix=settings.api_v1_prefix)
     app.include_router(positions_router, prefix=settings.api_v1_prefix)
     app.include_router(performance_router, prefix=settings.api_v1_prefix)
+    app.include_router(ai_router, prefix=settings.api_v1_prefix)
     app.include_router(calendar_router, prefix=settings.api_v1_prefix)
 
     return app

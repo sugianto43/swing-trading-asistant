@@ -293,3 +293,50 @@ API: `POST/GET /api/v1/executions`, `POST /api/v1/positions` (planned), `POST /a
 `GET /api/v1/performance/summary` (`?initial_capital=`), `/by-setup`, `/by-sector`, `/by-holding-period`,
 `/by-score-bucket`, `/behavior`. No order-execution path exists anywhere — this only records what a
 human already did through their broker.
+
+## AI Analyst (Phase 8)
+
+Grounded AI analysis over the existing domain — `apps/api/app/ai/`. An LLM orchestrator runs a
+bounded tool-calling loop against a **provider-agnostic** interface (`LLMProvider`), calling only
+**typed, read-only tools** (MASTER-PRD §13) that wrap Phases 2-7's services, then persists a full
+audit trail (`AnalysisSnapshot`: model, provider, prompt version, every tool call, the structured
+data snapshot, the response, and any guardrail flags — MASTER-PRD §21).
+
+**Provider**: Google Gemini (free tier), via `google-genai` — see `DECISION-LOG.md` ADR-0003 for
+the full rationale (personal-use scope, not a production licensing decision). `FixtureLLMProvider`
+is deterministic and network-free; **every automated test uses it exclusively** — the real
+`GeminiProvider` is never imported or required to run the test suite, and requires
+`GEMINI_API_KEY` (env var, never committed) to be constructed at all.
+
+**Typed tools** (`app/ai/tools.py`): `get_stock_snapshot`, `get_technical_snapshot`, `get_setup`,
+`get_trade_plan`, `get_backtest`, `get_position`, `get_portfolio_risk`, plus `get_market_regime`/
+`get_market_events` which always return `DATA_UNAVAILABLE` — no market-wide/breadth/news data
+source exists yet (Phase 9 scope), the same documented-gap discipline as every prior phase's
+missing market context. **There is no tool that writes anything, places an order, or runs SQL** —
+the "no execution / no risk-limit changes" guardrail (MASTER-PRD §13 Forbidden list) is structural
+(the capability doesn't exist in the registry), not just a prompt instruction; a request for a
+tool outside the registry is refused by `app/ai/guardrails.py` before it can ever be invoked.
+
+**Prompt injection defense**: every tool result is wrapped and labeled as untrusted data, not
+instructions, before being fed back into the prompt (`wrap_tool_result_as_untrusted`) — text
+embedded in a journal note or execution note (both free-text, user-authored) cannot be mistaken
+for a system instruction just because it flowed through a tool call. The final response is also
+scanned for red-flag phrasing (order-placement claims, certainty claims, risk-limit-change claims)
+via `scan_response`; flags are recorded on the snapshot for review. **This is defense-in-depth, not
+a provable guarantee** — documented honestly, not oversold.
+
+**RAG**: `app/ai/retrieval.py` does lightweight term-overlap scoring over local methodology docs
+(`QUANT-TRADING-RULES.md`, `MASTER-PRD.md`) — no vector store or embeddings API, since no such
+infra exists yet in this stack (Redis arrives in Phase 10) and the corpus is small enough that
+term overlap is sufficient, deterministic, and testable without a network call.
+
+The tool-calling loop is hard-capped (`MAX_TOOL_CALL_ITERATIONS = 6`) to bound cost/latency if a
+provider misbehaves.
+
+```bash
+python -m app.ai.cli analyze --symbol BBCA --question "What does BBCA's setup look like right now?"
+```
+
+API: `POST /api/v1/ai/analyze` (body: `question`, optional `symbol`) — 503 if no provider is
+configured (no `GEMINI_API_KEY`); `GET /api/v1/ai/snapshots` (filter: `symbol`),
+`GET /api/v1/ai/snapshots/{id}`. Every snapshot is append-only, same discipline as `Execution`.

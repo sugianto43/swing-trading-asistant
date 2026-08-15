@@ -23,6 +23,12 @@ class Settings(BaseSettings):
 
     cors_allow_origins: list[str] = Field(default_factory=lambda: ["http://localhost:3000"])
 
+    # Never committed (env var / .env, gitignored). Optional: absence just
+    # means the real GeminiProvider can't be constructed — FixtureLLMProvider
+    # and the entire test suite never need it.
+    gemini_api_key: str | None = Field(default=None)
+    gemini_model: str = Field(default="gemini-2.0-flash")
+
     @field_validator("database_url")
     @classmethod
     def _validate_database_url(cls, value: str) -> str:
