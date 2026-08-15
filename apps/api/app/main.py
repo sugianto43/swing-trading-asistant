@@ -7,12 +7,14 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from starlette.types import ExceptionHandler
 
 from app.api.v1.routes.ai import router as ai_router
+from app.api.v1.routes.alerts import router as alerts_router
 from app.api.v1.routes.backtests import router as backtests_router
 from app.api.v1.routes.calendar import router as calendar_router
 from app.api.v1.routes.health import router as health_router
 from app.api.v1.routes.indicators import router as indicators_router
 from app.api.v1.routes.instruments import router as instruments_router
 from app.api.v1.routes.intelligence import router as intelligence_router
+from app.api.v1.routes.ops import router as ops_router
 from app.api.v1.routes.performance import router as performance_router
 from app.api.v1.routes.positions import router as positions_router
 from app.api.v1.routes.risk import router as risk_router
@@ -55,6 +57,8 @@ def create_app() -> FastAPI:
     app.include_router(performance_router, prefix=settings.api_v1_prefix)
     app.include_router(ai_router, prefix=settings.api_v1_prefix)
     app.include_router(intelligence_router, prefix=settings.api_v1_prefix)
+    app.include_router(alerts_router, prefix=settings.api_v1_prefix)
+    app.include_router(ops_router, prefix=settings.api_v1_prefix)
     app.include_router(calendar_router, prefix=settings.api_v1_prefix)
 
     return app

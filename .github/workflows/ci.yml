@@ -21,6 +21,50 @@ jobs:
       - run: ruff check .
       - run: mypy app
       - run: pytest -q
+      - run: pip-audit
+
+  worker-integration:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/api
+    services:
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - run: |
+          python -c "
+          from redis import Redis
+          from rq import Queue
+          from app.worker.locks import job_lock
+
+          redis = Redis.from_url('redis://localhost:6379/0')
+          redis.ping()
+
+          queue = Queue('swing-trader', connection=redis)
+          job = queue.enqueue(len, [1, 2, 3])
+          assert job.id
+
+          with job_lock(redis, 'INGESTION', '2024-01-01') as acquired:
+              assert acquired is True
+              with job_lock(redis, 'INGESTION', '2024-01-01') as second:
+                  assert second is False
+          print('worker-integration: real Redis connectivity + locking OK')
+          "
+        env:
+          REDIS_URL: redis://localhost:6379/0
 
   api-migrations:
     runs-on: ubuntu-latest

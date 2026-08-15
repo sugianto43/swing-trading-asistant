@@ -15,21 +15,66 @@ services:
       timeout: 5s
       retries: 5
 
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   api:
     build:
       context: ./apps/api
     environment:
       DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/idx_swing
+      REDIS_URL: redis://redis:6379/0
       CORS_ALLOW_ORIGINS: '["http://localhost:3000"]'
     ports:
       - "8000:8000"
     depends_on:
       db:
         condition: service_healthy
+      redis:
+        condition: service_healthy
     volumes:
       - ./apps/api:/app
     command: >
       sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
+  worker:
+    build:
+      context: ./apps/api
+    environment:
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/idx_swing
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./apps/api:/app
+    command: python -m app.worker.cli run-worker
+
+  scheduler:
+    build:
+      context: ./apps/api
+    environment:
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/idx_swing
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./apps/api:/app
+    command: >
+      sh -c "python -m app.worker.cli register-scheduler --symbols BBCA,TLKM,ASII,BMRI,BBRI &&
+             rqscheduler --url redis://redis:6379/0"
 
   web:
     build:

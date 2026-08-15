@@ -26,6 +26,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
 from app.db.enums import (
+    AlertType,
     BacktestStatus,
     CorporateActionType,
     DataQualityStatus,
@@ -33,6 +34,8 @@ from app.db.enums import (
     ExecutionSide,
     ExitReason,
     IngestionStatus,
+    JobStatus,
+    JobType,
     ListingStatus,
     MarketRegime,
     PositionStatus,
@@ -651,4 +654,57 @@ class BreadthSnapshot(Base):
     new_lows_20: Mapped[int] = mapped_column(Integer)
     regime: Mapped[MarketRegime] = mapped_column(SqlEnum(MarketRegime, native_enum=False))
     regime_version: Mapped[str] = mapped_column(String(32))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class JobRun(Base):
+    """Audit trail for one scheduled/worker-invoked pipeline stage — same
+    RUNNING -> SUCCEEDED/FAILED/PARTIAL shape as IngestionRun/ScanRun/
+    BacktestRun, just applied to the Phase 10 scheduler's own
+    invocations rather than a single domain operation. This is what
+    backs the 'worker health' / 'error rates' observability
+    requirement (MASTER-PRD §20) without needing a separate metrics
+    stack."""
+
+    __tablename__ = "job_runs"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    job_type: Mapped[JobType] = mapped_column(SqlEnum(JobType, native_enum=False), index=True)
+    run_date: Mapped[date] = mapped_column(Date, index=True)
+    status: Mapped[JobStatus] = mapped_column(
+        SqlEnum(JobStatus, native_enum=False), default=JobStatus.RUNNING
+    )
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class Alert(Base):
+    """One deduplicated alert (MASTER-PRD §16: 'Alerts must be
+    deduplicated'). The unique constraint on (alert_type, instrument_id,
+    trigger_date) is the dedup key, enforced at the DB level from day
+    one — a lesson from Phase 7/9's fix-phase findings, where an
+    app-level-only check-then-insert wasn't enough on its own.
+
+    instrument_id is intentionally NOT NULL: every alert type this phase
+    implements is instrument-scoped, and SQL unique constraints don't
+    dedupe NULLs against each other (NULL != NULL) — a nullable column
+    here would silently defeat the dedup guarantee for any future
+    market-wide alert type. Add a functional/partial unique index at that
+    point instead of relaxing this back to nullable."""
+
+    __tablename__ = "alerts"
+    __table_args__ = (
+        UniqueConstraint("alert_type", "instrument_id", "trigger_date", name="uq_alert_identity"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    alert_type: Mapped[AlertType] = mapped_column(SqlEnum(AlertType, native_enum=False), index=True)
+    instrument_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("instruments.id"), nullable=False, index=True
+    )
+    trigger_date: Mapped[date] = mapped_column(Date, index=True)
+    message: Mapped[str] = mapped_column(Text)
+    details: Mapped[dict[str, object]] = mapped_column(SqlJSON, default=dict)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
