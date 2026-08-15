@@ -11,6 +11,8 @@ dependencies = [
     "sqlalchemy>=2.0",
     "alembic>=1.13",
     "psycopg[binary]>=3.2",
+    "pandas>=2.2",
+    "yfinance>=0.2.40",
 ]
 
 [project.optional-dependencies]
@@ -44,3 +46,6 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["app*"]
+
+[tool.setuptools.package-data]
+"app.marketdata.seed" = ["*.csv"]
