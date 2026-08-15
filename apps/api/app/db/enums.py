@@ -44,3 +44,20 @@ class ScanStatus(StrEnum):
     SUCCEEDED = "SUCCEEDED"
     FAILED = "FAILED"
     PARTIAL = "PARTIAL"
+
+
+class BacktestStatus(StrEnum):
+    RUNNING = "RUNNING"
+    SUCCEEDED = "SUCCEEDED"
+    FAILED = "FAILED"
+
+
+class ExecutionModel(StrEnum):
+    NEXT_OPEN = "NEXT_OPEN"
+
+
+class ExitReason(StrEnum):
+    STOP = "STOP"
+    TARGET = "TARGET"
+    TIME = "TIME"
+    END_OF_BACKTEST = "END_OF_BACKTEST"

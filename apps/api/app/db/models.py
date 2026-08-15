@@ -24,8 +24,11 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
 from app.db.enums import (
+    BacktestStatus,
     CorporateActionType,
     DataQualityStatus,
+    ExecutionModel,
+    ExitReason,
     IngestionStatus,
     ListingStatus,
     ScanStatus,
@@ -306,4 +309,117 @@ class ScanRun(Base):
     symbols_skipped_stale: Mapped[int] = mapped_column(Integer, default=0)
     candidates_found: Mapped[int] = mapped_column(Integer, default=0)
     error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class BacktestRun(Base):
+    """One backtest experiment. Unlike ingestion/indicator/scan runs, a
+    backtest is not idempotently upserted — each invocation creates a new
+    row, since users legitimately want to compare multiple runs (same
+    config re-run for reproducibility, or different configs side by
+    side). All config fields are captured so a historical run stays
+    traceable to the exact parameters that produced it (MASTER-PRD §21).
+
+    Reproducibility here means: identical config + identical underlying
+    DB state -> identical results. There is no separate frozen dataset
+    snapshot system (an open MASTER-PRD decision) — this is a documented
+    limitation, not a silent gap.
+    """
+
+    __tablename__ = "backtest_runs"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    strategy_version: Mapped[str] = mapped_column(String(32))
+    setup_type: Mapped[SetupType] = mapped_column(SqlEnum(SetupType, native_enum=False))
+    min_score: Mapped[float] = mapped_column(Numeric(6, 2))
+    start_date: Mapped[date] = mapped_column(Date)
+    end_date: Mapped[date] = mapped_column(Date)
+    initial_capital: Mapped[float] = mapped_column(Numeric(18, 2))
+    risk_per_trade_pct: Mapped[float] = mapped_column(Numeric(6, 4))
+    max_concurrent_positions: Mapped[int] = mapped_column(Integer)
+    fee_bps: Mapped[float] = mapped_column(Numeric(9, 4))
+    slippage_bps: Mapped[float] = mapped_column(Numeric(9, 4))
+    stop_atr_multiplier: Mapped[float] = mapped_column(Numeric(6, 2))
+    target_atr_multiplier: Mapped[float] = mapped_column(Numeric(6, 2))
+    max_holding_days: Mapped[int] = mapped_column(Integer)
+    execution_model: Mapped[ExecutionModel] = mapped_column(
+        SqlEnum(ExecutionModel, native_enum=False)
+    )
+    indicator_version: Mapped[str] = mapped_column(String(32))
+    score_version: Mapped[str] = mapped_column(String(32))
+
+    status: Mapped[BacktestStatus] = mapped_column(
+        SqlEnum(BacktestStatus, native_enum=False), default=BacktestStatus.RUNNING
+    )
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class BacktestTrade(Base):
+    """One simulated round-trip trade within a backtest run."""
+
+    __tablename__ = "backtest_trades"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    backtest_run_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("backtest_runs.id"), index=True)
+    instrument_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("instruments.id"), index=True)
+    setup_type: Mapped[SetupType] = mapped_column(SqlEnum(SetupType, native_enum=False))
+    signal_date: Mapped[date] = mapped_column(Date)
+    entry_date: Mapped[date] = mapped_column(Date)
+    entry_price: Mapped[float] = mapped_column(Numeric(18, 4))
+    stop_price: Mapped[float] = mapped_column(Numeric(18, 4))
+    target_price: Mapped[float] = mapped_column(Numeric(18, 4))
+    exit_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    exit_price: Mapped[float | None] = mapped_column(Numeric(18, 4), nullable=True)
+    exit_reason: Mapped[ExitReason | None] = mapped_column(
+        SqlEnum(ExitReason, native_enum=False), nullable=True
+    )
+    quantity: Mapped[int] = mapped_column(Integer)
+    fees_paid: Mapped[float] = mapped_column(Numeric(18, 4))
+    slippage_cost: Mapped[float] = mapped_column(Numeric(18, 4))
+    pnl: Mapped[float | None] = mapped_column(Numeric(18, 4), nullable=True)
+    r_multiple: Mapped[float | None] = mapped_column(Numeric(9, 4), nullable=True)
+    holding_days: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class BacktestEquityPoint(Base):
+    """Daily mark-to-market equity value for a backtest run's equity
+    curve/drawdown calculation."""
+
+    __tablename__ = "backtest_equity_points"
+    __table_args__ = (
+        UniqueConstraint("backtest_run_id", "trade_date", name="uq_backtest_equity_point_identity"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    backtest_run_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("backtest_runs.id"), index=True)
+    trade_date: Mapped[date] = mapped_column(Date, index=True)
+    equity_value: Mapped[float] = mapped_column(Numeric(18, 2))
+
+
+class BacktestMetrics(Base):
+    """Performance metrics computed once at run completion (MASTER-PRD
+    FR-012). One row per backtest run."""
+
+    __tablename__ = "backtest_metrics"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    backtest_run_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("backtest_runs.id"), unique=True, index=True
+    )
+    total_return_pct: Mapped[float] = mapped_column(Numeric(9, 4))
+    cagr_pct: Mapped[float | None] = mapped_column(Numeric(9, 4), nullable=True)
+    win_rate_pct: Mapped[float] = mapped_column(Numeric(6, 2))
+    avg_win: Mapped[float | None] = mapped_column(Numeric(18, 4), nullable=True)
+    avg_loss: Mapped[float | None] = mapped_column(Numeric(18, 4), nullable=True)
+    expectancy: Mapped[float | None] = mapped_column(Numeric(18, 4), nullable=True)
+    profit_factor: Mapped[float | None] = mapped_column(Numeric(9, 4), nullable=True)
+    max_drawdown_pct: Mapped[float] = mapped_column(Numeric(9, 4))
+    sharpe_ratio: Mapped[float | None] = mapped_column(Numeric(9, 4), nullable=True)
+    trade_count: Mapped[int] = mapped_column(Integer)
+    avg_holding_days: Mapped[float | None] = mapped_column(Numeric(9, 2), nullable=True)
+    r_distribution: Mapped[list[float]] = mapped_column(SqlJSON)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
