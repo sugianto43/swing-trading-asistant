@@ -1,0 +1,11 @@
+symbol,source_symbol,company_name,sector,subsector,listing_date,status
+BBCA,BBCA.JK,Bank Central Asia Tbk,Financials,Banks,2000-05-31,ACTIVE
+BBRI,BBRI.JK,Bank Rakyat Indonesia (Persero) Tbk,Financials,Banks,2003-11-10,ACTIVE
+BMRI,BMRI.JK,Bank Mandiri (Persero) Tbk,Financials,Banks,2003-07-14,ACTIVE
+TLKM,TLKM.JK,Telkom Indonesia (Persero) Tbk,Infrastructure,Telecommunication,1995-11-14,ACTIVE
+ASII,ASII.JK,Astra International Tbk,Industrials,Automobiles and Components,1990-04-04,ACTIVE
+ICBP,ICBP.JK,Indofood CBP Sukses Makmur Tbk,Consumer Non-Cyclicals,Food and Beverage,2010-10-07,ACTIVE
+INDF,INDF.JK,Indofood Sukses Makmur Tbk,Consumer Non-Cyclicals,Food and Beverage,1994-07-14,ACTIVE
+ANTM,ANTM.JK,Aneka Tambang Tbk,Basic Materials,Metals and Minerals,1997-11-27,ACTIVE
+PTBA,PTBA.JK,Bukit Asam Tbk,Energy,Coal,2002-12-23,ACTIVE
+GOTO,GOTO.JK,GoTo Gojek Tokopedia Tbk,Technology,Software and IT Services,2022-04-11,ACTIVE
