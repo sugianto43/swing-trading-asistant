@@ -197,3 +197,41 @@ Read-only API: `GET /api/v1/backtests`, `/backtests/{id}` (includes metrics), `/
 **Known limitation:** reproducibility means identical config + identical underlying DB state →
 identical results — there is no separate frozen dataset-snapshot system (an open MASTER-PRD
 decision), so results can change if you re-ingest/re-adjust historical data later.
+
+## Risk & Trade Plan (Phase 6)
+
+Deterministic risk engine — `apps/api/app/risk/` — that converts a qualifying scanner setup into
+an entry-zone/stop/targets/position-size trade plan, enforcing configurable portfolio risk limits.
+Pure Python, versioned (`RiskConfig.risk_version`, bumped in `app/risk/config.py` whenever a
+default/formula changes), same auditability discipline as indicators/scanner/backtesting.
+
+Entry zone is a small buffer above the latest close; stop/targets are ATR-based (`stop_atr_multiplier`,
+`target_atr_multiplier`); position size is fixed-fractional, lot-aware, and accounts for slippage and
+fees so a plan's quantity never overstates what capital can actually afford. A plan is rejected
+(`status=REJECTED`, `rejection_reasons` populated) rather than silently dropped or downsized whenever
+it violates a configured limit (invalid stop, R:R, liquidity, position/portfolio/sector allocation,
+concurrent-position count) — every configured limit is checked and reported, not just the first
+violation.
+
+**Portfolio state is caller-supplied, not persisted.** Phase 7 (Position & Journal) — which will hold
+real open positions — has not been built yet, so `existing_positions` is an explicit input to each
+plan request (a list of `{symbol, sector, allocation_amount}`), never a fabricated or assumed table.
+Omitting it means "no existing positions," a valid case, not a placeholder.
+
+**AI cannot modify risk limits**: `RiskConfig` limits are code/deploy-time values only, never exposed
+through any mutating API — that's guaranteed by construction (no PUT/PATCH endpoint exists), not by an
+access-control check on top of one.
+
+A trade plan is keyed by `(instrument, plan_date, setup_type, risk_version)` and idempotently
+upserted — unlike a `BacktestRun` (an experiment, always a new row), re-running a plan for the same
+day/config updates the existing row, since a plan is meant to reflect the current best answer for that
+day, not a comparison across runs.
+
+```bash
+python -m app.risk.cli plan --symbol BBCA --setup BREAKOUT --date 2024-12-31 --capital 100000000
+```
+
+Read-only/compute API: `POST /api/v1/risk/trade-plans` (creates/updates a plan; body includes
+`existing_positions` and `capital`), `GET /api/v1/risk/trade-plans` (filters: `symbol`, `setup_type`,
+`status`, `plan_date`), `GET /api/v1/risk/trade-plans/{id}`. No execution path exists anywhere in this
+phase — a trade plan is a number on screen, never an order.

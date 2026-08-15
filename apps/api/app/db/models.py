@@ -33,6 +33,7 @@ from app.db.enums import (
     ListingStatus,
     ScanStatus,
     SetupType,
+    TradePlanStatus,
 )
 
 
@@ -423,3 +424,59 @@ class BacktestMetrics(Base):
     avg_holding_days: Mapped[float | None] = mapped_column(Numeric(9, 2), nullable=True)
     r_distribution: Mapped[list[float]] = mapped_column(SqlJSON)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class TradePlan(Base):
+    """One deterministic risk-engine output for one instrument/setup/day.
+
+    Unlike BacktestRun (an experiment, never upserted), a trade plan for
+    a given (instrument, plan_date, setup_type, risk_version) IS data to
+    keep in sync — re-running the plan for the same day/config should
+    update the existing row, same idempotent-upsert-by-natural-key
+    pattern as ingestion/indicators/scanner. Invalid plans are persisted
+    with status=REJECTED and populated rejection_reasons rather than
+    being dropped, so every risk decision stays auditable (MASTER-PRD
+    §21, FR-011).
+    """
+
+    __tablename__ = "trade_plans"
+    __table_args__ = (
+        UniqueConstraint(
+            "instrument_id",
+            "plan_date",
+            "setup_type",
+            "risk_version",
+            name="uq_trade_plan_identity",
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    instrument_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("instruments.id"), index=True)
+    scan_candidate_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("scan_candidates.id"), nullable=True
+    )
+    setup_type: Mapped[SetupType] = mapped_column(SqlEnum(SetupType, native_enum=False))
+    plan_date: Mapped[date] = mapped_column(Date, index=True)
+    risk_version: Mapped[str] = mapped_column(String(32))
+    score_version: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    indicator_version: Mapped[str | None] = mapped_column(String(32), nullable=True)
+
+    status: Mapped[TradePlanStatus] = mapped_column(SqlEnum(TradePlanStatus, native_enum=False))
+    rejection_reasons: Mapped[list[str]] = mapped_column(SqlJSON, default=list)
+
+    entry_price: Mapped[float | None] = mapped_column(Numeric(18, 4), nullable=True)
+    stop_price: Mapped[float | None] = mapped_column(Numeric(18, 4), nullable=True)
+    target_prices: Mapped[list[float]] = mapped_column(SqlJSON, default=list)
+    quantity: Mapped[int] = mapped_column(Integer, default=0)
+    allocation_amount: Mapped[float] = mapped_column(Numeric(18, 2), default=0)
+    allocation_pct: Mapped[float] = mapped_column(Numeric(9, 4), default=0)
+    max_loss_amount: Mapped[float] = mapped_column(Numeric(18, 2), default=0)
+    risk_reward_ratio: Mapped[float | None] = mapped_column(Numeric(9, 4), nullable=True)
+
+    assumptions: Mapped[dict[str, object]] = mapped_column(SqlJSON)
+    invalidation_conditions: Mapped[list[str]] = mapped_column(SqlJSON, default=list)
+
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )

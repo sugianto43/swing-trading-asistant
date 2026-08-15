@@ -61,3 +61,8 @@ class ExitReason(StrEnum):
     TARGET = "TARGET"
     TIME = "TIME"
     END_OF_BACKTEST = "END_OF_BACKTEST"
+
+
+class TradePlanStatus(StrEnum):
+    VALID = "VALID"
+    REJECTED = "REJECTED"
