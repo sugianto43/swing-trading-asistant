@@ -386,16 +386,71 @@ def test_get_portfolio_risk_reflects_closed_trade(db_session) -> None:
     assert result["total_realized_pnl"] == 10_000.0
 
 
-def test_get_market_regime_always_unavailable(db_session) -> None:
+def test_get_market_regime_unavailable_when_no_snapshot_computed(db_session) -> None:
     result = tools.get_market_regime(db_session)
     assert result["status"] == "DATA_UNAVAILABLE"
-    assert "Phase 9" in result["reason"]
 
 
-def test_get_market_events_always_unavailable(db_session) -> None:
+def test_get_market_regime_happy_path(db_session) -> None:
+    from datetime import date
+
+    from app.db.enums import MarketRegime
+    from app.db.models import BreadthSnapshot
+
+    db_session.add(
+        BreadthSnapshot(
+            as_of=date(2024, 3, 1),
+            breadth_version="v1",
+            universe_size=10,
+            pct_above_sma50=0.7,
+            pct_above_sma200=0.6,
+            advancers=8,
+            decliners=2,
+            unchanged=0,
+            new_highs_20=1,
+            new_lows_20=0,
+            regime=MarketRegime.RISK_ON,
+            regime_version="v1",
+        )
+    )
+    db_session.commit()
+
+    result = tools.get_market_regime(db_session)
+    assert result["status"] == "OK"
+    assert result["regime"] == "RISK_ON"
+    assert "proxy" in result["note"]
+
+
+def test_get_market_events_unavailable_when_no_corporate_actions(db_session) -> None:
+    _seed_instrument(db_session)
     result = tools.get_market_events(db_session, symbol="BBCA")
     assert result["status"] == "DATA_UNAVAILABLE"
-    assert "Phase 9" in result["reason"]
+
+
+def test_get_market_events_happy_path(db_session) -> None:
+    from datetime import UTC, date, datetime
+
+    from app.db.enums import CorporateActionType
+    from app.db.models import CorporateAction
+
+    instrument = _seed_instrument(db_session)
+    db_session.add(
+        CorporateAction(
+            instrument_id=instrument.id,
+            action_type=CorporateActionType.SPLIT,
+            ex_date=date(2024, 3, 1),
+            announced_at=datetime(2024, 2, 1, tzinfo=UTC),
+            ratio=2.0,
+            source="fixture",
+            source_symbol=instrument.source_symbol,
+        )
+    )
+    db_session.commit()
+
+    result = tools.get_market_events(db_session, symbol="BBCA")
+    assert result["status"] == "OK"
+    assert result["events"][0]["event_type"] == "SPLIT"
+    assert "news" in result["note"]
 
 
 def test_tool_registry_has_no_writing_or_execution_capable_tools() -> None:

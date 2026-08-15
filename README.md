@@ -340,3 +340,46 @@ python -m app.ai.cli analyze --symbol BBCA --question "What does BBCA's setup lo
 API: `POST /api/v1/ai/analyze` (body: `question`, optional `symbol`) — 503 if no provider is
 configured (no `GEMINI_API_KEY`); `GET /api/v1/ai/snapshots` (filter: `symbol`),
 `GET /api/v1/ai/snapshots/{id}`. Every snapshot is append-only, same discipline as `Execution`.
+
+## Market Intelligence (Phase 9)
+
+Market breadth, sector performance, regime classification, and canonical corporate-action events —
+`apps/api/app/intelligence/` — all computed from data already ingested in Phases 2/3, no new vendor.
+
+**Scope decision**: MASTER-PRD §12 lists news/earnings/dividends/corporate-actions/sector-performance/
+breadth/macro-events/regulatory-events as things "later phases MAY include," not all mandatory.
+yfinance (the only integrated vendor) has no reliable free feed for news, earnings calendars, or
+macro/regulatory events on IDX tickers. This phase builds **breadth, sector performance, and regime**
+(fully computable from the already-ingested universe) and exposes **corporate actions as canonical
+timestamped events**. **News/earnings-calendar/macro/regulatory events are explicitly deferred** — no
+viable free data source exists, and inventing one would violate "never invent market data." Documented
+gap, not silent (see `DECISION-LOG.md` if a future ADR revisits this).
+
+**Breadth is a proxy for the locally-ingested universe, not the whole IDX market** — regime
+classification (`RISK_ON`/`RISK_OFF`/`NEUTRAL`) uses the universe's own `% above SMA50` and
+advance/decline counts (`app/intelligence/breadth_engine.py`, `regime_engine.py`), not an external
+index (`^JKSE` was considered and deliberately not pursued — see the plan record for this phase).
+Thresholds are illustrative starting values (`RegimeConfig`), not a verified market-timing signal —
+same caveat as backtesting's fee/slippage defaults.
+
+**Events** (`app/intelligence/event_mapper.py`) are a read-time canonicalization of Phase 2's already-
+ingested `CorporateAction` rows — no new ingestion path, no duplicated table. The Critical Rule (TDD):
+historical/event-aware queries filter strictly on `announced_at` (the public-availability timestamp),
+**never** `ex_date`/`effective_date`, which can be scheduled/known ahead of when an action actually
+became public knowledge. When yfinance doesn't supply an announcement timestamp, `ingested_at` is used
+as a conservative fallback and `availability_is_estimated=True` flags the substitution explicitly.
+
+Breadth snapshots are idempotent-upsert-by-natural-key (`as_of`, `breadth_version`) — same pattern as
+indicators/scanner/trade plans, not an experiment like a backtest run.
+
+Phase 8's `get_market_regime`/`get_market_events` AI tools now consume this service directly instead
+of returning a hardcoded `DATA_UNAVAILABLE` stub.
+
+```bash
+python -m app.intelligence.cli compute-breadth --date 2024-12-31
+```
+
+API: `POST /api/v1/intelligence/breadth/compute` (body: `as_of`), `GET /api/v1/intelligence/breadth`
+(`?as_of=`, latest if omitted), `GET /api/v1/intelligence/breadth/history` (`?start=&end=`),
+`GET /api/v1/intelligence/sector-performance` (`?as_of=&lookback_days=`),
+`GET /api/v1/intelligence/events` (`?symbol=&as_of=` — `as_of` enforces the Critical Rule cutoff).

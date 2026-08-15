@@ -79,3 +79,9 @@ class PositionStatus(StrEnum):
     PARTIALLY_CLOSED = "PARTIALLY_CLOSED"
     CLOSED = "CLOSED"
     CANCELLED = "CANCELLED"
+
+
+class MarketRegime(StrEnum):
+    RISK_ON = "RISK_ON"
+    RISK_OFF = "RISK_OFF"
+    NEUTRAL = "NEUTRAL"
