@@ -1,10 +1,11 @@
 from datetime import date
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from app.api.v1.deps import get_instrument_or_404
 from app.api.v1.pagination import MAX_PAGE_SIZE, Page
 from app.api.v1.schemas.market_data import CorporateActionOut, InstrumentOut, PriceBarOut
 from app.db.models import CorporateAction, Instrument, PriceBar
@@ -12,13 +13,6 @@ from app.db.session import get_db
 from app.marketdata.adjustment import compute_split_adjusted_bars
 
 router = APIRouter()
-
-
-def _get_instrument_or_404(db: Session, symbol: str) -> Instrument:
-    instrument = db.scalar(select(Instrument).where(Instrument.symbol == symbol.upper()))
-    if instrument is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="instrument not found")
-    return instrument
 
 
 @router.get("/instruments", response_model=Page[InstrumentOut])
@@ -49,7 +43,7 @@ def list_instruments(
 
 @router.get("/instruments/{symbol}", response_model=InstrumentOut)
 def get_instrument(symbol: str, db: Annotated[Session, Depends(get_db)]) -> InstrumentOut:
-    instrument = _get_instrument_or_404(db, symbol)
+    instrument = get_instrument_or_404(db, symbol)
     return InstrumentOut.model_validate(instrument)
 
 
@@ -63,7 +57,7 @@ def list_instrument_prices(
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=50, ge=1, le=MAX_PAGE_SIZE),
 ) -> Page[PriceBarOut]:
-    instrument = _get_instrument_or_404(db, symbol)
+    instrument = get_instrument_or_404(db, symbol)
 
     query = select(PriceBar).where(PriceBar.instrument_id == instrument.id)
     if start:
@@ -112,7 +106,7 @@ def list_instrument_corporate_actions(
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=50, ge=1, le=MAX_PAGE_SIZE),
 ) -> Page[CorporateActionOut]:
-    instrument = _get_instrument_or_404(db, symbol)
+    instrument = get_instrument_or_404(db, symbol)
     query = select(CorporateAction).where(CorporateAction.instrument_id == instrument.id)
 
     total = db.scalar(select(func.count()).select_from(query.subquery())) or 0
