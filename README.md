@@ -118,3 +118,23 @@ Read-only API endpoints: `GET /api/v1/instruments`, `/instruments/{symbol}`,
 `/instruments/{symbol}/prices` (add `?adjusted=true` for split-adjusted prices — dividend/
 total-return adjustment is not implemented), `/instruments/{symbol}/corporate-actions`,
 `/calendar`.
+
+## Technical Indicators (Phase 3)
+
+Canonical indicators (SMA20/50/200, EMA20/50, RSI14, ATR14, MACD, Bollinger Bands, volume SMA,
+relative volume, rolling high/low, returns, volatility) are computed by `apps/api/app/indicators/`
+— plain Python, not pandas/numpy, so every formula is auditable in one place
+(`app/indicators/calculations.py`). Indicators are computed from split-adjusted, `VALID`/`SUSPECT`
+price bars only (`INVALID` bars are excluded, same as a missing session).
+
+Compute and persist indicator snapshots (after market data has been ingested — see above):
+
+```bash
+python -m app.indicators.cli compute --symbols BBCA,BBRI,BMRI --start 2024-01-01 --end 2024-12-31
+```
+
+Snapshots are versioned (`app/indicators/versioning.py`'s `INDICATOR_VERSION`) so historical
+results stay traceable to the exact formula/parameter set that produced them — bump the version
+string, never redefine what an existing version means. Re-running is idempotent.
+
+Read-only API endpoint: `GET /api/v1/instruments/{symbol}/indicators`.

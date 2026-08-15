@@ -170,6 +170,53 @@ class TradingCalendarDay(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
+class IndicatorSnapshot(Base):
+    """Canonical technical-indicator values for one instrument/date, tied
+    to the formula/parameter set that produced them (indicator_version) so
+    historical results stay traceable to their exact configuration
+    (MASTER-PRD §21). Computed from split-adjusted VALID price bars only —
+    see app/indicators/engine.py."""
+
+    __tablename__ = "indicator_snapshots"
+    __table_args__ = (
+        UniqueConstraint(
+            "instrument_id",
+            "trade_date",
+            "indicator_version",
+            name="uq_indicator_snapshot_identity",
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    instrument_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("instruments.id"), index=True)
+    trade_date: Mapped[date] = mapped_column(Date, index=True)
+    indicator_version: Mapped[str] = mapped_column(String(32))
+
+    sma_20: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    sma_50: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    sma_200: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    ema_20: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    ema_50: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    rsi_14: Mapped[float | None] = mapped_column(Numeric(9, 6), nullable=True)
+    atr_14: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    macd: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    macd_signal: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    macd_histogram: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    bb_upper: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    bb_middle: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    bb_lower: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    volume_sma_20: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    relative_volume: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    rolling_high_20: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    rolling_low_20: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    return_1d: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+    volatility_20: Mapped[float | None] = mapped_column(Numeric(18, 6), nullable=True)
+
+    computed_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
 class IngestionRun(Base):
     """Audit/lineage trail for each ingestion batch."""
 
