@@ -235,3 +235,61 @@ Read-only/compute API: `POST /api/v1/risk/trade-plans` (creates/updates a plan; 
 `existing_positions` and `capital`), `GET /api/v1/risk/trade-plans` (filters: `symbol`, `setup_type`,
 `status`, `plan_date`), `GET /api/v1/risk/trade-plans/{id}`. No execution path exists anywhere in this
 phase — a trade plan is a number on screen, never an order.
+
+## Position & Journal (Phase 7)
+
+Tracks what actually happened — manual executions, derived position state, trading journal, and
+performance analytics — `apps/api/app/positions/`. This is bookkeeping of real trades, not a strategy
+or a scored/backtested system, so there's no versioned config here the way Phases 3-6 have.
+
+**Long-only.** `Execution.side` is `BUY`/`SELL`: BUY opens/adds to a position, SELL reduces/closes it.
+Short-selling isn't modeled — a SELL exceeding the open quantity is rejected outright, never treated
+as opening a short. This matches the stated persona (IDX retail swing trader); short-selling isn't
+broadly available to that audience.
+
+**Executions are append-only.** No update or delete endpoint exists anywhere for `Execution` rows — a
+recording mistake is corrected by entering a new offsetting execution, an explicit adjustment rather
+than a silent edit to history. `Position` is a derived/materialized view recomputed by
+`ExecutionService` inside the same transaction as every new execution; `Execution` is the source of
+truth, never the other way around. At most one non-terminal (`PLANNED`/`OPEN`/`PARTIALLY_CLOSED`)
+`Position` per instrument is enforced at the application layer (not a DB constraint, for
+SQLite/Postgres portability, same tradeoff made elsewhere in this codebase) — reopening after
+`CLOSED`/`CANCELLED` creates a fresh `Position` row rather than reusing the old one.
+
+**Fee apportionment on partial exits**: each SELL apportions the position's cumulative entry fees
+pro-rata by `(quantity sold / cumulative quantity ever bought)`, plus its own exit fee in full — see
+`position_engine.py`'s docstring for the exact formula. This keeps total fees fully accounted for
+exactly once across however many partial exits occur.
+
+**`PLANNED` positions**: `POST /api/v1/positions` creates a position from a `TradePlan` before any
+execution happens (`status=PLANNED`, requires the plan be `VALID`, and that the instrument has no
+other non-terminal position already). `POST /api/v1/positions/{id}/cancel` moves `PLANNED` →
+`CANCELLED` — the only state cancellation is valid from, so an already-executed position can't be
+retroactively "cancelled".
+
+**Journal** is ordinary mutable CRUD (unlike executions) — one entry per position, refined as the
+trader's thinking evolves. `reference_urls` holds external links only (e.g. a chart screenshot hosted
+elsewhere) — **no file upload or storage infrastructure exists in this phase**, so attachments are
+references, never uploaded content.
+
+**Performance analytics** (`GET /api/v1/performance/*`) — portfolio equity curve/drawdown/exposure and
+unrealized P&L (mark-to-market against the latest available `PriceBar.close`, reused from Phase 2, no
+future-data leakage), grouped breakdowns by setup/sector/holding-period/score-bucket. `max_drawdown_pct`
+and `sharpe_ratio` are reused directly from `app.backtesting.metrics` (pure functions of an equity
+curve, no coupling to simulated trades). **Documented gaps, not silent ones**:
+- performance by market regime — no market-wide/breadth data source exists yet (Phase 9 scope, the
+  same gap already documented since Phase 4's scanner).
+- early-exit/late-entry classification and recurring-mistake pattern detection — these need a
+  subjective heuristic the PRD doesn't specify; only clearly-defined, non-subjective behavior metrics
+  are computed (`stop_violated`: exit worse than the linked `TradePlan.stop_price`; entry/quantity
+  deviation-from-plan percentages).
+
+```bash
+python -m app.positions.cli record --symbol BBCA --side BUY --quantity 100 --price 9500 --fee 15000 --executed-at 2024-12-31T09:30:00+07:00
+```
+
+API: `POST/GET /api/v1/executions`, `POST /api/v1/positions` (planned), `POST /api/v1/positions/{id}/cancel`,
+`GET /api/v1/positions`, `GET /api/v1/positions/{id}`, `POST/GET /api/v1/positions/{id}/journal`,
+`GET /api/v1/performance/summary` (`?initial_capital=`), `/by-setup`, `/by-sector`, `/by-holding-period`,
+`/by-score-bucket`, `/behavior`. No order-execution path exists anywhere — this only records what a
+human already did through their broker.

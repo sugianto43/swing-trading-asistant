@@ -66,3 +66,16 @@ class ExitReason(StrEnum):
 class TradePlanStatus(StrEnum):
     VALID = "VALID"
     REJECTED = "REJECTED"
+
+
+class ExecutionSide(StrEnum):
+    BUY = "BUY"
+    SELL = "SELL"
+
+
+class PositionStatus(StrEnum):
+    PLANNED = "PLANNED"
+    OPEN = "OPEN"
+    PARTIALLY_CLOSED = "PARTIALLY_CLOSED"
+    CLOSED = "CLOSED"
+    CANCELLED = "CANCELLED"
