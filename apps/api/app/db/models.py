@@ -9,6 +9,7 @@ from sqlalchemy import (
     Date,
     DateTime,
     ForeignKey,
+    Index,
     Integer,
     Numeric,
     String,
@@ -16,6 +17,7 @@ from sqlalchemy import (
     Time,
     UniqueConstraint,
     func,
+    text,
 )
 from sqlalchemy import (
     Enum as SqlEnum,
@@ -28,9 +30,11 @@ from app.db.enums import (
     CorporateActionType,
     DataQualityStatus,
     ExecutionModel,
+    ExecutionSide,
     ExitReason,
     IngestionStatus,
     ListingStatus,
+    PositionStatus,
     ScanStatus,
     SetupType,
     TradePlanStatus,
@@ -476,6 +480,118 @@ class TradePlan(Base):
     assumptions: Mapped[dict[str, object]] = mapped_column(SqlJSON)
     invalidation_conditions: Mapped[list[str]] = mapped_column(SqlJSON, default=list)
 
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )
+
+
+class Position(Base):
+    """Derived/materialized position state for one instrument's
+    open-through-close lifecycle. Never independently mutated via API —
+    ExecutionService recomputes it inside the same transaction as every
+    new Execution insert, so Execution is the source of truth and
+    Position is a queryable summary of it. Reopening after CLOSED/
+    CANCELLED creates a new Position row rather than reusing this one.
+
+    uq_positions_one_non_terminal_per_instrument is a partial unique
+    index (not just an app-level check) enforcing "at most one
+    PLANNED/OPEN/PARTIALLY_CLOSED position per instrument" at the DB
+    level — a prior version relied on ExecutionService's check-then-insert
+    alone, which a race between two concurrent requests could silently
+    slip past (both see "no existing position", both insert). The index
+    makes the second insert fail loudly (IntegrityError, caught and
+    turned into the same ValueError the app-level check already raises)
+    instead of leaving two open positions for one instrument.
+    """
+
+    __tablename__ = "positions"
+    __table_args__ = (
+        Index(
+            "uq_positions_one_non_terminal_per_instrument",
+            "instrument_id",
+            unique=True,
+            postgresql_where=text("status IN ('PLANNED', 'OPEN', 'PARTIALLY_CLOSED')"),
+            sqlite_where=text("status IN ('PLANNED', 'OPEN', 'PARTIALLY_CLOSED')"),
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    instrument_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("instruments.id"), index=True)
+    trade_plan_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("trade_plans.id"), nullable=True
+    )
+    status: Mapped[PositionStatus] = mapped_column(
+        SqlEnum(PositionStatus, native_enum=False), index=True
+    )
+    quantity_open: Mapped[int] = mapped_column(Integer, default=0)
+    avg_entry_price: Mapped[float | None] = mapped_column(Numeric(18, 4), nullable=True)
+    avg_entry_fee_per_share: Mapped[float] = mapped_column(Numeric(18, 6), default=0)
+    cumulative_quantity_bought: Mapped[int] = mapped_column(Integer, default=0)
+    cumulative_entry_fees: Mapped[float] = mapped_column(Numeric(18, 4), default=0)
+    cumulative_exit_fees: Mapped[float] = mapped_column(Numeric(18, 4), default=0)
+    realized_pnl: Mapped[float] = mapped_column(Numeric(18, 4), default=0)
+    opened_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    closed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )
+
+
+class Execution(Base):
+    """Append-only manual-execution ledger row. No update/delete path
+    exists anywhere in the API — a recording mistake is corrected by
+    entering a new offsetting execution, an explicit adjustment rather
+    than an edit to history (MASTER-TDD Phase 7: "execution records
+    append-only/auditable; corrections are explicit adjustments").
+    Long-only: side BUY opens/adds, SELL reduces/closes — no short model.
+    realized_pnl_impact is populated only for SELL rows (None for BUY),
+    denormalized here (rather than only on Position) so performance
+    aggregation can query the ledger directly without replaying history.
+    """
+
+    __tablename__ = "executions"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    position_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("positions.id"), index=True)
+    instrument_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("instruments.id"), index=True)
+    trade_plan_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("trade_plans.id"), nullable=True
+    )
+    side: Mapped[ExecutionSide] = mapped_column(SqlEnum(ExecutionSide, native_enum=False))
+    quantity: Mapped[int] = mapped_column(Integer)
+    price: Mapped[float] = mapped_column(Numeric(18, 4))
+    fee: Mapped[float] = mapped_column(Numeric(18, 4), default=0)
+    realized_pnl_impact: Mapped[float | None] = mapped_column(Numeric(18, 4), nullable=True)
+    executed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class JournalEntry(Base):
+    """User reflection tied to one position — ordinary mutable CRUD
+    (unlike Execution), since a journal is meant to be refined as the
+    trader's thinking evolves. One entry per position (create-or-update
+    semantics in JournalService). reference_urls holds external links
+    only (e.g. a chart screenshot hosted elsewhere) — no file upload or
+    storage infra exists in this phase, so attachments are references,
+    never uploaded content."""
+
+    __tablename__ = "journal_entries"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    position_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("positions.id"), unique=True, index=True
+    )
+    thesis: Mapped[str | None] = mapped_column(Text, nullable=True)
+    market_context: Mapped[str | None] = mapped_column(Text, nullable=True)
+    execution_quality: Mapped[str | None] = mapped_column(Text, nullable=True)
+    behavioral_notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    plan_adherence_notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    mistakes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    lessons: Mapped[str | None] = mapped_column(Text, nullable=True)
+    reference_urls: Mapped[list[str]] = mapped_column(SqlJSON, default=list)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
