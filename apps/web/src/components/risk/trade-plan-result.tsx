@@ -75,6 +75,12 @@ export function TradePlanResult({
             Targets: {plan.target_prices.join(", ")}
           </p>
         )}
+        <Link
+          href={`/positions?symbol=${symbol}&trade_plan_id=${plan.id}`}
+          className="mt-3 inline-block text-sm text-primary hover:underline"
+        >
+          Record execution →
+        </Link>
       </CardContent>
     </Card>
   );

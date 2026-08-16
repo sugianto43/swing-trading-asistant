@@ -21,6 +21,26 @@ afterEach(() => {
   vi.clearAllMocks();
 });
 
+// jsdom doesn't implement the Pointer Events capture methods Radix's
+// Select uses internally — clicking an option throws
+// "target.hasPointerCapture is not a function" the first time a test
+// exercises Select via userEvent. No-op stubs are enough; tests only
+// need the calls not to throw, not real capture semantics.
+if (typeof window !== "undefined") {
+  if (!Element.prototype.hasPointerCapture) {
+    Element.prototype.hasPointerCapture = () => false;
+  }
+  if (!Element.prototype.setPointerCapture) {
+    Element.prototype.setPointerCapture = () => {};
+  }
+  if (!Element.prototype.releasePointerCapture) {
+    Element.prototype.releasePointerCapture = () => {};
+  }
+  if (!Element.prototype.scrollIntoView) {
+    Element.prototype.scrollIntoView = () => {};
+  }
+}
+
 // jsdom doesn't implement matchMedia — next-themes' system-theme
 // detection calls it on mount, so anything using ThemeProvider needs
 // this polyfilled for tests to run at all.

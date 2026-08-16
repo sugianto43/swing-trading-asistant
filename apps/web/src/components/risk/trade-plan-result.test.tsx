@@ -51,6 +51,15 @@ describe("TradePlanResult", () => {
     );
   });
 
+  it("links a VALID plan to the positions screen to record an execution against it", () => {
+    render(<TradePlanResult plan={makeValidPlan({ id: "abc-123" })} symbol="BBCA" />);
+
+    expect(screen.getByRole("link", { name: "Record execution →" })).toHaveAttribute(
+      "href",
+      "/positions?symbol=BBCA&trade_plan_id=abc-123",
+    );
+  });
+
   it("renders plain text, not a link, when linkToDetail is false", () => {
     render(<TradePlanResult plan={makeValidPlan({ id: "abc-123" })} symbol="BBCA" linkToDetail={false} />);
 
