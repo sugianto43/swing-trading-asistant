@@ -1,5 +1,8 @@
+import Link from "next/link";
+
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { buildPlanHref } from "@/lib/queries/build-plan-href";
 import type { ScanCandidate } from "@/lib/queries/scanner";
 
 export function RecentCandidates({ candidates }: { candidates: ScanCandidate[] }) {
@@ -22,7 +25,12 @@ export function RecentCandidates({ candidates }: { candidates: ScanCandidate[] }
                   <Badge variant="outline">{candidate.setup_type}</Badge>
                   <span className="text-muted-foreground">{candidate.scan_date}</span>
                 </span>
-                <span className="tabular-nums">{candidate.composite_score.toFixed(1)}</span>
+                <span className="flex items-center gap-3">
+                  <span className="tabular-nums">{candidate.composite_score.toFixed(1)}</span>
+                  <Link href={buildPlanHref(candidate)} className="text-primary hover:underline">
+                    Build plan
+                  </Link>
+                </span>
               </li>
             ))}
           </ul>

@@ -3,14 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import type { ScannerFilters, ScannerSort, SetupType } from "@/lib/queries/scanner";
-
-const SETUP_TYPES: SetupType[] = [
-  "BREAKOUT",
-  "PULLBACK_CONTINUATION",
-  "MOMENTUM_CONTINUATION",
-  "MA_RECLAIM",
-  "VOLATILITY_SQUEEZE",
-];
+import { SETUP_TYPES } from "@/lib/queries/setup-types";
 
 const SORT_OPTIONS: { value: ScannerSort; label: string }[] = [
   { value: "score", label: "Composite Score" },

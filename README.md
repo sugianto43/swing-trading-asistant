@@ -615,3 +615,43 @@ verification instead.
 
 Live-verified against a real seeded backend (Docker): a real BREAKOUT candidate, real breadth/
 sector data, and a real rendered candlestick chart — not just empty-state screenshots.
+
+## Risk & Trade Plan UI (Phase 14)
+
+`/risk` replaces its stub with a trade-plan builder form + existing-plans list; `/risk/[id]` is a
+new detail route. Consumes Phase 6's existing endpoints only — no backend changes.
+
+**VALID and REJECTED are both normal results, not error states.** `POST /risk/trade-plans` returns
+HTTP 201 either way — a rejected plan (no qualifying setup, no price data, allocation cap exceeded,
+etc.) is real, informative data the backend computed, not a failure to apologize for. The form,
+result card, list, and detail page all render both outcomes as first-class content. Live-verified
+against a real backend: a real VALID plan (entry/stop/target/quantity/allocation/risk-reward all
+computed) and a real REJECTED plan (actual rejection reasons from the risk engine), both rendering
+correctly.
+
+**`POST /risk/trade-plans` is an idempotent upsert by natural key** (symbol + setup_type +
+plan_date, per Phase 6) — resubmitting the same three fields updates the existing plan rather than
+creating a duplicate. UI copy says "plan ready," not "plan created."
+
+**`TradePlanOut` has no `symbol` field, only `instrument_id`** — and there's no `GET /instruments/
+{id}`-by-UUID endpoint, only by symbol. `fetchInstrumentsById()` fetches the full instruments list
+once (`page_size: 200`, sufficient for a personal-use universe) and builds an id→symbol map
+client-side; the list and detail views both need this to show which instrument a plan is for at
+all. This is the same class of constraint Phase 13 hit with newest-first API ordering — read the
+actual response shape before assuming it, don't guess.
+
+**Form**: `react-hook-form` + `zod` (new dependency this phase — Phase 13's `ScannerFiltersBar` used
+plain `useState` since it only filtered, never submitted; this form has real submission and
+validation needs matching the backend's own constraints). `z.coerce.number()` fields make the
+form's input type differ from its validated output type — `useForm`'s generic must be the *input*
+type (`z.input<typeof schema>`), or TypeScript rejects `register`/`resolver` calls with an error
+that has nothing to do with real form behavior.
+
+**Scanner and instrument-detail rows link into the form**: a "Build plan" action on each row
+navigates to `/risk?symbol=&setup=&date=` prefilled — small, necessary modifications to two
+existing Phase 13 files, not a re-implementation of Phase 13.
+
+**`useSearchParams` needs a `Suspense` boundary** (Next.js 16 requirement, confirmed against the
+bundled framework docs) — `/risk/page.tsx` is a thin server wrapper (`<Suspense><RiskPageContent
+/></Suspense>`); the actual searchParams-reading logic lives in `RiskPageContent`, a client
+component. Skipping this causes `next build` to fail on a prerendered route, not just warn.
