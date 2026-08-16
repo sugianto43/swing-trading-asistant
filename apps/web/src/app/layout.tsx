@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { Nav } from "@/components/layout/nav";
+import { Providers } from "@/components/providers";
+
 const geistSans = Geist({
-  variable: "--font-geist-sans",
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
@@ -21,9 +24,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      // next-themes sets the "dark" class on <html> before hydration
+      // based on localStorage/system preference — the server can't know
+      // that ahead of time, so this suppresses the resulting (expected,
+      // harmless) hydration warning rather than the real thing.
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Providers>
+          <Nav />
+          <main className="flex flex-1 flex-col">{children}</main>
+        </Providers>
+      </body>
     </html>
   );
 }
