@@ -66,7 +66,7 @@ export function TradePlanResult({
           {stats.map((stat) => (
             <div key={stat.label}>
               <dt className="text-xs text-muted-foreground">{stat.label}</dt>
-              <dd className="text-lg font-semibold tabular-nums">{stat.value}</dd>
+              <dd className="text-lg font-semibold font-mono tabular-nums">{stat.value}</dd>
             </div>
           ))}
         </dl>

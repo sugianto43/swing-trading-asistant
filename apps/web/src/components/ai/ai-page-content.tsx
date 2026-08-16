@@ -43,7 +43,7 @@ export function AiPageContent() {
   }
 
   return (
-    <div className="flex flex-1 flex-col gap-4 p-6">
+    <div className="flex flex-1 flex-col gap-3 p-4">
       <AnalyzeForm defaultSymbol={defaultSymbol} />
 
       <h2 className="mt-4 text-sm font-medium text-muted-foreground">Recent Analyses</h2>

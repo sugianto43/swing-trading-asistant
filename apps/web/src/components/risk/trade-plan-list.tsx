@@ -45,9 +45,9 @@ export function TradePlanList({
                 {plan.status}
               </Badge>
             </TableCell>
-            <TableCell className="text-right tabular-nums">{plan.entry_price ?? "—"}</TableCell>
-            <TableCell className="text-right tabular-nums">{plan.quantity}</TableCell>
-            <TableCell className="text-right tabular-nums">
+            <TableCell className="text-right font-mono tabular-nums">{plan.entry_price ?? "—"}</TableCell>
+            <TableCell className="text-right font-mono tabular-nums">{plan.quantity}</TableCell>
+            <TableCell className="text-right font-mono tabular-nums">
               {plan.allocation_pct.toFixed(1)}%
             </TableCell>
             <TableCell className="text-muted-foreground">{plan.plan_date}</TableCell>

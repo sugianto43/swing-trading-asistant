@@ -40,13 +40,13 @@ export function CandidatesTable({ candidates }: { candidates: ScanCandidate[] })
             <TableCell>
               <Badge variant="outline">{candidate.setup_type}</Badge>
             </TableCell>
-            <TableCell className="text-right tabular-nums">
+            <TableCell className="text-right font-mono tabular-nums">
               {candidate.composite_score.toFixed(1)}
             </TableCell>
-            <TableCell className="text-right tabular-nums">
+            <TableCell className="text-right font-mono tabular-nums">
               {candidate.momentum_score.toFixed(1)}
             </TableCell>
-            <TableCell className="text-right tabular-nums">
+            <TableCell className="text-right font-mono tabular-nums">
               {candidate.risk_reward_score.toFixed(1)}
             </TableCell>
             <TableCell className="text-muted-foreground">{candidate.scan_date}</TableCell>

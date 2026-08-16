@@ -22,7 +22,7 @@ export function TradePlanDetailClient({ id }: { id: string }) {
 
   if (planQuery.isPending) {
     return (
-      <div className="flex flex-1 flex-col gap-4 p-6">
+      <div className="flex flex-1 flex-col gap-3 p-4">
         <Skeleton className="h-64 w-full" />
       </div>
     );
@@ -57,7 +57,7 @@ export function TradePlanDetailClient({ id }: { id: string }) {
   const hasAssumptions = Object.keys(plan.assumptions).length > 0;
 
   return (
-    <div className="flex flex-1 flex-col gap-4 p-6">
+    <div className="flex flex-1 flex-col gap-3 p-4">
       <TradePlanResult plan={plan} symbol={symbol} linkToDetail={false} />
 
       <Card>

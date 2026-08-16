@@ -44,11 +44,11 @@ export function BreadthStats({ breadth }: { breadth: BreadthSnapshot }) {
         <RegimeBadge regime={breadth.regime} />
       </CardHeader>
       <CardContent>
-        <dl className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
           {stats.map((stat) => (
             <div key={stat.label}>
               <dt className="text-xs text-muted-foreground">{stat.label}</dt>
-              <dd className="text-lg font-semibold tabular-nums">{stat.value}</dd>
+              <dd className="text-lg font-semibold font-mono tabular-nums">{stat.value}</dd>
             </div>
           ))}
         </dl>

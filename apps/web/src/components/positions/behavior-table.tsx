@@ -40,10 +40,10 @@ export function BehaviorTable({ entries }: { entries: BehaviorEntry[] }) {
                 </Badge>
               )}
             </TableCell>
-            <TableCell className="text-right tabular-nums">
+            <TableCell className="text-right font-mono tabular-nums">
               {entry.entry_deviation_pct !== null ? `${entry.entry_deviation_pct.toFixed(1)}%` : "—"}
             </TableCell>
-            <TableCell className="text-right tabular-nums">
+            <TableCell className="text-right font-mono tabular-nums">
               {entry.quantity_deviation_pct !== null
                 ? `${entry.quantity_deviation_pct.toFixed(1)}%`
                 : "—"}

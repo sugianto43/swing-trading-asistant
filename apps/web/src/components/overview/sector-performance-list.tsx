@@ -43,7 +43,7 @@ export function SectorPerformanceList({ sectors }: { sectors: SectorPerformance[
                 />
               </div>
               <span
-                className={`w-16 shrink-0 text-right tabular-nums ${
+                className={`w-16 shrink-0 text-right font-mono tabular-nums ${
                   // text-emerald-600 measured 3.65:1 against white (axe,
                   // Phase 18) — below WCAG AA's 4.5:1 minimum for normal
                   // text; emerald-700 clears it while staying the same hue.
