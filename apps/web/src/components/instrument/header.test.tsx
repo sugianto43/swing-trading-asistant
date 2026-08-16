@@ -33,6 +33,15 @@ describe("InstrumentHeader", () => {
     expect(screen.getByText("ACTIVE")).toBeInTheDocument();
   });
 
+  it("links to the AI analyst prefilled with this symbol", () => {
+    render(<InstrumentHeader instrument={makeInstrument()} />);
+
+    expect(screen.getByRole("link", { name: "Ask AI about this stock →" })).toHaveAttribute(
+      "href",
+      "/ai?symbol=BBCA",
+    );
+  });
+
   it("omits the sector badge when the instrument has none, rather than showing an empty badge", () => {
     render(<InstrumentHeader instrument={makeInstrument({ sector: null })} />);
     expect(screen.queryByText("Banking")).not.toBeInTheDocument();
