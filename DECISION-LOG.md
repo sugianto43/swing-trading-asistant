@@ -31,7 +31,20 @@ yfinance was chosen over other free options (e.g. scraping IDX directly) because
 existing IDX (`.JK`) coverage and a stable-enough Python interface for a hobby project.
 Alternatives: Twelve Data free tier (official API, more restrictive rate limits, IDX coverage
 unverified); a licensed local IDX redistributor (Antara/IMQ, IQ Plus Prima, RTI Infokom) — not
-pursued, since that requires a paid commercial contract this project does not have.
+pursued, since that requires a paid commercial contract this project does not have; the
+`NeaByteLab/IDX-API` GitHub project (https://github.com/NeaByteLab/IDX-API, MIT-licensed
+TypeScript/Deno wrapper) — noted 2026-08-16 as a candidate but not evaluated further or
+implemented. Inspection of its `src/Client.ts` shows it works by emulating a browser session
+(spoofed User-Agent, scraped session cookie from `idx.co.id/id`) against `idx.co.id/primary/...`
+endpoints — IDX's own internal AJAX endpoints that back the public website, not a published or
+IDX-sanctioned developer API. Same category of risk as yfinance above (unofficial, reverse-
+engineered, no ToS sanctioning third-party programmatic use, and additionally fragile since
+internal endpoints can change without notice) but with a materially weaker legal footing since
+it directly targets IDX's own site rather than a long-established third-party aggregator, and
+a language mismatch (Deno/TypeScript vs. this project's Python backend — would need running as
+a separate service or reimplementing the same HTTP calls in Python). If revisited, it must go
+through the same before-production evaluation this ADR already requires for yfinance, not be
+adopted directly.
 Consequences:
 - Not a licensed/production data source. Unofficial, reverse-engineered access; Yahoo's terms do
   not sanction this kind of programmatic use. Acceptable only because usage is personal,

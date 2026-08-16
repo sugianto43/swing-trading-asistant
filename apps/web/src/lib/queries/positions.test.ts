@@ -35,10 +35,21 @@ describe("recordExecution", () => {
     await expect(recordExecution(EXECUTION_PAYLOAD)).resolves.toEqual(position);
   });
 
-  it("throws the backend's own detail message on a genuine failure (e.g. overselling)", async () => {
+  it("throws the backend's own error message on a genuine failure (e.g. overselling)", async () => {
+    // Real runtime shape (app/errors.py's global exception handler wraps
+    // every error in {"error": {"code", "message", "details"}}) — not
+    // FastAPI's bare default {"detail": "..."}. This test previously
+    // mocked the wrong shape and passed anyway, masking a real bug (fixed
+    // during Phase 18's audit — same class of bug as Phase 16's ai.ts).
     postMock.mockResolvedValueOnce({
       data: undefined,
-      error: { detail: "cannot sell 100 shares, only 50 open" },
+      error: {
+        error: {
+          code: "HTTP_ERROR",
+          message: "cannot sell 100 shares, only 50 open",
+          details: null,
+        },
+      },
     });
 
     await expect(recordExecution(EXECUTION_PAYLOAD)).rejects.toThrow(
@@ -46,7 +57,7 @@ describe("recordExecution", () => {
     );
   });
 
-  it("falls back to a generic message when the backend gives no detail", async () => {
+  it("falls back to a generic message when the backend gives no parseable error envelope", async () => {
     postMock.mockResolvedValueOnce({ data: undefined, error: {} });
 
     await expect(recordExecution(EXECUTION_PAYLOAD)).rejects.toThrow("execution request failed");

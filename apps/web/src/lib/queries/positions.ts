@@ -84,9 +84,27 @@ export async function upsertJournal(positionId: string, payload: JournalUpsert):
   return data;
 }
 
+// app/errors.py's global exception handler wraps every error response —
+// 404, 409, 503, all of them — in {"error": {"code", "message", "details"}},
+// not FastAPI's bare default {"detail": "..."}. openapi-fetch's generated
+// types don't reflect this (the OpenAPI schema is generated from each
+// route's declared response models, which don't know about the app-wide
+// exception handler), so this has to read the real runtime shape by hand.
+// (Carried over from the identical fix in ai.ts, Phase 16 — this file had
+// the same bug, live-verified during Phase 18's audit: an oversell error
+// was rendering "execution request failed" instead of the backend's real
+// message, same as Phase 16's 503 did before that fix.)
 function errorDetail(error: unknown): string | undefined {
-  if (error && typeof error === "object" && "detail" in error && typeof error.detail === "string") {
-    return error.detail;
+  if (
+    error &&
+    typeof error === "object" &&
+    "error" in error &&
+    error.error &&
+    typeof error.error === "object" &&
+    "message" in error.error &&
+    typeof error.error.message === "string"
+  ) {
+    return error.error.message;
   }
   return undefined;
 }

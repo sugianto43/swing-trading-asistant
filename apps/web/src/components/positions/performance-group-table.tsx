@@ -12,7 +12,7 @@ export function PerformanceGroupTable({
 }) {
   return (
     <div>
-      <h3 className="mb-2 text-sm font-medium text-muted-foreground">{title}</h3>
+      <h2 className="mb-2 text-sm font-medium text-muted-foreground">{title}</h2>
       {groups.length === 0 ? (
         <p className="p-6 text-center text-sm text-muted-foreground">No closed positions yet.</p>
       ) : (

@@ -26,7 +26,7 @@ export function CandidatesTable({ candidates }: { candidates: ScanCandidate[] })
           <TableHead className="text-right">Momentum</TableHead>
           <TableHead className="text-right">Risk/Reward</TableHead>
           <TableHead>Scan Date</TableHead>
-          <TableHead />
+          <TableHead className="sr-only">Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

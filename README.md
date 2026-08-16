@@ -768,3 +768,57 @@ has to filter.
 mock class and installs it via `vi.stubGlobal("EventSource", ...)` — a test-local mock (this
 phase's only consumer), not a project-wide polyfill like the `matchMedia`/`hasPointerCapture`
 additions in earlier phases.
+
+## Web E2E Hardening (Phase 18)
+
+`apps/web/e2e/` (Playwright + `@axe-core/playwright`, new devDependencies) formalizes the
+scratchpad Playwright scripts every phase's sign-off has hand-written all project — the golden
+journey (MASTER-PRD §24) driven through the real UI, plus accessibility checks on every route, are
+now a committed, reproducible spec instead of a one-off script per phase. Not run in CI (no Docker
+there) — a local/manual gate, same as every phase's own Docker-based live verification has already
+been. See `apps/web/e2e/README.md` for prerequisites and running instructions.
+
+**Carried-over fix, found by this phase's own "no client-side fabrication" audit**: `positions.ts`
+had the identical `errorDetail()` bug already fixed in `ai.ts` (Phase 16) — checking a `.detail`
+field the real backend error envelope (`app/errors.py`'s `{"error":{"message"}}`) never has. This
+had been flagged twice (Phase 16 and 17's own reports) without being fixed; Phase 18 finally closed
+it, since the golden journey's manual-execution step exercises exactly this path.
+
+**Every accessibility violation found was real, not a tooling false-positive** — confirmed by
+running the actual golden journey against real Docker data, not synthetic fixtures:
+- No page anywhere had a real `<h1>` — shadcn's `CardTitle` renders a `<div>`, not a heading.
+  Fixed by giving the persistent nav title (the one element every route renders) a real `<h1>`,
+  rather than auditing each screen's own top-of-content title individually.
+- `sector-performance-list.tsx`'s `text-emerald-600` measured 3.65:1 against white — below WCAG
+  AA's 4.5:1 for normal text. Moved to `text-emerald-700`, same hue, passes.
+- The scanner candidates table's action column had an empty `<TableHead />` — no discernible text
+  for a screen reader. Given an `sr-only` label.
+- shadcn's own `Badge` `destructive` variant (`bg-destructive/10 text-destructive`) measured 4:1 in
+  light mode — a base-component gap affecting every REJECTED/error badge across every phase, not
+  one screen's mistake. Fixed with a scoped `text-red-700` override for light mode only (dark mode,
+  not flagged, keeps the original `--destructive` token — tuned separately for a dark surface).
+- `positions/performance`'s section headings (`<h3>`) skipped a level under the page's `<h2>` —
+  changed to `<h2>`, matching every sibling page's own already-correct convention.
+- `AnalysisResult`'s tool-call boxes stacked `text-muted-foreground` on `bg-muted` — two "muted"
+  tokens layered on each other measured 4.34:1, just under threshold. Scoped to `text-foreground`
+  inside that one component rather than touching the shared `--muted-foreground` token used
+  throughout the app on higher-contrast (usually plain white/card) backgrounds elsewhere.
+
+**AI steps in the automated spec assert a settled state, not a specific answer.** A real grounded
+response, the plain "no LLM provider configured" message, and even a transient upstream 503 (Gemini
+itself returning "high demand," observed live during this phase's own test run) are all valid,
+correctly-un-fabricated outcomes — asserting one specific happy path would make the suite flaky
+against a free-tier LLM API with no uptime guarantee. See `apps/web/e2e/README.md`.
+
+**Performance budget uses `npm run build`'s own output, not Lighthouse** — Next 16's Turbopack
+build no longer prints a per-route size table to stdout, so the documented budget is total
+`.next/static` size (~1.6 MB, budget: under 2 MB) via `du -sh .next/static`. A weaker signal than a
+real Lighthouse audit (no runtime/paint-timing data), accepted and documented as a trade-off for
+this project's personal-use scale rather than adding Lighthouse CI's heavier dependency footprint.
+
+**Multi-stage `Dockerfile`**: `dev` stage preserves the exact pre-Phase-18 hot-reload behavior
+(`docker-compose.yml`'s `web` service now pins `target: dev`, zero behavior change, live-verified);
+the default (`runner`) stage is a real `npm run build` + `npm run start` production image, used
+only for the Phase 18 Docker smoke test — proving the actual shipped artifact serves correctly, not
+just `next dev`. Both live-verified this phase: the dev container still hot-reloads exactly as
+before, and the production container serves via `next start` on a clean image build.

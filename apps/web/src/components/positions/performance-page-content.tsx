@@ -81,7 +81,7 @@ export function PerformancePageContent() {
       </div>
 
       <div>
-        <h3 className="mb-2 text-sm font-medium text-muted-foreground">Behavior</h3>
+        <h2 className="mb-2 text-sm font-medium text-muted-foreground">Behavior</h2>
         <BehaviorTable entries={behaviorQuery.data ?? []} />
       </div>
     </div>
