@@ -535,3 +535,44 @@ down on exit.
 
 Verified live at Phase 11 sign-off: a real `pg_dump`/restore round-trip and a full
 `alembic downgrade base && alembic upgrade head` cycle against a live Postgres container.
+
+## Web Foundation (Phase 12)
+
+`apps/web` moves past the Phase 1 scaffold: app shell, top nav (`Overview` / `Scanner` / `Risk` /
+`Positions` / `AI` / `Alerts` — each a stub page until its own phase lands), a typed API client,
+and dark/light theming. No real screen content yet — that starts at Phase 13.
+
+**Component layer**: [shadcn/ui](https://ui.shadcn.com) (Radix UI primitives, Nova preset) on top
+of the existing Tailwind v4 setup — copy-into-repo components (`src/components/ui/`), not a
+runtime dependency. Add more components as later phases need them (`npx shadcn@latest add <name>`).
+
+**Theming**: `next-themes`, system-preference by default, toggle in the nav. Anything that reads
+`resolvedTheme` (or similar browser-only state) on first render must gate on
+`useHasMounted()` (`src/lib/use-has-mounted.ts`, built on `useSyncExternalStore`) — `resolvedTheme`
+resolves synchronously on the client's first render (from `localStorage`/`matchMedia`), so it's
+**never** `undefined` in the browser the way it always is during SSR; branching on
+"is it still undefined" looks reasonable but causes a real hydration mismatch, caught live via a
+browser check while building this phase.
+
+**Typed API client**: `src/lib/api/schema.d.ts` is generated from the backend's OpenAPI schema via
+`openapi-typescript`, and **committed** — CI's `web` job never needs a live backend. Regenerate it
+whenever the backend's API surface changes:
+
+```bash
+# with the backend running (docker compose up -d db api, or uvicorn locally)
+npm run generate:api-types
+```
+
+`src/lib/api/client.ts` wraps the generated types with `openapi-fetch`. One subtlety:
+`NEXT_PUBLIC_API_BASE_URL` already includes the `/api/v1` prefix (established since Phase 1), but
+the generated schema's paths embed that same prefix (FastAPI bakes its router prefix into the
+OpenAPI document) — so the client derives the request origin from the env var rather than using it
+directly as `openapi-fetch`'s `baseUrl`, or every request would resolve to `/api/v1/api/v1/...`.
+
+**Server state**: TanStack Query. This phase's only real backend call: a live `GET /health` status
+indicator in the nav (`src/components/layout/api-status.tsx`), proving the client is wired
+end-to-end — verified against the real Dockerized backend, not just mocked in tests.
+
+**Known gap fixed this phase**: `vitest.config.mts` only matched `src/**/*.test.tsx`, silently
+skipping any plain `.test.ts` file (e.g. the API client's own unit tests) — pre-existing since
+Phase 1, never noticed until a non-component test actually needed to run.
