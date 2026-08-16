@@ -1,5 +1,12 @@
-import { StubPage } from "@/components/layout/stub-page";
+import { Suspense } from "react";
+
+import { PositionsPageContent } from "@/components/positions/positions-page-content";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function PositionsPage() {
-  return <StubPage title="Positions, Journal & Performance" phase={15} />;
+  return (
+    <Suspense fallback={<Skeleton className="m-6 h-96" />}>
+      <PositionsPageContent />
+    </Suspense>
+  );
 }

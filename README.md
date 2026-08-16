@@ -655,3 +655,52 @@ existing Phase 13 files, not a re-implementation of Phase 13.
 bundled framework docs) — `/risk/page.tsx` is a thin server wrapper (`<Suspense><RiskPageContent
 /></Suspense>`); the actual searchParams-reading logic lives in `RiskPageContent`, a client
 component. Skipping this causes `next build` to fail on a prerendered route, not just warn.
+
+## Positions, Journal & Performance UI (Phase 15)
+
+`/positions` replaces its stub with an execution-recording form + open-positions list;
+`/positions/[id]` is a new detail route (position fields, execution history, journal);
+`/positions/performance` is a new dashboards route. Consumes Phase 7's existing endpoints only — no
+backend changes. There is no separate top-level nav entry for Performance — it lives under
+Positions, matching the single `/positions` link seeded in Phase 12's nav scaffold.
+
+**Overselling is a genuine error, not a normal alternate result — unlike Phase 14's trade plans.**
+`POST /executions` returns HTTP 201 only for a real position update; overselling or an unknown
+symbol is a real 409/404, surfaced verbatim from the backend's own message via
+`mutation.error.message`, never auto-corrected or replaced with a generic apology. This is the
+opposite discipline from Phase 14's VALID/REJECTED-both-normal-result pattern — same UI area,
+different backend contract, so the code is commented to prevent copy-paste confusion between the
+two.
+
+**A missing journal is a normal empty state, not a fetch failure — different from Phase 14's
+`NOT_FOUND`.** `GET /positions/{id}/journal` 404s for a position nobody has journaled yet;
+`fetchJournal` resolves that to `null` rather than throwing, and the detail page renders an empty
+journal form, not an error message. Phase 14's `fetchTradePlan` NOT_FOUND was a genuine
+whole-resource-missing state (a bad `/risk/{id}` URL) — this is a sub-resource that legitimately
+doesn't exist yet for a brand-new position, a different case needing a different code path.
+
+**`executed_at` is a local→UTC conversion, the first datetime (not just date) input in the app.**
+`<input type="datetime-local">` has no timezone offset — the browser and `new Date(...)` both treat
+it as local time, so `.toISOString()` converts to the UTC instant the user actually meant before
+POSTing (MASTER-TDD's UTC-storage rule). Unit-tested against the exact expected ISO string, not just
+"doesn't crash."
+
+**`PositionOut`/`ExecutionOut` have no `symbol` field, only `instrument_id`** — same join gap Phase
+14 hit with `TradePlanOut`. Reuses the existing `fetchInstrumentsById()` unchanged rather than adding
+a second copy. `BehaviorEntryOut` (performance-by-behavior) carries only `position_id` with no
+instrument link at all — its table links out to `/positions/{id}` instead of adding another join
+query for a table that's already one hop from the symbol it would show.
+
+**Equity curve chart** (`lightweight-charts`, same library as Phase 13's price chart) reuses the
+dataviz skill's already-validated categorical-slot-1 blue (`#2a78d6`, Phase 13's SMA20 color) rather
+than inventing a new hex value — a single magnitude-over-time series doesn't need a new color
+decision, just one that's already been validated for CVD-safety.
+
+**Trade plan → position chaining**: a VALID trade plan's result card gets a "Record execution →"
+link to `/positions?symbol=&trade_plan_id=`, continuing the Scanner→Risk→Positions chain from Phase
+14 (MASTER-PRD §24's golden journey).
+
+**Test-infra fix**: jsdom doesn't implement the Pointer Events capture methods (`hasPointerCapture`
+etc.) Radix's `Select` uses internally, which throws on the first `userEvent`-driven option click in
+a fresh test file. No-op stubs added to `vitest.setup.ts` project-wide (same category as the
+existing `matchMedia` polyfill) rather than working around it per test file.
