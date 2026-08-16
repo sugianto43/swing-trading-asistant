@@ -5,7 +5,7 @@ vi.mock("@/lib/api/client", () => ({
   apiClient: { GET: (...args: unknown[]) => getMock(...args) },
 }));
 
-import { fetchInstrument, fetchRecentPriceBars } from "./instruments";
+import { fetchInstrument, fetchInstrumentsById, fetchRecentPriceBars } from "./instruments";
 
 describe("fetchInstrument", () => {
   it("returns the instrument on success", async () => {
@@ -82,5 +82,27 @@ describe("fetchRecentPriceBars", () => {
     const result = await fetchRecentPriceBars("BBCA");
 
     expect(result).toHaveLength(2);
+  });
+});
+
+describe("fetchInstrumentsById", () => {
+  it("keys instruments by id for a client-side join against instrument_id-only records", async () => {
+    const items = [
+      { id: "uuid-1", symbol: "BBCA" },
+      { id: "uuid-2", symbol: "TLKM" },
+    ];
+    getMock.mockResolvedValueOnce({ data: { items, total: 2 }, error: undefined });
+
+    const result = await fetchInstrumentsById();
+
+    expect(result.get("uuid-1")).toEqual(items[0]);
+    expect(result.get("uuid-2")).toEqual(items[1]);
+    expect(result.get("unknown-uuid")).toBeUndefined();
+  });
+
+  it("throws rather than returning an empty map on failure", async () => {
+    getMock.mockResolvedValueOnce({ data: undefined, error: { detail: "boom" } });
+
+    await expect(fetchInstrumentsById()).rejects.toThrow("instruments request failed");
   });
 });

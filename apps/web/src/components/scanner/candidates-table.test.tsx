@@ -39,4 +39,14 @@ describe("CandidatesTable", () => {
     expect(screen.getByText("BREAKOUT")).toBeInTheDocument();
     expect(screen.getByText("82.4")).toBeInTheDocument();
   });
+
+  it("links each row's 'Build plan' action to /risk prefilled with symbol, setup, and date", () => {
+    render(<CandidatesTable candidates={[makeCandidate()]} />);
+
+    const buildPlanLink = screen.getByRole("link", { name: "Build plan" });
+    expect(buildPlanLink).toHaveAttribute(
+      "href",
+      "/risk?symbol=BBCA&setup=BREAKOUT&date=2024-03-01",
+    );
+  });
 });

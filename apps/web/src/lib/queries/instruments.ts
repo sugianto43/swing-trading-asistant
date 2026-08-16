@@ -23,3 +23,16 @@ export async function fetchRecentPriceBars(symbol: string): Promise<PriceBar[]> 
   // the trailing window is useful for a swing-trading price chart.
   return [...data.items].reverse().slice(-CHART_LOOKBACK_DAYS);
 }
+
+/** TradePlanOut only carries instrument_id (uuid), not symbol, and there
+ * is no GET /instruments/{id}-by-uuid endpoint — only by symbol. This is
+ * the client-side join trade-plan screens need to show a symbol at all.
+ * page_size 200 covers a personal-use universe in one request; a
+ * paginated fetch-all isn't worth the complexity at this scale. */
+export async function fetchInstrumentsById(): Promise<Map<string, Instrument>> {
+  const { data, error } = await apiClient.GET("/api/v1/instruments", {
+    params: { query: { page_size: 200 } },
+  });
+  if (error || !data) throw new Error("instruments request failed");
+  return new Map(data.items.map((instrument) => [instrument.id, instrument]));
+}

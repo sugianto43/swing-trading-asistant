@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { buildPlanHref } from "@/lib/queries/build-plan-href";
 import type { ScanCandidate } from "@/lib/queries/scanner";
 
 export function CandidatesTable({ candidates }: { candidates: ScanCandidate[] }) {
@@ -25,6 +26,7 @@ export function CandidatesTable({ candidates }: { candidates: ScanCandidate[] })
           <TableHead className="text-right">Momentum</TableHead>
           <TableHead className="text-right">Risk/Reward</TableHead>
           <TableHead>Scan Date</TableHead>
+          <TableHead />
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -48,6 +50,11 @@ export function CandidatesTable({ candidates }: { candidates: ScanCandidate[] })
               {candidate.risk_reward_score.toFixed(1)}
             </TableCell>
             <TableCell className="text-muted-foreground">{candidate.scan_date}</TableCell>
+            <TableCell>
+              <Link href={buildPlanHref(candidate)} className="text-sm text-primary hover:underline">
+                Build plan
+              </Link>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
