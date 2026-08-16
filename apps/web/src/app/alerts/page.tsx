@@ -1,5 +1,5 @@
-import { StubPage } from "@/components/layout/stub-page";
+import { AlertsPageContent } from "@/components/alerts/alerts-page-content";
 
 export default function AlertsPage() {
-  return <StubPage title="Alerts" phase={17} />;
+  return <AlertsPageContent />;
 }

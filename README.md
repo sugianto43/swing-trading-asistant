@@ -739,3 +739,32 @@ Phases 14/15. Reuses the existing `fetchInstrumentsById()` unchanged.
 
 **Instrument-detail integration**: `InstrumentHeader` gets an "Ask AI about this stock →" link to
 `/ai?symbol=`, continuing the Scanner→Risk→Positions→AI chain (MASTER-PRD §24's golden journey).
+
+## Alerts & Realtime UI (Phase 17)
+
+`/alerts` replaces its stub with a filterable list (`GET /alerts`) plus a live subscription to
+Phase 10's SSE endpoint (`GET /alerts/stream`) via the browser's native `EventSource`. Consumes
+Phase 10's existing endpoints only — no backend changes. This was the last stub route in the app —
+`StubPage` and its test are now dead code and have been deleted, along with the shared
+`stub-routes.test.tsx` that covered every not-yet-built screen since Phase 12.
+
+**The SSE push payload is a smaller shape than `AlertOut`, and the client never fabricates the
+missing fields.** Read `app/worker/alert_service.py`'s `_publish()` directly before building
+anything: it publishes `{id, alert_type, instrument_id, trigger_date, message}` — no `details`, no
+`created_at`. Rather than splice a hand-built partial `AlertOut` into the list (which would mean
+inventing a `created_at` or an empty `details` client-side), a pushed message just triggers
+`queryClient.invalidateQueries(["alerts"])` — every rendered row's data always comes from the real
+`GET /alerts` response, never fabricated. This is the same "don't assume the shape, read the code"
+discipline that caught Phase 16's `tool_calls`/`structured_data_snapshot` duplication.
+
+**No manual reconnect logic.** `EventSource` retries automatically on connection drop per the SSE
+spec — `useAlertsStream` only *surfaces* connection status (`connecting`/`open`/`error`, shown as
+"Connecting…"/"Live"/"Reconnecting…"), it never manually recreates the connection except on
+unmount. The backend's `: keep-alive\n\n` comment lines (sent every `SSE_STREAM_TIMEOUT_SECONDS`
+when idle) never reach `onmessage` at all — that's native SSE behavior, not something the client
+has to filter.
+
+**Test-infra**: jsdom has no native `EventSource`, so `use-alerts-stream.test.ts` defines a small
+mock class and installs it via `vi.stubGlobal("EventSource", ...)` — a test-local mock (this
+phase's only consumer), not a project-wide polyfill like the `matchMedia`/`hasPointerCapture`
+additions in earlier phases.
