@@ -79,9 +79,15 @@ export function AnalysisResult({ snapshot }: { snapshot: AnalysisSnapshot }) {
                     <Badge variant={status ? STATUS_BADGE_VARIANT[status] ?? "outline" : "outline"}>
                       {status ?? "UNKNOWN"}
                     </Badge>
-                    {reason && <span className="text-xs text-muted-foreground">{reason}</span>}
+                    {/* text-muted-foreground on this box's bg-muted background
+                     * measured 4.34:1 (axe, Phase 18) — just under WCAG AA's
+                     * 4.5:1, since both tokens are "muted" gray stacked on
+                     * each other. text-foreground clears it without touching
+                     * the shared --muted-foreground token used elsewhere on
+                     * plain (higher-contrast) backgrounds. */}
+                    {reason && <span className="text-xs text-foreground">{reason}</span>}
                   </div>
-                  <pre className="overflow-x-auto text-xs text-muted-foreground">
+                  <pre className="overflow-x-auto text-xs text-foreground">
                     {JSON.stringify(entry, null, 2)}
                   </pre>
                 </div>

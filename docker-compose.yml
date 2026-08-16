@@ -32,6 +32,8 @@ services:
       DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/idx_swing
       REDIS_URL: redis://redis:6379/0
       CORS_ALLOW_ORIGINS: '["http://localhost:3000"]'
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-flash-latest}
     ports:
       - "8000:8000"
     depends_on:
@@ -79,6 +81,7 @@ services:
   web:
     build:
       context: ./apps/web
+      target: dev
     environment:
       NEXT_PUBLIC_API_BASE_URL: http://localhost:8000/api/v1
     ports:
