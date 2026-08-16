@@ -1,0 +1,27 @@
+# Phase 16 — AI Analyst UI
+
+## Objective
+Build the AI chat/analyze interface consuming Phase 8's `POST /ai/analyze`, displaying grounded responses, tool-call transparency, and guardrail flags. Guardrail flags and DATA_UNAVAILABLE results must always be shown to the user, never suppressed or silently retried.
+
+## Goals
+Implement this phase as a production-quality increment while preserving previous phases.
+
+## Non-Goals
+Do not implement features belonging primarily to later phases.
+
+## Critical Requirements
+- Read MASTER-PRD.md, MASTER-TDD.md, and the phase TDD before implementation.
+- Preserve data integrity and deterministic quantitative behavior.
+- Add automated tests.
+- Do not implement automated trading.
+
+## Acceptance Criteria
+1. Requirements are implemented.
+2. Tests cover normal, boundary, and failure cases.
+3. Existing tests remain green.
+4. Documentation is updated.
+5. No critical security/data-integrity defect remains.
+6. Definition of Done is explicitly verified.
+
+## Definition of Done
+The implementation passes the phase-specific TDD, tests, review, regression suite, and sign-off checklist.
