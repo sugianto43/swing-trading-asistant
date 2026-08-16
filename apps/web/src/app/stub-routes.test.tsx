@@ -3,18 +3,16 @@ import { describe, expect, it } from "vitest";
 
 import AiPage from "./ai/page";
 import AlertsPage from "./alerts/page";
-import OverviewPage from "./overview/page";
 import PositionsPage from "./positions/page";
 import RiskPage from "./risk/page";
-import ScannerPage from "./scanner/page";
 
 // Direct coverage of the actual route files, not just the shared
 // StubPage component they wrap — a copy-paste mistake in one page's
 // title or phase number wouldn't be caught by testing StubPage alone.
+// overview/ and scanner/ are no longer stubs as of Phase 13 — they have
+// their own dedicated page tests now.
 describe("stub routes", () => {
   it.each([
-    ["/overview", OverviewPage, "Market Overview", 13],
-    ["/scanner", ScannerPage, "Scanner", 13],
     ["/risk", RiskPage, "Risk & Trade Plan", 14],
     ["/positions", PositionsPage, "Positions, Journal & Performance", 15],
     ["/ai", AiPage, "AI Analyst", 16],
