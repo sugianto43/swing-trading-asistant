@@ -34,7 +34,7 @@ export function InstrumentDetailClient({ symbol }: { symbol: string }) {
 
   if (instrumentQuery.isPending) {
     return (
-      <div className="flex flex-1 flex-col gap-4 p-6">
+      <div className="flex flex-1 flex-col gap-3 p-4">
         <Skeleton className="h-8 w-64" />
         <Skeleton className="h-96 w-full" />
       </div>
@@ -92,7 +92,7 @@ export function InstrumentDetailClient({ symbol }: { symbol: string }) {
   }
 
   return (
-    <div className="flex flex-1 flex-col gap-4 p-6">
+    <div className="flex flex-1 flex-col gap-3 p-4">
       <InstrumentHeader instrument={instrumentQuery.data} />
       {priceSection}
       {candidatesSection}

@@ -106,5 +106,7 @@ def test_get_calendar_returns_empty_documented_limitation() -> None:
 def test_get_instruments_uses_local_seed_not_vendor_api() -> None:
     provider = YfinanceProvider()
     instruments = provider.get_instruments()
-    assert len(instruments) == 10
+    # Full IDX universe, not a magic exact count — see the matching
+    # comment in test_provider_contract.py.
+    assert len(instruments) > 900
     assert all(i.source == "idx-seed" for i in instruments)

@@ -45,7 +45,7 @@ export function PerformancePageContent() {
 
   if (isPending) {
     return (
-      <div className="flex flex-1 flex-col gap-4 p-6">
+      <div className="flex flex-1 flex-col gap-3 p-4">
         <Skeleton className="h-64 w-full" />
         <Skeleton className="h-48 w-full" />
       </div>
@@ -62,10 +62,10 @@ export function PerformancePageContent() {
   }
 
   return (
-    <div className="flex flex-1 flex-col gap-6 p-6">
+    <div className="flex flex-1 flex-col gap-4 p-4">
       <PerformanceSummary summary={summaryQuery.data} />
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <PerformanceGroupTable title="By Setup" groups={bySetupQuery.data ?? []} keyLabel="Setup" />
         <PerformanceGroupTable title="By Sector" groups={bySectorQuery.data ?? []} keyLabel="Sector" />
         <PerformanceGroupTable

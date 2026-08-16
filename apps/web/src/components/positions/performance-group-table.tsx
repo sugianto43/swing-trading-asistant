@@ -29,9 +29,9 @@ export function PerformanceGroupTable({
             {groups.map((group) => (
               <TableRow key={group.key ?? "unknown"}>
                 <TableCell className="font-medium">{group.key ?? "—"}</TableCell>
-                <TableCell className="text-right tabular-nums">{group.closed_position_count}</TableCell>
-                <TableCell className="text-right tabular-nums">{group.total_realized_pnl}</TableCell>
-                <TableCell className="text-right tabular-nums">
+                <TableCell className="text-right font-mono tabular-nums">{group.closed_position_count}</TableCell>
+                <TableCell className="text-right font-mono tabular-nums">{group.total_realized_pnl}</TableCell>
+                <TableCell className="text-right font-mono tabular-nums">
                   {group.win_rate_pct.toFixed(1)}%
                 </TableCell>
               </TableRow>

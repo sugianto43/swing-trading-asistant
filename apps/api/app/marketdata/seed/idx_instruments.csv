@@ -1,11 +1,963 @@
 symbol,source_symbol,company_name,sector,subsector,listing_date,status
-BBCA,BBCA.JK,Bank Central Asia Tbk,Financials,Banks,2000-05-31,ACTIVE
-BBRI,BBRI.JK,Bank Rakyat Indonesia (Persero) Tbk,Financials,Banks,2003-11-10,ACTIVE
-BMRI,BMRI.JK,Bank Mandiri (Persero) Tbk,Financials,Banks,2003-07-14,ACTIVE
-TLKM,TLKM.JK,Telkom Indonesia (Persero) Tbk,Infrastructure,Telecommunication,1995-11-14,ACTIVE
-ASII,ASII.JK,Astra International Tbk,Industrials,Automobiles and Components,1990-04-04,ACTIVE
-ICBP,ICBP.JK,Indofood CBP Sukses Makmur Tbk,Consumer Non-Cyclicals,Food and Beverage,2010-10-07,ACTIVE
-INDF,INDF.JK,Indofood Sukses Makmur Tbk,Consumer Non-Cyclicals,Food and Beverage,1994-07-14,ACTIVE
-ANTM,ANTM.JK,Aneka Tambang Tbk,Basic Materials,Metals and Minerals,1997-11-27,ACTIVE
-PTBA,PTBA.JK,Bukit Asam Tbk,Energy,Coal,2002-12-23,ACTIVE
-GOTO,GOTO.JK,GoTo Gojek Tokopedia Tbk,Technology,Software and IT Services,2022-04-11,ACTIVE
+AADI,AADI.JK,PT Adaro Andalan Indonesia Tbk,Energi,"Minyak, Gas & Batu Bara",2024-12-05,ACTIVE
+AALI,AALI.JK,Astra Agro Lestari Tbk,Barang Konsumen Primer,Makanan & Minuman,1997-12-09,ACTIVE
+ABBA,ABBA.JK,Mahaka Media Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2002-04-03,ACTIVE
+ABDA,ABDA.JK,PT Asuransi Bina Dana Arta Tbk,Keuangan,Asuransi,1989-07-06,ACTIVE
+ABMM,ABMM.JK,ABM Investama Tbk,Energi,"Minyak, Gas & Batu Bara",2011-12-06,ACTIVE
+ACES,ACES.JK,PT Aspirasi Hidup Indonesia Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2007-11-06,ACTIVE
+ACRO,ACRO.JK,PT Samcro Hyosung Adilestari Tbk.,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,2024-01-11,ACTIVE
+ACST,ACST.JK,PT Acset Indonusa Tbk.,Infrastruktur,Konstruksi Bangunan,2013-06-24,ACTIVE
+ADCP,ADCP.JK,PT Adhi Commuter Properti Tbk,Properti & Real Estat,Properti & Real Estat,2021-05-21,ACTIVE
+ADES,ADES.JK,Akasha Wira International Tbk  Tbk,Barang Konsumen Primer,Makanan & Minuman,1994-06-13,ACTIVE
+ADHI,ADHI.JK,PT Adhi Karya (Persero) Tbk.,Infrastruktur,Konstruksi Bangunan,2004-03-18,ACTIVE
+ADMF,ADMF.JK,Adira Dinamika Multi Finance Tbk,Keuangan,Jasa Pembiayaan,2004-03-31,ACTIVE
+ADMG,ADMG.JK,Polychem Indonesia Tbk,Barang Baku,Barang Baku,1993-10-20,ACTIVE
+ADMR,ADMR.JK,PT Alamtri Minerals Indonesia Tbk,Energi,"Minyak, Gas & Batu Bara",2022-01-03,ACTIVE
+ADRO,ADRO.JK,Alamtri Resources Indonesia Tbk,Energi,"Minyak, Gas & Batu Bara",2008-07-16,ACTIVE
+AEGS,AEGS.JK,PT Anugerah Spareparts Sejahtera Tbk.,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,2023-09-11,ACTIVE
+AGAR,AGAR.JK,PT Asia Sejahtera Mina Tbk,Barang Konsumen Primer,Makanan & Minuman,2019-12-02,ACTIVE
+AGII,AGII.JK,PT Samator Indo Gas Tbk,Barang Baku,Barang Baku,2016-09-28,ACTIVE
+AGRO,AGRO.JK,PT Bank Raya Indonesia Tbk,Keuangan,Bank,2003-08-08,ACTIVE
+AGRS,AGRS.JK,PT Bank IBK Indonesia Tbk.,Keuangan,Bank,2014-12-22,ACTIVE
+AHAP,AHAP.JK,Asuransi Harta Aman Pratama Tbk,Keuangan,Asuransi,1990-09-14,ACTIVE
+AIMS,AIMS.JK,PT Artha Mahiya Investama Tbk,Energi,"Minyak, Gas & Batu Bara",2001-07-20,ACTIVE
+AISA,AISA.JK,PT FKS Food Sejahtera Tbk,Barang Konsumen Primer,Makanan & Minuman,1997-06-11,ACTIVE
+AKKU,AKKU.JK,PT Anugerah Kagum Karya Utama Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2004-11-01,ACTIVE
+AKPI,AKPI.JK,Argha Karya Prima Ind. Tbk,Barang Baku,Barang Baku,1992-12-18,ACTIVE
+AKRA,AKRA.JK,PT AKR Corporindo Tbk.,Energi,"Minyak, Gas & Batu Bara",1994-10-03,ACTIVE
+AKSI,AKSI.JK,PT Mineral Sumberdaya Mandiri Tbk,Transportasi & Logistik,Logistik & Pengantaran,2001-07-13,ACTIVE
+ALDO,ALDO.JK,Alkindo Naratama Tbk,Barang Baku,Barang Baku,2011-07-12,ACTIVE
+ALII,ALII.JK,PT Ancara Logistics Indonesia Tbk,Energi,"Minyak, Gas & Batu Bara",2024-02-07,ACTIVE
+ALKA,ALKA.JK,Alakasa Industrindo Tbk,Barang Baku,Barang Baku,1990-07-12,ACTIVE
+ALMI,ALMI.JK,Alumindo Light Metal Industry Tbk,Barang Baku,Barang Baku,1997-01-02,ACTIVE
+ALTO,ALTO.JK,Tri Banyan Tirta Tbk,Barang Konsumen Primer,Makanan & Minuman,2012-07-10,ACTIVE
+AMAG,AMAG.JK,Asuransi Multi Artha Guna Tbk,Keuangan,Asuransi,2005-12-23,ACTIVE
+AMAN,AMAN.JK,PT Makmur Berkah Amanda Tbk.,Properti & Real Estat,Properti & Real Estat,2020-03-13,ACTIVE
+AMAR,AMAR.JK,PT Bank Amar Indonesia Tbk.,Keuangan,Bank,2020-01-09,ACTIVE
+AMFG,AMFG.JK,Asahimas Flat Glass Tbk,Perindustrian,Barang Perindustrian,1995-11-08,ACTIVE
+AMIN,AMIN.JK,PT Ateliers Mecaniques D Indonesie Tbk.,Perindustrian,Barang Perindustrian,2015-12-10,ACTIVE
+AMMN,AMMN.JK,PT Amman Mineral Internasional Tbk.,Barang Baku,Barang Baku,2023-07-07,ACTIVE
+AMMS,AMMS.JK,PT Agung Menjangan Mas Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-08-04,ACTIVE
+AMOR,AMOR.JK,PT Ashmore Asset Management Indonesia Tbk.,Keuangan,Jasa Investasi,2020-01-14,ACTIVE
+AMRT,AMRT.JK,PT Sumber Alfaria Trijaya Tbk.,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,2009-01-15,ACTIVE
+ANDI,ANDI.JK,PT Andira Agro Tbk,Barang Konsumen Primer,Makanan & Minuman,2018-08-16,ACTIVE
+ANJT,ANJT.JK,PT Austindo Nusantara Jaya Tbk.,Barang Konsumen Primer,Makanan & Minuman,2013-05-08,ACTIVE
+ANTM,ANTM.JK,PT ANTAM (Persero) Tbk,Barang Baku,Barang Baku,1997-11-27,ACTIVE
+APEX,APEX.JK,Apexindo Pratama Duta Tbk,Energi,"Minyak, Gas & Batu Bara",2013-06-05,ACTIVE
+APIC,APIC.JK,PACIFIC STRATEGIC FINANCIAL Tbk,Keuangan,Perusahaan Holding & Investasi,2002-12-18,ACTIVE
+APII,APII.JK,PT Arita Prima Indonesia Tbk.,Perindustrian,Barang Perindustrian,2013-10-29,ACTIVE
+APLI,APLI.JK,Asiaplast Industries Tbk,Barang Baku,Barang Baku,2000-05-01,ACTIVE
+APLN,APLN.JK,PT Agung Podomoro Land Tbk.,Properti & Real Estat,Properti & Real Estat,2010-11-11,ACTIVE
+ARCI,ARCI.JK,PT Archi Indonesia Tbk,Barang Baku,Barang Baku,2021-06-28,ACTIVE
+AREA,AREA.JK,PT Dunia Virtual Online Tbk,Teknologi,Perangkat Lunak & Jasa TI,2024-04-01,ACTIVE
+ARGO,ARGO.JK,Argo Pantes Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1991-01-07,ACTIVE
+ARII,ARII.JK,Atlas Resources Tbk,Energi,"Minyak, Gas & Batu Bara",2011-11-08,ACTIVE
+ARKA,ARKA.JK,PT Arkha Jayanti Persada Tbk.,Perindustrian,Barang Perindustrian,2019-07-10,ACTIVE
+ARKO,ARKO.JK,PT Arkora Hydro Tbk.,Infrastruktur,Utilitas,2022-07-08,ACTIVE
+ARMY,ARMY.JK,PT Armidian Karyatama Tbk,Properti & Real Estat,Properti & Real Estat,2017-06-21,ACTIVE
+ARNA,ARNA.JK,Arwana Citramulia Tbk,Perindustrian,Barang Perindustrian,2001-07-17,ACTIVE
+ARTA,ARTA.JK,Arthavest Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2002-11-05,ACTIVE
+ARTI,ARTI.JK,Ratu Prabu Energi Tbk,Energi,"Minyak, Gas & Batu Bara",2003-04-30,ACTIVE
+ARTO,ARTO.JK,PT Bank Jago Tbk.,Keuangan,Bank,2016-01-12,ACTIVE
+ASBI,ASBI.JK,Asuransi Bintang Tbk,Keuangan,Asuransi,1989-11-29,ACTIVE
+ASDM,ASDM.JK,Asuransi Dayin Mitra Tbk,Keuangan,Asuransi,1989-12-15,ACTIVE
+ASGR,ASGR.JK,Astra Graphia Tbk,Perindustrian,Jasa Perindustrian,1989-11-15,ACTIVE
+ASHA,ASHA.JK,PT Cilacap Samudera Fishing Industry Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-05-27,ACTIVE
+ASII,ASII.JK,Astra International Tbk,Perindustrian,Perusahaan Holding Multi Sektor,1990-04-04,ACTIVE
+ASJT,ASJT.JK,Asuransi Jasa Tania Tbk,Keuangan,Asuransi,2003-12-23,ACTIVE
+ASLC,ASLC.JK,PT Autopedia Sukses Lestari Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2022-01-25,ACTIVE
+ASLI,ASLI.JK,PT Asri Karya Lestari Tbk.,Infrastruktur,Konstruksi Bangunan,2024-01-05,ACTIVE
+ASMI,ASMI.JK,PT Asuransi Maximus Graha Persada Tbk.,Keuangan,Asuransi,2014-01-16,ACTIVE
+ASPI,ASPI.JK,PT Andalan Sakti Primaindo Tbk.,Properti & Real Estat,Properti & Real Estat,2020-02-17,ACTIVE
+ASPR,ASPR.JK,PT Asia Pramulia Tbk,Barang Baku,Barang Baku,2025-07-08,ACTIVE
+ASRI,ASRI.JK,ALAM SUTERA REALTY Tbk,Properti & Real Estat,Properti & Real Estat,2007-12-18,ACTIVE
+ASRM,ASRM.JK,Asuransi Ramayana Tbk,Keuangan,Asuransi,1990-03-19,ACTIVE
+ASSA,ASSA.JK,Adi Sarana Armada Tbk,Transportasi & Logistik,Transportasi,2012-11-12,ACTIVE
+ATAP,ATAP.JK,PT Trimitra Prawara Goldland Tbk,Properti & Real Estat,Properti & Real Estat,2020-12-11,ACTIVE
+ATIC,ATIC.JK,PT Anabatic Technologies Tbk,Teknologi,Perangkat Lunak & Jasa TI,2015-07-08,ACTIVE
+ATLA,ATLA.JK,PT Atlantis Subsea Indonesia Tbk,Energi,"Minyak, Gas & Batu Bara",2024-04-16,ACTIVE
+AUTO,AUTO.JK,Astra Otoparts Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,1998-06-15,ACTIVE
+AVIA,AVIA.JK,PT Avia Avian Tbk,Barang Baku,Barang Baku,2021-12-08,ACTIVE
+AWAN,AWAN.JK,PT Era Digital Media Tbk,Teknologi,Perangkat Lunak & Jasa TI,2023-04-18,ACTIVE
+AXIO,AXIO.JK,PT Tera Data Indonusa Tbk,Teknologi,Perangkat Keras & Peralatan Teknologi,2022-07-20,ACTIVE
+AYAM,AYAM.JK,PT Janu Putra Sejahtera Tbk.,Barang Konsumen Primer,Makanan & Minuman,2023-11-30,ACTIVE
+AYLS,AYLS.JK,PT Arkayana Lestari Grup Tbk,Barang Baku,Barang Baku,2020-02-12,ACTIVE
+BABP,BABP.JK,PT Bank MNC Internasional Tbk.,Keuangan,Bank,2002-07-15,ACTIVE
+BABY,BABY.JK,PT Multitrend Indo Tbk.,Barang Konsumen Non-Primer,Perdagangan Ritel,2023-09-07,ACTIVE
+BACA,BACA.JK,PT Bank Capital Indonesia Tbk,Keuangan,Bank,2007-10-04,ACTIVE
+BACH,BACH.JK,PT Bach Multi Global Tbk,Perindustrian,Jasa Perindustrian,2026-07-08,ACTIVE
+BAIK,BAIK.JK,PT Bersama Mencapai Puncak Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2024-02-15,ACTIVE
+BAJA,BAJA.JK,Saranacentral Bajatama Tbk,Barang Baku,Barang Baku,2011-12-21,ACTIVE
+BALI,BALI.JK,PT Bali Towerindo Sentra Tbk.,Infrastruktur,Telekomunikasi,2014-03-13,ACTIVE
+BANK,BANK.JK,PT Bank Aladin Syariah Tbk,Keuangan,Bank,2021-02-01,ACTIVE
+BAPA,BAPA.JK,Bekasi Asri Pemula Tbk,Properti & Real Estat,Properti & Real Estat,2008-01-14,ACTIVE
+BAPI,BAPI.JK,PT Bhakti Agung Propertindo Tbk.,Properti & Real Estat,Properti & Real Estat,2019-09-16,ACTIVE
+BATA,BATA.JK,Sepatu Bata Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1982-03-24,ACTIVE
+BATR,BATR.JK,PT Benteng Api Technic Tbk,Barang Baku,Barang Baku,2024-06-10,ACTIVE
+BAUT,BAUT.JK,PT Mitra Angkasa Sejahtera Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2022-01-28,ACTIVE
+BAYU,BAYU.JK,Bayu Buana Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,1989-10-30,ACTIVE
+BBCA,BBCA.JK,PT Bank Central Asia Tbk.,Keuangan,Bank,2000-05-31,ACTIVE
+BBHI,BBHI.JK,PT Allo Bank Indonesia Tbk,Keuangan,Bank,2015-08-12,ACTIVE
+BBKP,BBKP.JK,PT Bank KB Indonesia Tbk,Keuangan,Bank,2006-07-10,ACTIVE
+BBLD,BBLD.JK,Buana Finance Tbk,Keuangan,Jasa Pembiayaan,1990-05-07,ACTIVE
+BBMD,BBMD.JK,PT Bank Mestika Dharma Tbk.,Keuangan,Bank,2013-07-08,ACTIVE
+BBNI,BBNI.JK,PT Bank Negara Indonesia (Persero) Tbk,Keuangan,Bank,1996-11-25,ACTIVE
+BBRI,BBRI.JK,PT Bank Rakyat Indonesia (Persero) Tbk,Keuangan,Bank,2003-11-10,ACTIVE
+BBRM,BBRM.JK,Pelayaran Nasional Bina Buana Raya Tbk,Energi,"Minyak, Gas & Batu Bara",2013-01-09,ACTIVE
+BBSI,BBSI.JK,PT Krom Bank Indonesia Tbk,Keuangan,Bank,2020-09-07,ACTIVE
+BBSS,BBSS.JK,PT Bumi Benowo Sukses Sejahtera Tbk,Properti & Real Estat,Properti & Real Estat,2020-04-15,ACTIVE
+BBTN,BBTN.JK,PT Bank Tabungan Negara (Persero) Tbk,Keuangan,Bank,2009-12-17,ACTIVE
+BBYB,BBYB.JK,PT Bank Neo Commerce Tbk.,Keuangan,Bank,2015-01-13,ACTIVE
+BCAP,BCAP.JK,MNC Kapital Indonesia Tbk,Keuangan,Perusahaan Holding & Investasi,2001-06-08,ACTIVE
+BCIC,BCIC.JK,PT Bank JTrust Indonesia Tbk.,Keuangan,Bank,1997-06-25,ACTIVE
+BCIP,BCIP.JK,Bumi Citra Permai Tbk,Properti & Real Estat,Properti & Real Estat,2009-12-11,ACTIVE
+BDKR,BDKR.JK,PT Berdikari Pondasi Perkasa Tbk.,Infrastruktur,Konstruksi Bangunan,2023-03-03,ACTIVE
+BDMN,BDMN.JK,PT Bank Danamon Indonesia Tbk,Keuangan,Bank,1989-12-06,ACTIVE
+BEBS,BEBS.JK,PT Berkah Beton Sadaya Tbk,Barang Baku,Barang Baku,2021-03-10,ACTIVE
+BEEF,BEEF.JK,PT Estika Tata Tiara Tbk.,Barang Konsumen Primer,Makanan & Minuman,2019-01-10,ACTIVE
+BEER,BEER.JK,PT Jobubu Jarum Minahasa Tbk,Barang Konsumen Primer,Makanan & Minuman,2023-01-06,ACTIVE
+BEKS,BEKS.JK,PT Bank Pembangunan Daerah Banten Tbk.,Keuangan,Bank,2001-07-13,ACTIVE
+BELI,BELI.JK,PT Global Digital Niaga Tbk,Teknologi,Perangkat Lunak & Jasa TI,2022-11-08,ACTIVE
+BELL,BELL.JK,PT Trisula Textile Industries Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,2017-10-03,ACTIVE
+BESS,BESS.JK,PT Batulicin Nusantara Maritim Tbk.,Energi,"Minyak, Gas & Batu Bara",2020-03-09,ACTIVE
+BEST,BEST.JK,Bekasi Fajar Industrial Estate Tbk,Properti & Real Estat,Properti & Real Estat,2012-04-10,ACTIVE
+BFIN,BFIN.JK,BFI Finance Indonesia Tbk,Keuangan,Jasa Pembiayaan,1990-05-16,ACTIVE
+BGTG,BGTG.JK,PT Bank Ganesha Tbk.,Keuangan,Bank,2016-05-12,ACTIVE
+BHAT,BHAT.JK,PT Bhakti Multi Artha Tbk.,Keuangan,Asuransi,2020-04-15,ACTIVE
+BHIT,BHIT.JK,PT MNC Asia Holding Tbk,Perindustrian,Perusahaan Holding Multi Sektor,1997-11-24,ACTIVE
+BIKA,BIKA.JK,PT Binakarya Jaya Abadi Tbk.,Properti & Real Estat,Properti & Real Estat,2015-07-14,ACTIVE
+BIKE,BIKE.JK,PT Bhineka Inovasi Ketahanan Energi Tbk,Barang Konsumen Non-Primer,Barang Rekreasi,2022-03-21,ACTIVE
+BIMA,BIMA.JK,Primarindo Asia Infrastructure Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1994-08-30,ACTIVE
+BINA,BINA.JK,PT Bank Ina Perdana Tbk.,Keuangan,Bank,2014-01-16,ACTIVE
+BINO,BINO.JK,PT Perma Plasindo Tbk,Perindustrian,Jasa Perindustrian,2021-11-25,ACTIVE
+BIPI,BIPI.JK,PT Astrindo Nusantara Infrastruktur Tbk.,Energi,"Minyak, Gas & Batu Bara",2010-02-11,ACTIVE
+BIPP,BIPP.JK,Bhuwanatala Indah Permai Tbk,Properti & Real Estat,Properti & Real Estat,1995-10-23,ACTIVE
+BIRD,BIRD.JK,PT Blue Bird Tbk,Transportasi & Logistik,Transportasi,2014-11-05,ACTIVE
+BISI,BISI.JK,BISI INTERNATIONAL Tbk,Barang Konsumen Primer,Makanan & Minuman,2007-05-28,ACTIVE
+BJBR,BJBR.JK,Bank Pembangunan Daerah Jawa Barat dan Banten Tbk,Keuangan,Bank,2010-07-08,ACTIVE
+BJTM,BJTM.JK,Bank Pembangunan Daerah Jawa Timur Tbk,Keuangan,Bank,2012-07-12,ACTIVE
+BKDP,BKDP.JK,Bukit Darmo Property Tbk,Properti & Real Estat,Properti & Real Estat,2007-06-15,ACTIVE
+BKSL,BKSL.JK,Sentul City Tbk,Properti & Real Estat,Properti & Real Estat,1997-07-28,ACTIVE
+BKSW,BKSW.JK,PT Bank QNB Indonesia Tbk,Keuangan,Bank,2002-11-21,ACTIVE
+BLES,BLES.JK,PT Superior Prima Sukses Tbk,Barang Baku,Barang Baku,2024-07-08,ACTIVE
+BLOG,BLOG.JK,PT Trimitra Trans Persada Tbk,Transportasi & Logistik,Logistik & Pengantaran,2025-07-10,ACTIVE
+BLTA,BLTA.JK,Berlian Laju Tanker Tbk,Transportasi & Logistik,Logistik & Pengantaran,1990-03-26,ACTIVE
+BLTZ,BLTZ.JK,PT Graha Layar Prima Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2014-04-10,ACTIVE
+BLUE,BLUE.JK,PT Berkah Prima Perkasa Tbk,Perindustrian,Jasa Perindustrian,2019-07-08,ACTIVE
+BMAS,BMAS.JK,PT Bank Kasikorn Indonesia Tbk,Keuangan,Bank,2013-07-11,ACTIVE
+BMBL,BMBL.JK,PT Lavender Bina Cendikia Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2023-01-11,ACTIVE
+BMHS,BMHS.JK,PT Bundamedik Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2021-07-06,ACTIVE
+BMRI,BMRI.JK,PT Bank Mandiri (Persero) Tbk,Keuangan,Bank,2003-07-14,ACTIVE
+BMSR,BMSR.JK,Bintang Mitra Semestaraya Tbk,Barang Baku,Barang Baku,1999-12-29,ACTIVE
+BMTR,BMTR.JK,PT Global Mediacom Tbk,Barang Konsumen Non-Primer,Media & Hiburan,1995-07-17,ACTIVE
+BNBA,BNBA.JK,Bank Bumi Arta Tbk,Keuangan,Bank,2006-06-01,ACTIVE
+BNBR,BNBR.JK,Bakrie & Brothers Tbk,Perindustrian,Perusahaan Holding Multi Sektor,1989-08-28,ACTIVE
+BNGA,BNGA.JK,PT Bank CIMB Niaga Tbk,Keuangan,Bank,1989-11-29,ACTIVE
+BNII,BNII.JK,PT Bank Maybank Indonesia Tbk,Keuangan,Bank,1989-11-21,ACTIVE
+BNLI,BNLI.JK,Bank Permata Tbk,Keuangan,Bank,1990-01-15,ACTIVE
+BOAT,BOAT.JK,PT Newport Marine Services Tbk,Energi,"Minyak, Gas & Batu Bara",2024-11-12,ACTIVE
+BOBA,BOBA.JK,PT Formosa Ingredient Factory Tbk,Barang Konsumen Primer,Makanan & Minuman,2021-11-01,ACTIVE
+BOGA,BOGA.JK,PT Apollo Global Interactive Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2016-12-19,ACTIVE
+BOLA,BOLA.JK,PT Bali Bintang Sejahtera Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2019-06-17,ACTIVE
+BOLT,BOLT.JK,PT Garuda Metalindo Tbk.,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,2015-07-07,ACTIVE
+BOSS,BOSS.JK,PT Borneo Olah Sarana Sukses Tbk.,Energi,"Minyak, Gas & Batu Bara",2018-02-15,ACTIVE
+BPFI,BPFI.JK,PT Woori Finance Indonesia Tbk,Keuangan,Jasa Pembiayaan,2009-06-01,ACTIVE
+BPII,BPII.JK,PT Batavia Prosperindo Internasional Tbk.,Keuangan,Perusahaan Holding & Investasi,2014-07-08,ACTIVE
+BPTR,BPTR.JK,PT Batavia Prosperindo Trans Tbk.,Transportasi & Logistik,Transportasi,2018-07-09,ACTIVE
+BRAM,BRAM.JK,Indo Kordsa Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,1990-09-05,ACTIVE
+BREN,BREN.JK,PT Barito Renewables Energy Tbk.,Infrastruktur,Utilitas,2023-10-09,ACTIVE
+BRIS,BRIS.JK,PT Bank Syariah Indonesia (Persero) Tbk,Keuangan,Bank,2018-05-09,ACTIVE
+BRMS,BRMS.JK,Bumi Resources Minerals Tbk,Barang Baku,Barang Baku,2010-12-09,ACTIVE
+BRNA,BRNA.JK,Berlina Tbk,Barang Baku,Barang Baku,1989-11-06,ACTIVE
+BRPT,BRPT.JK,Barito Pacific Tbk,Barang Baku,Barang Baku,1993-10-01,ACTIVE
+BRRC,BRRC.JK,PT Raja Roti Cemerlang Tbk,Barang Konsumen Primer,Makanan & Minuman,2025-01-09,ACTIVE
+BSBK,BSBK.JK,PT Wulandari Bangun Laksana Tbk,Properti & Real Estat,Properti & Real Estat,2022-11-08,ACTIVE
+BSDE,BSDE.JK,PT Bumi Serpong Damai Tbk,Properti & Real Estat,Properti & Real Estat,2008-06-06,ACTIVE
+BSIM,BSIM.JK,Bank Sinarmas Tbk,Keuangan,Bank,2010-12-13,ACTIVE
+BSML,BSML.JK,PT Bintang Samudera Mandiri Lines Tbk,Energi,"Minyak, Gas & Batu Bara",2021-12-16,ACTIVE
+BSSR,BSSR.JK,Baramulti Suksessarana Tbk,Energi,"Minyak, Gas & Batu Bara",2012-11-08,ACTIVE
+BSWD,BSWD.JK,Bank of India Indonesia Tbk,Keuangan,Bank,2002-05-01,ACTIVE
+BTEK,BTEK.JK,Bumi Teknokultura Unggul Tbk,Barang Konsumen Primer,Makanan & Minuman,2004-05-14,ACTIVE
+BTEL,BTEL.JK,Bakrie Telecom Tbk,Infrastruktur,Telekomunikasi,2006-02-03,ACTIVE
+BTON,BTON.JK,Betonjaya Manunggal Tbk,Barang Baku,Barang Baku,2001-07-18,ACTIVE
+BTPN,BTPN.JK,PT Bank SMBC Indonesia Tbk,Keuangan,Bank,2008-03-12,ACTIVE
+BTPS,BTPS.JK,PT Bank BTPN Syariah Tbk.,Keuangan,Bank,2018-05-08,ACTIVE
+BUAH,BUAH.JK,PT Segar Kumala Indonesia Tbk,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,2022-08-09,ACTIVE
+BUDI,BUDI.JK,PT Budi Starch & Sweetener Tbk.,Barang Konsumen Primer,Makanan & Minuman,1995-05-08,ACTIVE
+BUKA,BUKA.JK,PT Bukalapak.com Tbk,Teknologi,Perangkat Lunak & Jasa TI,2021-08-06,ACTIVE
+BUKK,BUKK.JK,Bukaka Teknik Utama Tbk,Infrastruktur,Konstruksi Bangunan,2015-06-29,ACTIVE
+BULL,BULL.JK,PT Buana Lintas Lautan Tbk.,Energi,"Minyak, Gas & Batu Bara",2011-05-23,ACTIVE
+BUMI,BUMI.JK,Bumi Resources Tbk,Energi,"Minyak, Gas & Batu Bara",1990-07-30,ACTIVE
+BUVA,BUVA.JK,PT Bukit Uluwatu Villa Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2010-07-12,ACTIVE
+BVIC,BVIC.JK,Bank Victoria International Tbk,Keuangan,Bank,1999-06-30,ACTIVE
+BWPT,BWPT.JK,Eagle High Plantations Tbk,Barang Konsumen Primer,Makanan & Minuman,2009-10-27,ACTIVE
+BYAN,BYAN.JK,Bayan Resources Tbk,Energi,"Minyak, Gas & Batu Bara",2008-08-12,ACTIVE
+CAKK,CAKK.JK,PT Cahayaputra Asa Keramik Tbk.,Perindustrian,Barang Perindustrian,2018-10-31,ACTIVE
+CAMP,CAMP.JK,PT Campina Ice Cream Industry Tbk.,Barang Konsumen Primer,Makanan & Minuman,2017-12-19,ACTIVE
+CANI,CANI.JK,PT Capitol Nusantara Indonesia Tbk.,Energi,"Minyak, Gas & Batu Bara",2014-01-16,ACTIVE
+CARE,CARE.JK,PT Metro Healthcare Indonesia Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2020-03-13,ACTIVE
+CARS,CARS.JK,PT Industri dan Perdagangan Bintraco Dharma Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2017-04-10,ACTIVE
+CASA,CASA.JK,PT Capital Financial Indonesia Tbk,Keuangan,Perusahaan Holding & Investasi,2016-07-19,ACTIVE
+CASH,CASH.JK,PT Cashlez Worldwide Indonesia Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2020-05-04,ACTIVE
+CASS,CASS.JK,Cahaya Aero Services Tbk,Infrastruktur,Infrastruktur Transportasi,2011-12-05,ACTIVE
+CBDK,CBDK.JK,PT Bangun Kosambi Sukses Tbk,Properti & Real Estat,Properti & Real Estat,2025-01-13,ACTIVE
+CBMF,CBMF.JK,PT Cahaya Bintang Medan Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2020-04-09,ACTIVE
+CBPE,CBPE.JK,PT Citra Buana Prasida Tbk,Properti & Real Estat,Properti & Real Estat,2023-01-06,ACTIVE
+CBRE,CBRE.JK,PT Cakra Buana Resources Energi Tbk,Energi,"Minyak, Gas & Batu Bara",2023-01-09,ACTIVE
+CBUT,CBUT.JK,PT Citra Borneo Utama Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-11-08,ACTIVE
+CCSI,CCSI.JK,PT Communication Cable Systems Indonesia Tbk.,Perindustrian,Barang Perindustrian,2019-06-18,ACTIVE
+CDIA,CDIA.JK,PT Chandra Daya Investasi Tbk,Infrastruktur,Utilitas,2025-07-09,ACTIVE
+CEKA,CEKA.JK,PT Wilmar Cahaya Indonesia Tbk.,Barang Konsumen Primer,Makanan & Minuman,1996-07-09,ACTIVE
+CENT,CENT.JK,PT Centratama Telekomunikasi Indonesia Tbk.,Infrastruktur,Telekomunikasi,2001-11-01,ACTIVE
+CFIN,CFIN.JK,Clipan Finance Indonesia Tbk,Keuangan,Jasa Pembiayaan,1990-08-27,ACTIVE
+CGAS,CGAS.JK,PT Citra Nusantara Gemilang Tbk.,Energi,"Minyak, Gas & Batu Bara",2024-01-08,ACTIVE
+CHEK,CHEK.JK,PT Diastika Biotekindo Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2025-07-10,ACTIVE
+CHEM,CHEM.JK,PT Chemstar Indonesia Tbk,Barang Baku,Barang Baku,2022-07-08,ACTIVE
+CHIP,CHIP.JK,PT Pelita Teknologi Global Tbk,Teknologi,Perangkat Keras & Peralatan Teknologi,2023-02-08,ACTIVE
+CINT,CINT.JK,PT Chitose Internasional Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2014-06-27,ACTIVE
+CITA,CITA.JK,Cita Mineral Investindo Tbk,Barang Baku,Barang Baku,2002-03-20,ACTIVE
+CITY,CITY.JK,PT Natura City Developments Tbk.,Properti & Real Estat,Properti & Real Estat,2018-09-28,ACTIVE
+CLAY,CLAY.JK,PT Citra Putra Realty Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2019-01-18,ACTIVE
+CLEO,CLEO.JK,PT Sariguna Primatirta Tbk,Barang Konsumen Primer,Makanan & Minuman,2017-05-05,ACTIVE
+CLPI,CLPI.JK,Colorpak Indonesia Tbk,Barang Baku,Barang Baku,2001-11-30,ACTIVE
+CMNP,CMNP.JK,Citra Marga Nusaphala Persada Tbk,Infrastruktur,Infrastruktur Transportasi,1995-01-10,ACTIVE
+CMNT,CMNT.JK,PT Cemindo Gemilang Tbk,Barang Baku,Barang Baku,2021-09-08,ACTIVE
+CMPP,CMPP.JK,PT AirAsia Indonesia Tbk,Transportasi & Logistik,Transportasi,1994-12-08,ACTIVE
+CMRY,CMRY.JK,PT Cisarua Mountain Dairy Tbk,Barang Konsumen Primer,Makanan & Minuman,2021-12-06,ACTIVE
+CNKO,CNKO.JK,Exploitasi Energi Indonesia Tbk,Energi,"Minyak, Gas & Batu Bara",2001-11-20,ACTIVE
+CNMA,CNMA.JK,PT Nusantara Sejahtera Raya Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2023-08-02,ACTIVE
+COAL,COAL.JK,PT Black Diamond Resources Tbk,Energi,"Minyak, Gas & Batu Bara",2022-09-07,ACTIVE
+COCO,COCO.JK,PT Wahana Interfood Nusantara Tbk.,Barang Konsumen Primer,Makanan & Minuman,2019-03-20,ACTIVE
+COIN,COIN.JK,PT Indokripto Koin Semesta Tbk,Keuangan,Perusahaan Holding & Investasi,2025-07-09,ACTIVE
+COWL,COWL.JK,COWELL DEVELOPMENT Tbk,Properti & Real Estat,Properti & Real Estat,2007-12-19,ACTIVE
+CPIN,CPIN.JK,Charoen Pokphand Indonesia Tbk,Barang Konsumen Primer,Makanan & Minuman,1991-03-18,ACTIVE
+CPRI,CPRI.JK,PT Capri Nusa Satu Properti Tbk.,Properti & Real Estat,Properti & Real Estat,2019-04-11,ACTIVE
+CPRO,CPRO.JK,Central Proteina Prima Tbk,Barang Konsumen Primer,Makanan & Minuman,2006-11-28,ACTIVE
+CRAB,CRAB.JK,PT Toba Surimi Industries Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-08-10,ACTIVE
+CRSN,CRSN.JK,PT Carsurin Tbk,Perindustrian,Jasa Perindustrian,2023-07-10,ACTIVE
+CSAP,CSAP.JK,Catur Sentosa Adiprana Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2007-12-12,ACTIVE
+CSIS,CSIS.JK,PT Cahayasakti Investindo Sukses Tbk,Properti & Real Estat,Properti & Real Estat,2017-05-10,ACTIVE
+CSMI,CSMI.JK,PT Cipta Selera Murni Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2020-04-09,ACTIVE
+CSRA,CSRA.JK,PT Cisadane Sawit Raya Tbk.,Barang Konsumen Primer,Makanan & Minuman,2020-01-09,ACTIVE
+CTBN,CTBN.JK,Citra Tubindo Tbk,Barang Baku,Barang Baku,1989-11-28,ACTIVE
+CTRA,CTRA.JK,Ciputra Development Tbk,Properti & Real Estat,Properti & Real Estat,1994-03-28,ACTIVE
+CTTH,CTTH.JK,Citatah Tbk,Perindustrian,Barang Perindustrian,1996-07-03,ACTIVE
+CUAN,CUAN.JK,PT Petrindo Jaya Kreasi Tbk,Energi,"Minyak, Gas & Batu Bara",2023-03-08,ACTIVE
+CYBR,CYBR.JK,PT ITSEC Asia Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2023-08-08,ACTIVE
+DAAZ,DAAZ.JK,PT Daaz Bara Lestari Tbk,Barang Baku,Barang Baku,2024-11-11,ACTIVE
+DADA,DADA.JK,PT Diamond Citra Propertindo Tbk.,Properti & Real Estat,Properti & Real Estat,2020-02-14,ACTIVE
+DART,DART.JK,Duta Anggada Realty Tbk,Properti & Real Estat,Properti & Real Estat,1990-05-08,ACTIVE
+DATA,DATA.JK,PT Remala Abadi Tbk,Infrastruktur,Telekomunikasi,2024-05-07,ACTIVE
+DAYA,DAYA.JK,PT Duta Intidaya Tbk.,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,2016-06-28,ACTIVE
+DCII,DCII.JK,PT DCI Indonesia Tbk,Teknologi,Perangkat Lunak & Jasa TI,2021-01-06,ACTIVE
+DEAL,DEAL.JK,PT Dewata Freightinternational Tbk.,Transportasi & Logistik,Logistik & Pengantaran,2018-11-11,ACTIVE
+DEFI,DEFI.JK,Danasupra Erapacific Tbk,Keuangan,Perusahaan Holding & Investasi,2001-07-06,ACTIVE
+DEPO,DEPO.JK,PT Caturkarda Depo Bangunan Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2021-11-25,ACTIVE
+DEWA,DEWA.JK,Darma Henwa Tbk,Energi,"Minyak, Gas & Batu Bara",2007-09-26,ACTIVE
+DEWI,DEWI.JK,PT Dewi Shri Farmindo Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-07-18,ACTIVE
+DFAM,DFAM.JK,PT Dafam Property Indonesia Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2018-04-27,ACTIVE
+DGIK,DGIK.JK,Nusa Konstruksi Enjiniring  Tbk,Infrastruktur,Konstruksi Bangunan,2007-12-19,ACTIVE
+DGNS,DGNS.JK,PT Diagnos Laboratorium Utama Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2021-01-15,ACTIVE
+DGWG,DGWG.JK,PT Delta Giri Wacana Tbk,Barang Baku,Barang Baku,2025-01-13,ACTIVE
+DIGI,DIGI.JK,PT Arkadia Digital Media Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2018-09-18,ACTIVE
+DILD,DILD.JK,Intiland Development Tbk,Properti & Real Estat,Properti & Real Estat,1991-09-04,ACTIVE
+DIVA,DIVA.JK,PT Distribusi Voucher Nusantara Tbk,Teknologi,Perangkat Lunak & Jasa TI,2018-11-27,ACTIVE
+DKFT,DKFT.JK,Central Omega Resources Tbk,Barang Baku,Barang Baku,1997-11-21,ACTIVE
+DKHH,DKHH.JK,PT Cipta Sarana Medika Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2025-05-08,ACTIVE
+DLTA,DLTA.JK,Delta Djakarta Tbk,Barang Konsumen Primer,Makanan & Minuman,1984-02-27,ACTIVE
+DMAS,DMAS.JK,PT Puradelta Lestari Tbk.,Properti & Real Estat,Properti & Real Estat,2015-05-29,ACTIVE
+DMMX,DMMX.JK,PT Digital Mediatama Maxima Tbk,Teknologi,Perangkat Lunak & Jasa TI,2019-10-21,ACTIVE
+DMND,DMND.JK,PT Diamond Food Indonesia Tbk.,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,2020-01-22,ACTIVE
+DNAR,DNAR.JK,PT Bank Oke Indonesia Tbk.,Keuangan,Bank,2014-07-11,ACTIVE
+DNET,DNET.JK,PT Indoritel Makmur Internasional Tbk.,Keuangan,Perusahaan Holding & Investasi,2000-12-11,ACTIVE
+DOID,DOID.JK,PT BUMA Internasional Grup Tbk,Energi,"Minyak, Gas & Batu Bara",2001-06-15,ACTIVE
+DOOH,DOOH.JK,PT Era Media Sejahtera Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2023-05-08,ACTIVE
+DOSS,DOSS.JK,PT Global Sukses Digital Tbk,Barang Konsumen Non-Primer,Barang Rekreasi,2024-08-07,ACTIVE
+DPNS,DPNS.JK,Duta Pertiwi Nusantara Tbk,Barang Baku,Barang Baku,1990-08-08,ACTIVE
+DPUM,DPUM.JK,PT Dua Putra Utama Makmur Tbk.,Barang Konsumen Primer,Makanan & Minuman,2015-12-08,ACTIVE
+DRMA,DRMA.JK,PT Dharma Polimetal Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,2021-12-20,ACTIVE
+DSFI,DSFI.JK,Dharma Samudera Fishing Ind. Tbk,Barang Konsumen Primer,Makanan & Minuman,2000-03-24,ACTIVE
+DSNG,DSNG.JK,PT Dharma Satya Nusantara Tbk.,Barang Konsumen Primer,Makanan & Minuman,2013-06-14,ACTIVE
+DSSA,DSSA.JK,Dian Swastatika Sentosa Tbk,Energi,"Minyak, Gas & Batu Bara",2009-12-10,ACTIVE
+DUCK,DUCK.JK,PT Jaya Bersama Indo Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2018-10-10,ACTIVE
+DUTI,DUTI.JK,Duta Pertiwi Tbk,Properti & Real Estat,Properti & Real Estat,1994-11-02,ACTIVE
+DVLA,DVLA.JK,Darya-Varia Laboratoria Tbk,Kesehatan,Farmasi & Riset Kesehatan,1994-11-11,ACTIVE
+DWGL,DWGL.JK,PT Dwi Guna Laksana Tbk,Energi,"Minyak, Gas & Batu Bara",2017-12-13,ACTIVE
+DYAN,DYAN.JK,PT Dyandra Media International Tbk.,Perindustrian,Jasa Perindustrian,2013-03-25,ACTIVE
+EAST,EAST.JK,PT Eastparc Hotel Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2019-07-09,ACTIVE
+ECII,ECII.JK,PT Electronic City Indonesia Tbk.,Barang Konsumen Non-Primer,Perdagangan Ritel,2013-07-03,ACTIVE
+EDGE,EDGE.JK,PT Indointernet Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2021-02-08,ACTIVE
+EKAD,EKAD.JK,Ekadharma International Tbk,Barang Baku,Barang Baku,1990-08-14,ACTIVE
+ELIT,ELIT.JK,PT Data Sinergitama Jaya Tbk,Teknologi,Perangkat Lunak & Jasa TI,2023-01-06,ACTIVE
+ELPI,ELPI.JK,PT Pelayaran Nasional Ekalya Purnamasari Tbk,Transportasi & Logistik,Logistik & Pengantaran,2022-08-08,ACTIVE
+ELSA,ELSA.JK,Elnusa Tbk,Energi,"Minyak, Gas & Batu Bara",2008-02-06,ACTIVE
+ELTY,ELTY.JK,Bakrieland Development Tbk,Properti & Real Estat,Properti & Real Estat,1995-10-30,ACTIVE
+EMAS,EMAS.JK,PT Merdeka Gold Resources Tbk,Barang Baku,Barang Baku,2025-09-23,ACTIVE
+EMDE,EMDE.JK,Megapolitan Developments Tbk,Properti & Real Estat,Properti & Real Estat,2011-01-12,ACTIVE
+EMMI,EMMI.JK,PT Esa Medika Mandiri Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2026-07-08,ACTIVE
+EMTK,EMTK.JK,Elang Mahkota Teknologi Tbk,Teknologi,Perangkat Lunak & Jasa TI,2010-01-12,ACTIVE
+ENAK,ENAK.JK,PT Champ Resto Indonesia Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2022-02-08,ACTIVE
+ENRG,ENRG.JK,Energi Mega Persada Tbk,Energi,"Minyak, Gas & Batu Bara",2004-06-07,ACTIVE
+ENVY,ENVY.JK,PT Envy Technologies Indonesia Tbk,Teknologi,Perangkat Lunak & Jasa TI,2019-07-08,ACTIVE
+ENZO,ENZO.JK,PT Morenzo Abadi Perkasa Tbk,Barang Konsumen Primer,Makanan & Minuman,2020-09-14,ACTIVE
+EPAC,EPAC.JK,PT Megalestari Epack Sentosaraya Tbk.,Barang Baku,Barang Baku,2020-07-01,ACTIVE
+EPMT,EPMT.JK,Enseval Putera Megatrading Tbk,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,1994-08-01,ACTIVE
+ERAA,ERAA.JK,Erajaya Swasembada Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2011-12-14,ACTIVE
+ERAL,ERAL.JK,PT Sinar Eka Selaras Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2023-08-08,ACTIVE
+ERTX,ERTX.JK,Eratex Djaja Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1990-08-21,ACTIVE
+ESIP,ESIP.JK,PT Sinergi Inti Plastindo Tbk.,Barang Baku,Barang Baku,2019-11-14,ACTIVE
+ESSA,ESSA.JK,ESSA Industries Indonesia Tbk,Barang Baku,Barang Baku,2012-02-01,ACTIVE
+ESTA,ESTA.JK,PT Esta Multi Usaha Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2020-03-09,ACTIVE
+ESTI,ESTI.JK,Ever Shine Textile Industry Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1992-10-13,ACTIVE
+ETWA,ETWA.JK,Eterindo Wahanatama Tbk,Barang Baku,Barang Baku,1997-05-16,ACTIVE
+EURO,EURO.JK,PT Estee Gold Feet Tbk,Barang Konsumen Primer,Produk Rumah Tangga Tidak Tahan Lama,2022-08-08,ACTIVE
+EXCL,EXCL.JK,PT XLSMART Telecom Sejahtera Tbk,Infrastruktur,Telekomunikasi,2005-09-29,ACTIVE
+FAPA,FAPA.JK,PT FAP Agri Tbk,Barang Konsumen Primer,Makanan & Minuman,2021-01-04,ACTIVE
+FAST,FAST.JK,PT Fast Food Indonesia Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,1993-05-11,ACTIVE
+FASW,FASW.JK,Fajar Surya Wisesa Tbk,Barang Baku,Barang Baku,1994-12-19,ACTIVE
+FILM,FILM.JK,PT MD Entertainment Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2018-08-07,ACTIVE
+FIMP,FIMP.JK,PT Fimperkasa Utama Tbk,Infrastruktur,Konstruksi Bangunan,2021-04-09,ACTIVE
+FIRE,FIRE.JK,PT Alfa Energi Investama Tbk.,Energi,"Minyak, Gas & Batu Bara",2017-06-09,ACTIVE
+FISH,FISH.JK,FKS Multi Agro Tbk,Barang Konsumen Primer,Makanan & Minuman,2002-01-18,ACTIVE
+FITT,FITT.JK,PT Hotel Fitra International Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2019-06-11,ACTIVE
+FLMC,FLMC.JK,PT Falmaco Nonwoven Industri Tbk,Barang Konsumen Primer,Produk Rumah Tangga Tidak Tahan Lama,2021-07-08,ACTIVE
+FMII,FMII.JK,Fortune Mate Indonesia Tbk,Properti & Real Estat,Properti & Real Estat,2000-06-30,ACTIVE
+FOLK,FOLK.JK,PT Multi Garam Utama Tbk.,Perindustrian,Perusahaan Holding Multi Sektor,2023-08-07,ACTIVE
+FOOD,FOOD.JK,PT Sentra Food Indonesia Tbk.,Barang Konsumen Primer,Makanan & Minuman,2019-01-08,ACTIVE
+FORE,FORE.JK,PT Fore Kopi Indonesia Tbk,Barang Konsumen Primer,Makanan & Minuman,2025-04-14,ACTIVE
+FORU,FORU.JK,Fortune Indonesia Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2002-01-17,ACTIVE
+FPNI,FPNI.JK,PT Lotte Chemical Titan Tbk.,Barang Baku,Barang Baku,2002-03-21,ACTIVE
+FUJI,FUJI.JK,PT Fuji Finance Indonesia Tbk.,Keuangan,Jasa Pembiayaan,2019-07-09,ACTIVE
+FUTR,FUTR.JK,PT Futura Energi Global Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2023-02-27,ACTIVE
+FWCT,FWCT.JK,PT Wijaya Cahaya Timber Tbk,Barang Baku,Barang Baku,2023-02-01,ACTIVE
+GAMA,GAMA.JK,Aksara Global Development Tbk,Properti & Real Estat,Properti & Real Estat,2012-07-11,ACTIVE
+GDST,GDST.JK,Gunawan Dianjaya Steel Tbk,Barang Baku,Barang Baku,2009-12-23,ACTIVE
+GDYR,GDYR.JK,Goodyear Indonesia Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,1980-12-22,ACTIVE
+GEMA,GEMA.JK,Gema Grahasarana Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2002-08-12,ACTIVE
+GEMS,GEMS.JK,Golden Energy Mines Tbk,Energi,"Minyak, Gas & Batu Bara",2011-11-17,ACTIVE
+GGRM,GGRM.JK,Gudang Garam Tbk,Barang Konsumen Primer,Rokok,1990-08-27,ACTIVE
+GGRP,GGRP.JK,PT Gunung Raja Paksi Tbk.,Barang Baku,Barang Baku,2019-09-19,ACTIVE
+GHON,GHON.JK,PT Gihon Telekomunikasi Indonesia Tbk,Infrastruktur,Telekomunikasi,2018-04-09,ACTIVE
+GIAA,GIAA.JK,Garuda Indonesia (Persero) Tbk,Transportasi & Logistik,Transportasi,2011-02-11,ACTIVE
+GJTL,GJTL.JK,Gajah Tunggal Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,1990-05-08,ACTIVE
+GLOB,GLOB.JK,PT Globe Kita Terang Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2012-07-10,ACTIVE
+GLVA,GLVA.JK,PT Galva Technologies Tbk,Teknologi,Perangkat Keras & Peralatan Teknologi,2019-12-23,ACTIVE
+GMFI,GMFI.JK,PT Garuda Maintenance Facility Aero Asia Tbk.,Infrastruktur,Infrastruktur Transportasi,2017-10-10,ACTIVE
+GMTD,GMTD.JK,Gowa Makassar Tourism Development Tbk,Properti & Real Estat,Properti & Real Estat,2000-12-11,ACTIVE
+GOLD,GOLD.JK,PT Visi Telekomunikasi Infrastruktur Tbk.,Infrastruktur,Telekomunikasi,2010-07-07,ACTIVE
+GOLF,GOLF.JK,PT Intra GolfLink Resorts Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2024-07-08,ACTIVE
+GOLL,GOLL.JK,PT Golden Plantation Tbk,Barang Konsumen Primer,Makanan & Minuman,2014-12-23,ACTIVE
+GOOD,GOOD.JK,PT Garudafood Putra Putri Jaya Tbk.,Barang Konsumen Primer,Makanan & Minuman,2018-10-10,ACTIVE
+GOTO,GOTO.JK,PT GoTo Gojek Tokopedia Tbk,Teknologi,Perangkat Lunak & Jasa TI,2022-04-11,ACTIVE
+GPRA,GPRA.JK,Perdana Gapura Prima Tbk,Properti & Real Estat,Properti & Real Estat,2007-10-10,ACTIVE
+GPSO,GPSO.JK,PT Geoprima Solusi Tbk,Perindustrian,Barang Perindustrian,2021-09-06,ACTIVE
+GRIA,GRIA.JK,PT Ingria Pratama Capitalindo Tbk,Properti & Real Estat,Properti & Real Estat,2023-08-08,ACTIVE
+GRPH,GRPH.JK,PT Griptha Putra Persada Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2024-01-17,ACTIVE
+GRPM,GRPM.JK,PT Graha Prima Mentari Tbk.,Barang Konsumen Primer,Makanan & Minuman,2023-07-10,ACTIVE
+GSMF,GSMF.JK,Equity Development Investment Tbk,Keuangan,Perusahaan Holding & Investasi,1989-10-23,ACTIVE
+GTBO,GTBO.JK,Garda Tujuh Buana Tbk,Energi,"Minyak, Gas & Batu Bara",2009-07-09,ACTIVE
+GTRA,GTRA.JK,PT Grahaprima Suksesmandiri Tbk,Transportasi & Logistik,Logistik & Pengantaran,2023-03-30,ACTIVE
+GTSI,GTSI.JK,PT GTS Internasional Tbk,Energi,"Minyak, Gas & Batu Bara",2021-09-08,ACTIVE
+GULA,GULA.JK,PT Aman Agrindo Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-08-03,ACTIVE
+GUNA,GUNA.JK,PT Gunanusa Eramandiri Tbk,Barang Konsumen Primer,Makanan & Minuman,2024-07-09,ACTIVE
+GWSA,GWSA.JK,PT Greenwood Sejahtera Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2011-12-23,ACTIVE
+GZCO,GZCO.JK,Gozco Plantations Tbk,Barang Konsumen Primer,Makanan & Minuman,2008-05-15,ACTIVE
+HADE,HADE.JK,PT Himalaya Energi Perkasa Tbk,Infrastruktur,Utilitas,2004-04-12,ACTIVE
+HAIS,HAIS.JK,PT Hasnur Internasional Shipping Tbk,Transportasi & Logistik,Logistik & Pengantaran,2021-09-01,ACTIVE
+HAJJ,HAJJ.JK,PT Arsy Buana Travelindo Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2023-04-05,ACTIVE
+HALO,HALO.JK,PT Haloni Jane Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2023-02-08,ACTIVE
+HATM,HATM.JK,PT Habco Trans Maritima Tbk,Transportasi & Logistik,Logistik & Pengantaran,2022-07-26,ACTIVE
+HBAT,HBAT.JK,PT Minahasa Membangun Hebat Tbk,Properti & Real Estat,Properti & Real Estat,2023-08-07,ACTIVE
+HDFA,HDFA.JK,Radana Bhaskara Finance Tbk,Keuangan,Jasa Pembiayaan,2011-05-10,ACTIVE
+HDIT,HDIT.JK,PT Hensel Davest Indonesia Tbk,Teknologi,Perangkat Lunak & Jasa TI,2019-07-12,ACTIVE
+HEAL,HEAL.JK,PT Medikaloka Hermina Tbk.,Kesehatan,Jasa & Peralatan Kesehatan,2018-05-16,ACTIVE
+HELI,HELI.JK,PT Jaya Trishindo Tbk,Transportasi & Logistik,Transportasi,2018-03-27,ACTIVE
+HERO,HERO.JK,PT DFI Retail Nusantara Tbk,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,1989-08-21,ACTIVE
+HEXA,HEXA.JK,Hexindo Adiperkasa Tbk,Perindustrian,Barang Perindustrian,1995-02-13,ACTIVE
+HGII,HGII.JK,PT Hero Global Investment Tbk,Infrastruktur,Utilitas,2025-01-09,ACTIVE
+HILL,HILL.JK,PT Hillcon Tbk,Energi,"Minyak, Gas & Batu Bara",2023-03-01,ACTIVE
+HITS,HITS.JK,Humpuss Intermoda Transportasi Tbk,Energi,"Minyak, Gas & Batu Bara",1997-12-15,ACTIVE
+HKMU,HKMU.JK,PT HK Metals Utama Tbk,Barang Baku,Barang Baku,2018-10-09,ACTIVE
+HMSP,HMSP.JK,HM Sampoerna Tbk,Barang Konsumen Primer,Rokok,1990-08-15,ACTIVE
+HOKI,HOKI.JK,PT Buyung Poetra Sembada Tbk.,Barang Konsumen Primer,Makanan & Minuman,2017-06-22,ACTIVE
+HOME,HOME.JK,Hotel Mandarine Regency Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2008-07-17,ACTIVE
+HOMI,HOMI.JK,PT Grand House Mulia Tbk,Properti & Real Estat,Properti & Real Estat,2020-09-10,ACTIVE
+HOPE,HOPE.JK,PT Harapan Duta Pertiwi Tbk.,Perindustrian,Barang Perindustrian,2021-05-24,ACTIVE
+HOTL,HOTL.JK,Saraswati Griya Lestari Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2013-01-10,ACTIVE
+HRME,HRME.JK,PT Menteng Heritage Realty Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2019-04-12,ACTIVE
+HRTA,HRTA.JK,PT Hartadinata Abadi Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,2017-06-21,ACTIVE
+HRUM,HRUM.JK,Harum Energy Tbk,Energi,"Minyak, Gas & Batu Bara",2010-10-06,ACTIVE
+HUMI,HUMI.JK,PT Humpuss Maritim Internasional Tbk,Energi,"Minyak, Gas & Batu Bara",2023-08-09,ACTIVE
+HYGN,HYGN.JK,PT Ecocare Indo Pasifik Tbk.,Perindustrian,Jasa Perindustrian,2024-02-13,ACTIVE
+IATA,IATA.JK,PT Karya Pacific Energy Tbk,Energi,"Minyak, Gas & Batu Bara",2006-09-13,ACTIVE
+IBFN,IBFN.JK,PT Intan Baru Prana Tbk,Perindustrian,Barang Perindustrian,2014-12-22,ACTIVE
+IBOS,IBOS.JK,PT Indo Boga Sukses Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-04-25,ACTIVE
+IBST,IBST.JK,Inti Bangun Sejahtera Tbk,Infrastruktur,Telekomunikasi,2012-08-31,ACTIVE
+ICBP,ICBP.JK,Indofood CBP Sukses Makmur Tbk,Barang Konsumen Primer,Makanan & Minuman,2010-10-07,ACTIVE
+ICON,ICON.JK,Island Concepts Indonesia Tbk,Perindustrian,Jasa Perindustrian,2005-07-08,ACTIVE
+IDEA,IDEA.JK,PT Idea Indonesia Akademi Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2021-09-09,ACTIVE
+IDPR,IDPR.JK,PT Indonesia Pondasi Raya Tbk.,Infrastruktur,Konstruksi Bangunan,2015-12-10,ACTIVE
+IFII,IFII.JK,PT Indonesia Fibreboard Industry Tbk,Barang Baku,Barang Baku,2019-12-10,ACTIVE
+IFSH,IFSH.JK,PT Ifishdeco Tbk.,Barang Baku,Barang Baku,2019-12-05,ACTIVE
+IGAR,IGAR.JK,Champion Pacific Indonesia Tbk,Barang Baku,Barang Baku,1990-11-05,ACTIVE
+IIKP,IIKP.JK,Inti Agri Resources Tbk,Barang Konsumen Non-Primer,Barang Rekreasi,2002-10-14,ACTIVE
+IKAI,IKAI.JK,Intikeramik Alamasri Industri Tbk,Perindustrian,Barang Perindustrian,1997-06-04,ACTIVE
+IKAN,IKAN.JK,PT Era Mandiri Cemerlang Tbk,Barang Konsumen Primer,Makanan & Minuman,2020-02-12,ACTIVE
+IKBI,IKBI.JK,Sumi Indo Kabel Tbk,Perindustrian,Barang Perindustrian,1991-01-21,ACTIVE
+IKPM,IKPM.JK,PT Ikapharmindo Putramas Tbk.,Kesehatan,Farmasi & Riset Kesehatan,2023-11-08,ACTIVE
+IMAS,IMAS.JK,Indomobil Sukses Internasional Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,1993-11-15,ACTIVE
+IMJS,IMJS.JK,PT Indomobil Multi Jasa Tbk.,Transportasi & Logistik,Transportasi,2013-12-10,ACTIVE
+IMPC,IMPC.JK,PT Impack Pratama Industri Tbk,Perindustrian,Barang Perindustrian,2014-12-17,ACTIVE
+INAF,INAF.JK,Indofarma Tbk.,Kesehatan,Farmasi & Riset Kesehatan,2001-04-17,ACTIVE
+INAI,INAI.JK,Indal Aluminium Industry Tbk,Barang Baku,Barang Baku,1994-12-05,ACTIVE
+INCF,INCF.JK,PT Indo Komoditi Korpora Tbk,Barang Baku,Barang Baku,2016-09-06,ACTIVE
+INCI,INCI.JK,Intanwijaya Internasional Tbk,Barang Baku,Barang Baku,1990-07-24,ACTIVE
+INCO,INCO.JK,Vale Indonesia Tbk,Barang Baku,Barang Baku,1990-05-16,ACTIVE
+INDF,INDF.JK,Indofood Sukses Makmur Tbk,Barang Konsumen Primer,Makanan & Minuman,1994-07-14,ACTIVE
+INDO,INDO.JK,PT Royalindo Investa Wijaya Tbk,Properti & Real Estat,Properti & Real Estat,2020-01-13,ACTIVE
+INDR,INDR.JK,PT Indo-Rama Synthetics Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1990-08-03,ACTIVE
+INDS,INDS.JK,Indospring Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,1990-08-10,ACTIVE
+INDX,INDX.JK,Tanah Laut Tbk,Perindustrian,Jasa Perindustrian,2001-05-17,ACTIVE
+INDY,INDY.JK,Indika Energy Tbk,Energi,"Minyak, Gas & Batu Bara",2008-06-11,ACTIVE
+INET,INET.JK,PT Sinergi Inti Andalan Prima Tbk.,Infrastruktur,Telekomunikasi,2023-07-24,ACTIVE
+INKP,INKP.JK,Indah Kiat Pulp & Paper Tbk,Barang Baku,Barang Baku,1990-07-16,ACTIVE
+INOV,INOV.JK,PT Inocycle Technology Group Tbk.,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,2019-07-10,ACTIVE
+INPC,INPC.JK,Bank Artha Graha Internasional Tbk,Keuangan,Bank,1990-08-23,ACTIVE
+INPP,INPP.JK,Indonesian Paradise Property Tbk,Properti & Real Estat,Properti & Real Estat,2004-01-12,ACTIVE
+INPS,INPS.JK,PT Indah Prakasa Sentosa Tbk.,Energi,"Minyak, Gas & Batu Bara",2018-04-06,ACTIVE
+INRU,INRU.JK,Toba Pulp Lestari Tbk,Barang Baku,Barang Baku,1990-06-18,ACTIVE
+INTA,INTA.JK,Intraco Penta Tbk,Perindustrian,Barang Perindustrian,1993-08-23,ACTIVE
+INTD,INTD.JK,Inter-Delta Tbk,Barang Baku,Barang Baku,1989-12-18,ACTIVE
+INTP,INTP.JK,Indocement Tunggal Prakarsa Tbk,Barang Baku,Barang Baku,1989-12-05,ACTIVE
+IOTF,IOTF.JK,PT Sumber Sinergi Makmur Tbk,Teknologi,Perangkat Keras & Peralatan Teknologi,2023-10-06,ACTIVE
+IPAC,IPAC.JK,PT Era Graharealty Tbk,Properti & Real Estat,Properti & Real Estat,2021-06-30,ACTIVE
+IPCC,IPCC.JK,PT Indonesia Kendaraan Terminal Tbk.,Infrastruktur,Infrastruktur Transportasi,2018-07-09,ACTIVE
+IPCM,IPCM.JK,PT Jasa Armada Indonesia Tbk.,Infrastruktur,Infrastruktur Transportasi,2017-12-22,ACTIVE
+IPOL,IPOL.JK,Indopoly Swakarsa Industry Tbk,Barang Baku,Barang Baku,2010-07-09,ACTIVE
+IPPE,IPPE.JK,PT Indo Pureco Pratama Tbk,Barang Konsumen Primer,Makanan & Minuman,2021-12-09,ACTIVE
+IPTV,IPTV.JK,PT MNC Vision Networks Tbk.,Barang Konsumen Non-Primer,Media & Hiburan,2019-07-08,ACTIVE
+IRRA,IRRA.JK,PT Itama Ranoraya Tbk.,Kesehatan,Jasa & Peralatan Kesehatan,2019-10-15,ACTIVE
+IRSX,IRSX.JK,PT Folago Global Nusantara Tbk,Teknologi,Perangkat Lunak & Jasa TI,2023-02-07,ACTIVE
+ISAP,ISAP.JK,PT Isra Presisi Indonesia Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,2022-12-09,ACTIVE
+ISAT,ISAT.JK,PT Indosat Tbk,Infrastruktur,Telekomunikasi,1994-10-19,ACTIVE
+ISEA,ISEA.JK,PT Indo American Seafoods Tbk,Barang Konsumen Primer,Makanan & Minuman,2024-07-08,ACTIVE
+ISSP,ISSP.JK,PT Steel Pipe Industry of Indonesia Tbk,Barang Baku,Barang Baku,2013-02-22,ACTIVE
+ITIC,ITIC.JK,PT Indonesian Tobacco Tbk.,Barang Konsumen Primer,Rokok,2019-07-04,ACTIVE
+ITMA,ITMA.JK,SUMBER ENERGI ANDALAN Tbk,Energi,"Minyak, Gas & Batu Bara",1990-12-10,ACTIVE
+ITMG,ITMG.JK,Indo Tambangraya Megah Tbk,Energi,"Minyak, Gas & Batu Bara",2007-12-18,ACTIVE
+JARR,JARR.JK,PT Jhonlin Agro Raya Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-08-04,ACTIVE
+JAST,JAST.JK,PT Jasnita Telekomindo Tbk.,Infrastruktur,Telekomunikasi,2019-05-16,ACTIVE
+JATI,JATI.JK,PT Informasi Teknologi Indonesia Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2023-05-08,ACTIVE
+JAWA,JAWA.JK,Jaya Agra Wattie Tbk,Barang Konsumen Primer,Makanan & Minuman,2011-05-30,ACTIVE
+JAYA,JAYA.JK,PT Armada Berjaya Trans Tbk.,Transportasi & Logistik,Logistik & Pengantaran,2019-02-21,ACTIVE
+JECC,JECC.JK,Jembo Cable Company Tbk,Perindustrian,Barang Perindustrian,1992-11-18,ACTIVE
+JECX,JECX.JK,PT Nitrasanata Dharma Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2026-07-07,ACTIVE
+JELI,JELI.JK,PT Niramas Utama Tbk,Barang Konsumen Primer,Makanan & Minuman,2026-07-07,ACTIVE
+JGLE,JGLE.JK,PT Graha Andrasentra Propertindo Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2016-06-29,ACTIVE
+JIHD,JIHD.JK,Jakarta International Hotels & Development Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,1984-02-29,ACTIVE
+JKON,JKON.JK,Jaya Konstruksi Manggala Pratama Tbk,Infrastruktur,Konstruksi Bangunan,2007-12-04,ACTIVE
+JMAS,JMAS.JK,PT Asuransi Jiwa Syariah Jasa Mitra Abadi Tbk,Keuangan,Asuransi,2017-12-18,ACTIVE
+JPFA,JPFA.JK,JAPFA Comfeed Indonesia Tbk,Barang Konsumen Primer,Makanan & Minuman,1989-10-23,ACTIVE
+JRPT,JRPT.JK,Jaya Real Property Tbk,Properti & Real Estat,Properti & Real Estat,1994-06-29,ACTIVE
+JSKY,JSKY.JK,PT Sky Energy Indonesia Tbk.,Energi,Energi Alternatif,2018-03-28,ACTIVE
+JSMR,JSMR.JK,PT Jasa Marga Tbk,Infrastruktur,Infrastruktur Transportasi,2007-11-12,ACTIVE
+JSPT,JSPT.JK,Jakarta Setiabudi Internasional Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,1998-01-12,ACTIVE
+JTPE,JTPE.JK,Jasuindo Tiga Perkasa Tbk,Perindustrian,Jasa Perindustrian,2002-04-16,ACTIVE
+KAEF,KAEF.JK,PT Kimia Farma (Persero) Tbk,Kesehatan,Farmasi & Riset Kesehatan,2001-07-04,ACTIVE
+KAQI,KAQI.JK,PT Jantra Grupo Indonesia Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,2025-03-10,ACTIVE
+KARW,KARW.JK,Meratus Jasa Prima Tbk,Infrastruktur,Infrastruktur Transportasi,1994-12-20,ACTIVE
+KAYU,KAYU.JK,PT Darmi Bersaudara Tbk.,Barang Baku,Barang Baku,2019-07-04,ACTIVE
+KBAG,KBAG.JK,PT Karya Bersama Anugerah Tbk,Properti & Real Estat,Properti & Real Estat,2020-04-08,ACTIVE
+KBLI,KBLI.JK,KMI Wire and Cable Tbk,Perindustrian,Barang Perindustrian,1992-07-06,ACTIVE
+KBLM,KBLM.JK,Kabelindo Murni Tbk,Perindustrian,Barang Perindustrian,1992-06-01,ACTIVE
+KBLV,KBLV.JK,First Media Tbk,Infrastruktur,Telekomunikasi,2000-02-25,ACTIVE
+KBRI,KBRI.JK,Kertas Basuki Rachmat Indonesia Tbk,Barang Baku,Barang Baku,2008-07-11,ACTIVE
+KDSI,KDSI.JK,Kedawung Setia Industrial Tbk,Barang Baku,Barang Baku,1996-07-29,ACTIVE
+KDTN,KDTN.JK,PT Puri Sentul Permai Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2022-11-09,ACTIVE
+KEEN,KEEN.JK,PT Kencana Energi Lestari Tbk.,Infrastruktur,Utilitas,2019-09-02,ACTIVE
+KEJU,KEJU.JK,PT Mulia Boga Raya Tbk,Barang Konsumen Primer,Makanan & Minuman,2019-11-25,ACTIVE
+KETR,KETR.JK,PT Ketrosden Triasmitra Tbk,Infrastruktur,Telekomunikasi,2021-01-11,ACTIVE
+KIAS,KIAS.JK,Keramika Indonesia Assosiasi Tbk,Perindustrian,Barang Perindustrian,1994-12-08,ACTIVE
+KICI,KICI.JK,Kedaung Indah Can Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,1993-10-28,ACTIVE
+KIJA,KIJA.JK,Kawasan Industri Jababeka Tbk,Properti & Real Estat,Properti & Real Estat,1995-01-10,ACTIVE
+KING,KING.JK,PT Hoffmen Cleanindo Tbk,Perindustrian,Jasa Perindustrian,2023-02-16,ACTIVE
+KINO,KINO.JK,PT Kino Indonesia Tbk,Barang Konsumen Primer,Produk Rumah Tangga Tidak Tahan Lama,2015-12-11,ACTIVE
+KIOS,KIOS.JK,PT Kioson Komersial Indonesia Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2017-10-05,ACTIVE
+KJEN,KJEN.JK,PT Krida Jaringan Nusantara Tbk.,Transportasi & Logistik,Logistik & Pengantaran,2019-07-01,ACTIVE
+KKES,KKES.JK,PT Kusuma Kemindo Sentosa Tbk,Barang Baku,Barang Baku,2022-08-08,ACTIVE
+KKGI,KKGI.JK,Resource Alam Indonesia Tbk,Energi,"Minyak, Gas & Batu Bara",1991-07-01,ACTIVE
+KLAS,KLAS.JK,PT Pelayaran Kurnia Lautan Semesta Tbk,Transportasi & Logistik,Logistik & Pengantaran,2023-06-12,ACTIVE
+KLBF,KLBF.JK,Kalbe Farma Tbk,Kesehatan,Farmasi & Riset Kesehatan,1991-07-30,ACTIVE
+KLIN,KLIN.JK,PT Klinko Karya Imaji Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2022-08-09,ACTIVE
+KMDS,KMDS.JK,PT Kurniamitra Duta Sentosa Tbk.,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,2020-09-07,ACTIVE
+KMTR,KMTR.JK,PT Kirana Megatara Tbk.,Barang Baku,Barang Baku,2017-06-19,ACTIVE
+KOBX,KOBX.JK,Kobexindo Tractors Tbk,Perindustrian,Barang Perindustrian,2012-07-05,ACTIVE
+KOCI,KOCI.JK,PT Kokoh Exa Nusantara,Properti & Real Estat,Properti & Real Estat,2023-10-07,ACTIVE
+KOIN,KOIN.JK,Kokoh Inti Arebama Tbk,Perindustrian,Barang Perindustrian,2008-04-09,ACTIVE
+KOKA,KOKA.JK,PT Koka Indonesia Tbk.,Infrastruktur,Konstruksi Bangunan,2023-10-11,ACTIVE
+KONI,KONI.JK,Perdana Bangun Pusaka Tbk,Perindustrian,Jasa Perindustrian,1995-08-22,ACTIVE
+KOPI,KOPI.JK,PT Mitra Energi Persada Tbk,Energi,"Minyak, Gas & Batu Bara",2015-05-04,ACTIVE
+KOTA,KOTA.JK,PT DMS Propertindo Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2019-07-09,ACTIVE
+KPIG,KPIG.JK,MNC Tourism Indonesia Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2000-03-30,ACTIVE
+KRAS,KRAS.JK,Krakatau Steel (Persero) Tbk,Barang Baku,Barang Baku,2010-11-10,ACTIVE
+KREN,KREN.JK,PT Quantum Clovera Investama Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2002-06-28,ACTIVE
+KRYA,KRYA.JK,PT Bangun Karya Perkasa Jaya Tbk,Infrastruktur,Konstruksi Bangunan,2022-07-25,ACTIVE
+KSIX,KSIX.JK,PT Kentanix Supra International Tbk,Properti & Real Estat,Properti & Real Estat,2025-01-08,ACTIVE
+KUAS,KUAS.JK,PT Ace Oldfields Tbk,Perindustrian,Barang Perindustrian,2021-10-25,ACTIVE
+LABA,LABA.JK,PT Green Power Group Tbk,Perindustrian,Barang Perindustrian,2021-06-10,ACTIVE
+LABS,LABS.JK,PT UBC Medical Indonesia Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2024-07-10,ACTIVE
+LAJU,LAJU.JK,PT Jasa Berdikari Logistics Tbk,Transportasi & Logistik,Logistik & Pengantaran,2023-01-27,ACTIVE
+LAND,LAND.JK,PT Trimitra Propertindo Tbk.,Properti & Real Estat,Properti & Real Estat,2018-08-23,ACTIVE
+LAPD,LAPD.JK,Leyand International Tbk,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,2001-07-17,ACTIVE
+LCGP,LCGP.JK,PT Eureka Prima Jakarta Tbk.,Properti & Real Estat,Properti & Real Estat,2007-07-13,ACTIVE
+LCKM,LCKM.JK,PT LCK Global Kedaton Tbk,Infrastruktur,Telekomunikasi,2018-01-16,ACTIVE
+LEAD,LEAD.JK,PT Logindo Samudramakmur Tbk.,Energi,"Minyak, Gas & Batu Bara",2013-12-11,ACTIVE
+LFLO,LFLO.JK,PT Imago Mulia Persada Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2021-04-07,ACTIVE
+LIFE,LIFE.JK,PT MSIG Life Insurance Indonesia Tbk.,Keuangan,Asuransi,2019-07-09,ACTIVE
+LINK,LINK.JK,PT Link Net Tbk.,Infrastruktur,Telekomunikasi,2014-06-02,ACTIVE
+LION,LION.JK,Lion Metal Works Tbk,Perindustrian,Jasa Perindustrian,1993-08-20,ACTIVE
+LIVE,LIVE.JK,PT Homeco Victoria Makmur Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2024-02-12,ACTIVE
+LMAS,LMAS.JK,Limas Indonesia Makmur Tbk,Teknologi,Perangkat Lunak & Jasa TI,2001-12-28,ACTIVE
+LMAX,LMAX.JK,PT Lupromax Pelumas Indonesia Tbk.,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,2023-08-09,ACTIVE
+LMPI,LMPI.JK,Langgeng Makmur Industri Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,1994-10-17,ACTIVE
+LMSH,LMSH.JK,Lionmesh Prima Tbk,Barang Baku,Barang Baku,1990-06-04,ACTIVE
+LOPI,LOPI.JK,PT Logisticsplus International Tbk,Transportasi & Logistik,Logistik & Pengantaran,2023-10-11,ACTIVE
+LPCK,LPCK.JK,Lippo Cikarang Tbk,Properti & Real Estat,Properti & Real Estat,1997-07-24,ACTIVE
+LPGI,LPGI.JK,Lippo General Insurance Tbk,Keuangan,Asuransi,1997-07-22,ACTIVE
+LPIN,LPIN.JK,Multi Prima Sejahtera Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,1990-02-05,ACTIVE
+LPKR,LPKR.JK,Lippo Karawaci Tbk,Properti & Real Estat,Properti & Real Estat,1996-06-28,ACTIVE
+LPLI,LPLI.JK,Star Pacific Tbk,Properti & Real Estat,Properti & Real Estat,1989-10-23,ACTIVE
+LPPF,LPPF.JK,PT MDS Retailing Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,1989-10-09,ACTIVE
+LPPS,LPPS.JK,PT Lenox Pasifik Investama Tbk,Keuangan,Perusahaan Holding & Investasi,1994-03-28,ACTIVE
+LRNA,LRNA.JK,PT Eka Sari Lorena Transport Tbk.,Transportasi & Logistik,Transportasi,2014-04-15,ACTIVE
+LSIP,LSIP.JK,PP London Sumatra Indonesia Tbk,Barang Konsumen Primer,Makanan & Minuman,1996-07-05,ACTIVE
+LTLS,LTLS.JK,PT Lautan Luas Tbk,Barang Baku,Barang Baku,1997-07-21,ACTIVE
+LUCK,LUCK.JK,PT Sentral Mitra Informatika Tbk.,Teknologi,Perangkat Keras & Peralatan Teknologi,2018-11-28,ACTIVE
+LUCY,LUCY.JK,PT Lima Dua Lima Tiga Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2021-05-05,ACTIVE
+MABA,MABA.JK,PT Marga Abhinaya Abadi Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2017-06-22,ACTIVE
+MAGP,MAGP.JK,Multi Agro Gemilang Plantation Tbk,Barang Konsumen Primer,Makanan & Minuman,2013-01-16,ACTIVE
+MAHA,MAHA.JK,PT Mandiri Herindo Adiperkasa Tbk,Energi,"Minyak, Gas & Batu Bara",2023-07-25,ACTIVE
+MAIN,MAIN.JK,Malindo Feedmill Tbk,Barang Konsumen Primer,Makanan & Minuman,2006-02-10,ACTIVE
+MANG,MANG.JK,PT Manggung Polahraya Tbk,Infrastruktur,Konstruksi Bangunan,2024-01-11,ACTIVE
+MAPA,MAPA.JK,PT Map Aktif Adiperkasa Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2018-07-05,ACTIVE
+MAPB,MAPB.JK,PT Map Boga Adiperkasa Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2017-06-21,ACTIVE
+MAPI,MAPI.JK,PT Mitra Adiperkasa Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2004-11-10,ACTIVE
+MARI,MARI.JK,PT Mahaka Radio Integra Tbk.,Barang Konsumen Non-Primer,Media & Hiburan,2016-02-11,ACTIVE
+MARK,MARK.JK,PT Mark Dynamics Indonesia Tbk.,Perindustrian,Barang Perindustrian,2017-07-12,ACTIVE
+MASB,MASB.JK,PT Bank Multiarta Sentosa Tbk,Keuangan,Bank,2021-06-30,ACTIVE
+MAXI,MAXI.JK,PT Maxindo Karya Anugerah Tbk,Barang Konsumen Primer,Makanan & Minuman,2023-06-12,ACTIVE
+MAYA,MAYA.JK,PT Bank Mayapada Internasional Tbk,Keuangan,Bank,1997-08-29,ACTIVE
+MBAP,MBAP.JK,PT Mitrabara Adiperdana Tbk,Energi,"Minyak, Gas & Batu Bara",2014-07-10,ACTIVE
+MBMA,MBMA.JK,PT Merdeka Battery Materials Tbk,Barang Baku,Barang Baku,2023-04-18,ACTIVE
+MBSS,MBSS.JK,Mitrabahtera Segara Sejati Tbk,Energi,"Minyak, Gas & Batu Bara",2011-04-06,ACTIVE
+MBTO,MBTO.JK,Martina Berto Tbk,Barang Konsumen Primer,Produk Rumah Tangga Tidak Tahan Lama,2011-01-13,ACTIVE
+MCAS,MCAS.JK,PT M Cash Integrasi Tbk,Teknologi,Perangkat Lunak & Jasa TI,2017-11-01,ACTIVE
+MCOL,MCOL.JK,PT Prima Andalan Mandiri Tbk,Energi,"Minyak, Gas & Batu Bara",2021-09-07,ACTIVE
+MCOR,MCOR.JK,PT Bank China Construction Bank Indonesia Tbk,Keuangan,Bank,2007-07-03,ACTIVE
+MDIA,MDIA.JK,PT Intermedia Capital Tbk.,Barang Konsumen Non-Primer,Media & Hiburan,2014-04-11,ACTIVE
+MDIY,MDIY.JK,PT Daya Intiguna Yasa Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2024-12-19,ACTIVE
+MDKA,MDKA.JK,PT Merdeka Copper Gold Tbk.,Barang Baku,Barang Baku,2015-06-19,ACTIVE
+MDKI,MDKI.JK,PT Emdeki Utama Tbk,Barang Baku,Barang Baku,2017-09-25,ACTIVE
+MDLA,MDLA.JK,PT Medela Potentia Tbk,Kesehatan,Farmasi & Riset Kesehatan,2025-04-15,ACTIVE
+MDLN,MDLN.JK,PT Modernland Realty Tbk.,Properti & Real Estat,Properti & Real Estat,1993-01-18,ACTIVE
+MDRN,MDRN.JK,Modern Internasional Tbk,Perindustrian,Jasa Perindustrian,1991-07-16,ACTIVE
+MEDC,MEDC.JK,PT Medco Energi Internasional Tbk,Energi,"Minyak, Gas & Batu Bara",1994-10-12,ACTIVE
+MEDS,MEDS.JK,PT Hetzer Medical Indonesia Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2022-08-10,ACTIVE
+MEGA,MEGA.JK,Bank Mega Tbk,Keuangan,Bank,2000-04-17,ACTIVE
+MEJA,MEJA.JK,PT Harta Djaya Karya Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2024-02-12,ACTIVE
+MENN,MENN.JK,PT Menn Teknologi Indonesia Tbk.,Teknologi,Perangkat Keras & Peralatan Teknologi,2023-04-18,ACTIVE
+MERI,MERI.JK,PT Merry Riana Edukasi Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2025-07-10,ACTIVE
+MERK,MERK.JK,Merck Tbk,Kesehatan,Farmasi & Riset Kesehatan,1981-07-23,ACTIVE
+META,META.JK,Nusantara Infrastructure Tbk,Infrastruktur,Infrastruktur Transportasi,2001-07-18,ACTIVE
+MFMI,MFMI.JK,Multifiling Mitra Indonesia Tbk,Perindustrian,Jasa Perindustrian,2010-12-29,ACTIVE
+MGLV,MGLV.JK,PT NexAI Digital Infrastruktur Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2021-06-08,ACTIVE
+MGNA,MGNA.JK,PT Magna Investama Mandiri Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2014-07-08,ACTIVE
+MGRO,MGRO.JK,PT Mahkota Group Tbk.,Barang Konsumen Primer,Makanan & Minuman,2018-07-12,ACTIVE
+MHKI,MHKI.JK,PT Multi Hanna Kreasindo Tbk,Perindustrian,Jasa Perindustrian,2024-04-16,ACTIVE
+MICE,MICE.JK,Multi Indocitra Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2005-12-21,ACTIVE
+MIDI,MIDI.JK,Midi Utama Indonesia Tbk,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,2010-11-30,ACTIVE
+MIKA,MIKA.JK,PT Mitra Keluarga Karyasehat Tbk.,Kesehatan,Jasa & Peralatan Kesehatan,2015-03-24,ACTIVE
+MINA,MINA.JK,PT Sanurhasta Mitra Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2017-04-28,ACTIVE
+MINE,MINE.JK,PT Sinar Terang Mandiri Tbk,Barang Baku,Barang Baku,2025-03-10,ACTIVE
+MIRA,MIRA.JK,Mitra International Resources Tbk,Transportasi & Logistik,Logistik & Pengantaran,1997-01-30,ACTIVE
+MITI,MITI.JK,Mitra Investindo Tbk,Transportasi & Logistik,Logistik & Pengantaran,1997-07-16,ACTIVE
+MKAP,MKAP.JK,PT Multikarya Asia Pasifik Raya Tbk,Energi,"Minyak, Gas & Batu Bara",2024-02-12,ACTIVE
+MKNT,MKNT.JK,PT Mitra Komunikasi Nusantara Tbk.,Barang Konsumen Non-Primer,Perdagangan Ritel,2015-10-26,ACTIVE
+MKPI,MKPI.JK,Metropolitan Kentjana Tbk,Properti & Real Estat,Properti & Real Estat,2009-07-10,ACTIVE
+MKTR,MKTR.JK,PT Menthobi Karyatama Raya Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-11-08,ACTIVE
+MLBI,MLBI.JK,Multi Bintang Indonesia Tbk,Barang Konsumen Primer,Makanan & Minuman,1981-12-15,ACTIVE
+MLIA,MLIA.JK,Mulia Industrindo Tbk,Perindustrian,Barang Perindustrian,1994-01-17,ACTIVE
+MLPL,MLPL.JK,Multipolar Tbk,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,1989-11-06,ACTIVE
+MLPT,MLPT.JK,PT Multipolar Technology Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2013-07-08,ACTIVE
+MMIX,MMIX.JK,PT Multi Medika Internasional Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2022-12-06,ACTIVE
+MMLP,MMLP.JK,PT Mega Manunggal Property Tbk.,Properti & Real Estat,Properti & Real Estat,2015-06-12,ACTIVE
+MNCN,MNCN.JK,Media Nusantara Citra Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2007-06-22,ACTIVE
+MOLI,MOLI.JK,PT Madusari Murni Indah Tbk.,Barang Baku,Barang Baku,2018-08-30,ACTIVE
+MORA,MORA.JK,PT Ekamas Mora Republik Tbk,Infrastruktur,Telekomunikasi,2022-08-08,ACTIVE
+MPIX,MPIX.JK,PT Mitra Pedagang Indonesia Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2024-02-07,ACTIVE
+MPMX,MPMX.JK,PT Mitra Pinasthika Mustika Tbk.,Barang Konsumen Non-Primer,Perdagangan Ritel,2013-05-29,ACTIVE
+MPOW,MPOW.JK,PT Megapower Makmur Tbk.,Infrastruktur,Utilitas,2017-07-05,ACTIVE
+MPPA,MPPA.JK,Matahari Putra Prima Tbk,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,1992-12-21,ACTIVE
+MPRO,MPRO.JK,PT Maha Properti Indonesia Tbk.,Properti & Real Estat,Properti & Real Estat,2018-10-09,ACTIVE
+MPXL,MPXL.JK,PT MPX Logistics International Tbk,Transportasi & Logistik,Logistik & Pengantaran,2023-05-09,ACTIVE
+MRAT,MRAT.JK,Mustika Ratu Tbk,Barang Konsumen Primer,Produk Rumah Tangga Tidak Tahan Lama,1995-07-27,ACTIVE
+MREI,MREI.JK,Maskapai Reasuransi Indonesia Tbk,Keuangan,Asuransi,1989-09-04,ACTIVE
+MSIE,MSIE.JK,PT Multisarana Intan Eduka Tbk,Properti & Real Estat,Properti & Real Estat,2023-08-10,ACTIVE
+MSIN,MSIN.JK,PT MNC Digital Entertainment Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2018-06-08,ACTIVE
+MSJA,MSJA.JK,PT Multi Spunindo Jaya Tbk.,Barang Konsumen Primer,Produk Rumah Tangga Tidak Tahan Lama,2024-01-10,ACTIVE
+MSKY,MSKY.JK,MNC Sky Vision Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2012-07-09,ACTIVE
+MSTI,MSTI.JK,PT Mastersystem Infotama Tbk.,Teknologi,Perangkat Keras & Peralatan Teknologi,2023-11-08,ACTIVE
+MTDL,MTDL.JK,Metrodata Electronics Tbk,Teknologi,Perangkat Keras & Peralatan Teknologi,1990-04-09,ACTIVE
+MTEL,MTEL.JK,PT Dayamitra Telekomunikasi Tbk,Infrastruktur,Telekomunikasi,2021-11-22,ACTIVE
+MTFN,MTFN.JK,Capitalinc Investment Tbk,Energi,"Minyak, Gas & Batu Bara",1990-04-16,ACTIVE
+MTLA,MTLA.JK,Metropolitan Land Tbk,Properti & Real Estat,Properti & Real Estat,2011-06-20,ACTIVE
+MTMH,MTMH.JK,PT Murni Sadar Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2022-04-20,ACTIVE
+MTPS,MTPS.JK,PT Meta Epsi Tbk.,Infrastruktur,Konstruksi Bangunan,2019-04-10,ACTIVE
+MTRA,MTRA.JK,PT Mitra Pemuda Tbk.,Infrastruktur,Konstruksi Bangunan,2016-02-10,ACTIVE
+MTSM,MTSM.JK,Metro Realty Tbk,Properti & Real Estat,Properti & Real Estat,1992-01-08,ACTIVE
+MTWI,MTWI.JK,PT Malacca Trust Wuwungan Insurance Tbk.,Keuangan,Asuransi,2017-10-12,ACTIVE
+MUTU,MUTU.JK,PT Mutuagung Lestari Tbk,Perindustrian,Jasa Perindustrian,2023-08-09,ACTIVE
+MYOH,MYOH.JK,Samindo Resources Tbk,Energi,"Minyak, Gas & Batu Bara",2000-07-27,ACTIVE
+MYOR,MYOR.JK,Mayora Indah Tbk,Barang Konsumen Primer,Makanan & Minuman,1990-07-04,ACTIVE
+MYTX,MYTX.JK,PT Asia Pacific Investama Tbk.,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1989-10-10,ACTIVE
+NAIK,NAIK.JK,PT Adiwarna Anugerah Abadi Tbk,Perindustrian,Jasa Perindustrian,2024-11-13,ACTIVE
+NANO,NANO.JK,PT Nanotech Indonesia Global Tbk,Barang Konsumen Primer,Produk Rumah Tangga Tidak Tahan Lama,2022-03-10,ACTIVE
+NASA,NASA.JK,PT Andalan Perkasa Abadi Tbk,Properti & Real Estat,Properti & Real Estat,2017-08-07,ACTIVE
+NASI,NASI.JK,PT Wahana Inti Makmur Tbk,Barang Konsumen Primer,Makanan & Minuman,2021-12-13,ACTIVE
+NATO,NATO.JK,PT Olympus Strategic Indonesia Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2019-01-18,ACTIVE
+NAYZ,NAYZ.JK,PT Hassana Boga Sejahtera Tbk,Barang Konsumen Primer,Makanan & Minuman,2023-02-06,ACTIVE
+NCKL,NCKL.JK,PT Trimegah Bangun Persada Tbk.,Barang Baku,Barang Baku,2023-04-12,ACTIVE
+NELY,NELY.JK,Pelayaran Nelly Dwi Putri Tbk,Transportasi & Logistik,Logistik & Pengantaran,2012-10-11,ACTIVE
+NEST,NEST.JK,PT Esta Indonesia Tbk,Barang Konsumen Primer,Makanan & Minuman,2024-08-08,ACTIVE
+NETV,NETV.JK,PT MDTV Media Technologies Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2022-01-26,ACTIVE
+NFCX,NFCX.JK,PT NFC Indonesia Tbk,Teknologi,Perangkat Lunak & Jasa TI,2018-07-12,ACTIVE
+NICE,NICE.JK,PT Adhi Kartiko Pratama Tbk,Barang Baku,Barang Baku,2024-01-09,ACTIVE
+NICK,NICK.JK,PT Charnic Capital Tbk.,Keuangan,Perusahaan Holding & Investasi,2018-05-02,ACTIVE
+NICL,NICL.JK,PT PAM Mineral Tbk,Barang Baku,Barang Baku,2021-07-09,ACTIVE
+NIKL,NIKL.JK,Pelat Timah Nusantara Tbk,Barang Baku,Barang Baku,2009-12-14,ACTIVE
+NINE,NINE.JK,PT Techno9 Indonesia Tbk,Teknologi,Perangkat Keras & Peralatan Teknologi,2022-12-05,ACTIVE
+NIRO,NIRO.JK,City Retail Developments Tbk,Properti & Real Estat,Properti & Real Estat,2012-09-13,ACTIVE
+NISP,NISP.JK,PT Bank OCBC NISP Tbk,Keuangan,Bank,1994-10-20,ACTIVE
+NOBU,NOBU.JK,PT Bank Nationalnobu Tbk.,Keuangan,Bank,2013-05-20,ACTIVE
+NPGF,NPGF.JK,PT Nusa Palapa Gemilang Tbk,Barang Baku,Barang Baku,2021-04-14,ACTIVE
+NRCA,NRCA.JK,PT Nusa Raya Cipta Tbk.,Infrastruktur,Konstruksi Bangunan,2013-06-27,ACTIVE
+NSSS,NSSS.JK,PT Nusantara Sawit Sejahtera Tbk,Barang Konsumen Primer,Makanan & Minuman,2023-03-10,ACTIVE
+NTBK,NTBK.JK,PT Nusatama Berkah Tbk,Perindustrian,Barang Perindustrian,2022-02-09,ACTIVE
+NUSA,NUSA.JK,PT Sinergi Megah Internusa Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2018-07-12,ACTIVE
+NZIA,NZIA.JK,"PT Nusantara Almazia, Tbk.",Properti & Real Estat,Properti & Real Estat,2019-09-25,ACTIVE
+OASA,OASA.JK,PT Maharaksa Biru Energi Tbk,Infrastruktur,Telekomunikasi,2016-07-18,ACTIVE
+OBAT,OBAT.JK,PT Brigit Biofarmaka Teknologi Tbk,Kesehatan,Farmasi & Riset Kesehatan,2025-01-13,ACTIVE
+OBMD,OBMD.JK,PT OBM Drilchem Tbk,Barang Baku,Barang Baku,2021-12-08,ACTIVE
+OCAP,OCAP.JK,ONIX CAPITAL Tbk,Keuangan,Perusahaan Holding & Investasi,2003-10-10,ACTIVE
+OILS,OILS.JK,PT Indo Oil Perkasa Tbk,Barang Konsumen Primer,Makanan & Minuman,2021-09-06,ACTIVE
+OKAS,OKAS.JK,Ancora Indonesia Resources Tbk,Barang Baku,Barang Baku,2006-03-29,ACTIVE
+OLIV,OLIV.JK,PT Atlas Nexus Group Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2022-05-17,ACTIVE
+OMED,OMED.JK,PT Jayamas Medica Industri Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2022-11-08,ACTIVE
+OMRE,OMRE.JK,Indonesia Prima Property Tbk,Properti & Real Estat,Properti & Real Estat,1994-08-22,ACTIVE
+OPMS,OPMS.JK,PT Optima Prima Metal Sinergi Tbk.,Barang Baku,Barang Baku,2019-09-23,ACTIVE
+PACK,PACK.JK,PT Abadi Nusantara Hijau Investama Tbk,Barang Baku,Barang Baku,2023-02-08,ACTIVE
+PADA,PADA.JK,PT Personel Alih Daya Tbk,Perindustrian,Jasa Perindustrian,2022-12-08,ACTIVE
+PADI,PADI.JK,Minna Padi Investama Sekuritas Tbk,Keuangan,Jasa Investasi,2012-01-09,ACTIVE
+PALM,PALM.JK,PT Provident Investasi Bersama Tbk,Keuangan,Perusahaan Holding & Investasi,2012-10-08,ACTIVE
+PAMG,PAMG.JK,PT Bima Sakti Pertiwi Tbk,Properti & Real Estat,Properti & Real Estat,2019-07-05,ACTIVE
+PANI,PANI.JK,PT Pantai Indah Kapuk Dua Tbk.,Properti & Real Estat,Properti & Real Estat,2018-09-18,ACTIVE
+PANR,PANR.JK,Panorama Sentrawisata Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2001-09-18,ACTIVE
+PANS,PANS.JK,Panin Sekuritas Tbk,Keuangan,Jasa Investasi,2000-05-31,ACTIVE
+PART,PART.JK,PT Cipta Perdana Lancar Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,2024-07-05,ACTIVE
+PBID,PBID.JK,PT Panca Budi Idaman Tbk,Barang Baku,Barang Baku,2017-12-13,ACTIVE
+PBRX,PBRX.JK,Pan Brothers Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1990-08-16,ACTIVE
+PBSA,PBSA.JK,PT Paramita Bangun Sarana Tbk,Infrastruktur,Konstruksi Bangunan,2016-09-28,ACTIVE
+PCAR,PCAR.JK,PT Prima Cakrawala Abadi Tbk,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,2017-12-29,ACTIVE
+PDES,PDES.JK,Destinasi Tirta Nusantara Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2008-07-08,ACTIVE
+PDPP,PDPP.JK,PT Primadaya Plastisindo Tbk,Barang Baku,Barang Baku,2022-11-09,ACTIVE
+PEGE,PEGE.JK,PT Panca Global Kapital Tbk.,Keuangan,Perusahaan Holding & Investasi,2005-06-24,ACTIVE
+PEHA,PEHA.JK,PT Phapros Tbk,Kesehatan,Farmasi & Riset Kesehatan,2018-12-26,ACTIVE
+PEVE,PEVE.JK,PT Penta Valent Tbk,Kesehatan,Farmasi & Riset Kesehatan,2023-01-24,ACTIVE
+PGAS,PGAS.JK,PT Perusahaan Gas Negara (Persero) Tbk,Energi,"Minyak, Gas & Batu Bara",2003-12-15,ACTIVE
+PGEO,PGEO.JK,PT Pertamina Geothermal Energy Tbk,Infrastruktur,Utilitas,2023-02-24,ACTIVE
+PGJO,PGJO.JK,PT Bahtera Bumi Raya Tbk,Teknologi,Perangkat Lunak & Jasa TI,2020-01-08,ACTIVE
+PGLI,PGLI.JK,Pembangunan Graha Lestari Indah Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2000-04-05,ACTIVE
+PGUN,PGUN.JK,PT Pradiksi Gunatama Tbk,Barang Konsumen Primer,Makanan & Minuman,2020-07-07,ACTIVE
+PICO,PICO.JK,Pelangi Indah Canindo Tbk,Barang Baku,Barang Baku,1996-09-23,ACTIVE
+PIPA,PIPA.JK,PT Oxala Energy International Tbk,Perindustrian,Barang Perindustrian,2023-04-10,ACTIVE
+PJAA,PJAA.JK,Pembangunan Jaya Ancol Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2004-07-02,ACTIVE
+PJHB,PJHB.JK,PT Pelayaran Jaya Hidup Baru Tbk,Transportasi & Logistik,Logistik & Pengantaran,2025-11-06,ACTIVE
+PKPK,PKPK.JK,Paragon Karya Perkasa Tbk,Energi,"Minyak, Gas & Batu Bara",2007-07-11,ACTIVE
+PLAN,PLAN.JK,PT Planet Properindo Jaya Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2020-09-15,ACTIVE
+PLAS,PLAS.JK,Polaris Investama Tbk,Keuangan,Perusahaan Holding & Investasi,2001-03-16,ACTIVE
+PLIN,PLIN.JK,Plaza Indonesia Realty Tbk,Properti & Real Estat,Properti & Real Estat,1992-06-15,ACTIVE
+PMJS,PMJS.JK,PT Putra Mandiri Jembar Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2019-12-18,ACTIVE
+PMMP,PMMP.JK,PT Panca Mitra Multiperdana Tbk.,Barang Konsumen Primer,Makanan & Minuman,2020-12-18,ACTIVE
+PMUI,PMUI.JK,PT Prima Multi Usaha Indonesia Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2025-07-10,ACTIVE
+PNBN,PNBN.JK,Bank Pan Indonesia Tbk,Keuangan,Bank,1982-12-29,ACTIVE
+PNBS,PNBS.JK,PT Bank Panin Dubai Syariah Tbk.,Keuangan,Bank,2014-01-15,ACTIVE
+PNGO,PNGO.JK,PT AEP Pinago Plantations Tbk,Barang Konsumen Primer,Makanan & Minuman,2020-08-31,ACTIVE
+PNIN,PNIN.JK,Paninvest Tbk,Keuangan,Asuransi,1983-09-20,ACTIVE
+PNLF,PNLF.JK,Panin Financial Tbk,Keuangan,Asuransi,1983-06-14,ACTIVE
+PNSE,PNSE.JK,Pudjiadi & Sons Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,1990-05-01,ACTIVE
+POLA,POLA.JK,PT Pool Advista Finance Tbk.,Keuangan,Jasa Pembiayaan,2018-11-16,ACTIVE
+POLI,POLI.JK,PT Pollux Hotels Group Tbk,Properti & Real Estat,Properti & Real Estat,2019-01-10,ACTIVE
+POLL,POLL.JK,PT Pollux Properties Indonesia Tbk.,Properti & Real Estat,Properti & Real Estat,2018-07-11,ACTIVE
+POLU,POLU.JK,PT Golden Flower Tbk.,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,2019-06-26,ACTIVE
+POLY,POLY.JK,Asia Pacific Fibers Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1991-03-12,ACTIVE
+POOL,POOL.JK,Pool Advista Indonesia Tbk,Keuangan,Perusahaan Holding & Investasi,1991-05-20,ACTIVE
+PORT,PORT.JK,PT Nusantara Pelabuhan Handal Tbk.,Infrastruktur,Infrastruktur Transportasi,2017-03-16,ACTIVE
+POSA,POSA.JK,PT Bliss Properti Indonesia Tbk.,Properti & Real Estat,Properti & Real Estat,2019-05-10,ACTIVE
+POWR,POWR.JK,PT Cikarang Listrindo Tbk.,Infrastruktur,Utilitas,2016-06-14,ACTIVE
+PPGL,PPGL.JK,PT Prima Globalindo Logistik Tbk.,Transportasi & Logistik,Logistik & Pengantaran,2020-07-20,ACTIVE
+PPRE,PPRE.JK,PT PP Presisi Tbk.,Infrastruktur,Konstruksi Bangunan,2017-11-24,ACTIVE
+PPRI,PPRI.JK,PT Paperocks Indonesia Tbk.,Barang Baku,Barang Baku,2023-08-08,ACTIVE
+PPRO,PPRO.JK,PT PP Properti Tbk.,Properti & Real Estat,Properti & Real Estat,2015-05-19,ACTIVE
+PRAY,PRAY.JK,PT Famon Awal Bros Sedaya Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2022-11-08,ACTIVE
+PRDA,PRDA.JK,PT Prodia Widyahusada Tbk.,Kesehatan,Jasa & Peralatan Kesehatan,2016-12-07,ACTIVE
+PRDL,PRDL.JK,PT Prodia Diagnostic Line Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2026-07-09,ACTIVE
+PRIM,PRIM.JK,PT Royal Prima Tbk.,Kesehatan,Jasa & Peralatan Kesehatan,2018-05-15,ACTIVE
+PSAB,PSAB.JK,J RESOURCES ASIA PASIFIK Tbk,Barang Baku,Barang Baku,2003-04-22,ACTIVE
+PSAT,PSAT.JK,PT Pancaran Samudera Transport Tbk,Energi,"Minyak, Gas & Batu Bara",2025-07-08,ACTIVE
+PSDN,PSDN.JK,Prasidha Aneka Niaga Tbk,Barang Konsumen Primer,Makanan & Minuman,1994-10-18,ACTIVE
+PSGO,PSGO.JK,PT Palma Serasih Tbk.,Barang Konsumen Primer,Makanan & Minuman,2019-11-25,ACTIVE
+PSKT,PSKT.JK,PT Red Planet Indonesia Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,1995-09-19,ACTIVE
+PSSI,PSSI.JK,PT IMC Pelita Logistik Tbk,Energi,"Minyak, Gas & Batu Bara",2017-12-05,ACTIVE
+PTBA,PTBA.JK,PT Bukit Asam (Persero) Tbk,Energi,"Minyak, Gas & Batu Bara",2002-12-23,ACTIVE
+PTDU,PTDU.JK,PT Djasa Ubersakti Tbk,Infrastruktur,Konstruksi Bangunan,2020-12-08,ACTIVE
+PTIS,PTIS.JK,Indo Straits Tbk,Energi,"Minyak, Gas & Batu Bara",2011-07-12,ACTIVE
+PTMP,PTMP.JK,PT Mitra Pack Tbk.,Perindustrian,Barang Perindustrian,2023-03-06,ACTIVE
+PTMR,PTMR.JK,PT Master Print Tbk,Barang Baku,Barang Baku,2024-10-08,ACTIVE
+PTPP,PTPP.JK,PP (Persero) Tbk,Infrastruktur,Konstruksi Bangunan,2010-02-09,ACTIVE
+PTPS,PTPS.JK,PT Pulau Subur Tbk.,Barang Konsumen Primer,Makanan & Minuman,2023-10-09,ACTIVE
+PTPW,PTPW.JK,PT Pratama Widya Tbk.,Infrastruktur,Konstruksi Bangunan,2020-02-07,ACTIVE
+PTRO,PTRO.JK,Petrosea Tbk,Energi,"Minyak, Gas & Batu Bara",1990-05-21,ACTIVE
+PTSN,PTSN.JK,Sat Nusapersada Tbk,Teknologi,Perangkat Keras & Peralatan Teknologi,2007-11-08,ACTIVE
+PTSP,PTSP.JK,Pioneerindo Gourmet International Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,1994-05-30,ACTIVE
+PUDP,PUDP.JK,Pudjiadi Prestige Tbk,Properti & Real Estat,Properti & Real Estat,1994-11-18,ACTIVE
+PURA,PURA.JK,PT Putra Rajawali Kencana Tbk.,Transportasi & Logistik,Logistik & Pengantaran,2020-01-29,ACTIVE
+PURE,PURE.JK,PT Trinitan Metals and Minerals Tbk,Barang Baku,Barang Baku,2019-10-09,ACTIVE
+PURI,PURI.JK,PT Puri Global Sukses Tbk,Properti & Real Estat,Properti & Real Estat,2020-09-08,ACTIVE
+PWON,PWON.JK,Pakuwon Jati Tbk,Properti & Real Estat,Properti & Real Estat,1989-10-09,ACTIVE
+PYFA,PYFA.JK,PT Pyridam Farma Tbk,Kesehatan,Farmasi & Riset Kesehatan,2001-10-16,ACTIVE
+PZZA,PZZA.JK,PT Sarimelati Kencana Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2018-05-23,ACTIVE
+RAAM,RAAM.JK,PT Tripar Multivision Plus Tbk.,Barang Konsumen Non-Primer,Media & Hiburan,2023-05-08,ACTIVE
+RAFI,RAFI.JK,PT Sari Kreasi Boga Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2022-08-05,ACTIVE
+RAJA,RAJA.JK,Rukun Raharja Tbk,Energi,"Minyak, Gas & Batu Bara",2006-04-19,ACTIVE
+RALS,RALS.JK,Ramayana Lestari Sentosa Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,1996-07-24,ACTIVE
+RANC,RANC.JK,Supra Boga Lestari Tbk,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,2012-06-07,ACTIVE
+RANS,RANS.JK,PT Rans Entertainmen Indonesia Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2026-07-10,ACTIVE
+RATU,RATU.JK,PT Raharja Energi Cepu Tbk,Energi,"Minyak, Gas & Batu Bara",2025-01-08,ACTIVE
+RBMS,RBMS.JK,Ristia Bintang Mahkotasejati Tbk,Properti & Real Estat,Properti & Real Estat,1997-12-19,ACTIVE
+RCCC,RCCC.JK,PT Utama Radar Cahaya Tbk,Transportasi & Logistik,Logistik & Pengantaran,2022-08-02,ACTIVE
+RDTX,RDTX.JK,Roda Vivatex Tbk,Properti & Real Estat,Properti & Real Estat,1990-05-14,ACTIVE
+REAL,REAL.JK,PT Repower Asia Indonesia Tbk.,Properti & Real Estat,Properti & Real Estat,2019-12-06,ACTIVE
+RELF,RELF.JK,PT Graha Mitra Asia Tbk.,Properti & Real Estat,Properti & Real Estat,2023-06-22,ACTIVE
+RELI,RELI.JK,Reliance Sekuritas Indonesia Tbk,Keuangan,Jasa Investasi,2005-07-13,ACTIVE
+RGAS,RGAS.JK,PT Kian Santang Muliatama Tbk.,Energi,"Minyak, Gas & Batu Bara",2023-11-08,ACTIVE
+RICY,RICY.JK,Ricky Putra Globalindo Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1998-01-22,ACTIVE
+RIGS,RIGS.JK,Rig Tenders Tbk,Energi,"Minyak, Gas & Batu Bara",1990-03-05,ACTIVE
+RIMO,RIMO.JK,PT Rimo International Lestari Tbk.,Properti & Real Estat,Properti & Real Estat,2000-11-10,ACTIVE
+RISE,RISE.JK,PT Jaya Sukses Makmur Sentosa Tbk.,Properti & Real Estat,Properti & Real Estat,2018-07-09,ACTIVE
+RLCO,RLCO.JK,PT Abadi Lestari Indonesia Tbk,Barang Konsumen Primer,Makanan & Minuman,2025-12-08,ACTIVE
+RMKE,RMKE.JK,PT RMK Energy Tbk,Energi,"Minyak, Gas & Batu Bara",2021-12-07,ACTIVE
+RMKO,RMKO.JK,PT Royaltama Mulia Kontraktorindo Tbk.,Energi,"Minyak, Gas & Batu Bara",2023-07-31,ACTIVE
+ROCK,ROCK.JK,PT Rockfields Properti Indonesia Tbk.,Properti & Real Estat,Properti & Real Estat,2020-09-10,ACTIVE
+RODA,RODA.JK,Pikko Land Development Tbk,Properti & Real Estat,Properti & Real Estat,2001-10-22,ACTIVE
+RONY,RONY.JK,PT Aracord Nusantara Group Tbk,Infrastruktur,Konstruksi Bangunan,2020-04-09,ACTIVE
+ROTI,ROTI.JK,PT Nippon Indosari Corpindo Tbk,Barang Konsumen Primer,Makanan & Minuman,2010-06-28,ACTIVE
+RSCH,RSCH.JK,PT Charlie Hospital Semarang Tbk.,Kesehatan,Jasa & Peralatan Kesehatan,2023-08-28,ACTIVE
+RSGK,RSGK.JK,PT Kedoya Adyaraya Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2021-09-08,ACTIVE
+RUIS,RUIS.JK,Radiant Utama Interinsco Tbk,Energi,"Minyak, Gas & Batu Bara",2006-07-12,ACTIVE
+RUNS,RUNS.JK,PT Global Sukses Solusi Tbk,Teknologi,Perangkat Lunak & Jasa TI,2021-09-08,ACTIVE
+SAFE,SAFE.JK,Steady Safe Tbk,Transportasi & Logistik,Transportasi,1994-08-15,ACTIVE
+SAGE,SAGE.JK,PT Saptausaha Gemilangindah Tbk,Properti & Real Estat,Properti & Real Estat,2023-03-08,ACTIVE
+SAME,SAME.JK,Sarana Meditama Metropolitan Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2013-01-11,ACTIVE
+SAMF,SAMF.JK,PT Saraswanti Anugerah Makmur Tbk.,Barang Baku,Barang Baku,2020-03-31,ACTIVE
+SAPX,SAPX.JK,PT Satria Antaran Prima Tbk.,Transportasi & Logistik,Logistik & Pengantaran,2018-10-03,ACTIVE
+SATU,SATU.JK,PT Kota Satu Properti Tbk.,Properti & Real Estat,Properti & Real Estat,2018-11-05,ACTIVE
+SBAT,SBAT.JK,PT Sejahtera Bintang Abadi Textile Tbk.,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,2020-04-08,ACTIVE
+SBMA,SBMA.JK,PT Surya Biru Murni Acetylene Tbk,Barang Baku,Barang Baku,2021-09-08,ACTIVE
+SCCO,SCCO.JK,PT Supreme Cable Manufacturing & Commerce Tbk,Perindustrian,Barang Perindustrian,1982-07-20,ACTIVE
+SCMA,SCMA.JK,Surya Citra Media Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2002-07-16,ACTIVE
+SCNP,SCNP.JK,PT Selaras Citra Nusantara Perkasa Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2020-09-07,ACTIVE
+SCPI,SCPI.JK,PT Organon Pharma Indonesia Tbk,Kesehatan,Farmasi & Riset Kesehatan,1990-06-08,ACTIVE
+SDMU,SDMU.JK,Sidomulyo Selaras Tbk,Transportasi & Logistik,Logistik & Pengantaran,2011-07-12,ACTIVE
+SDPC,SDPC.JK,Millennium Pharmacon International Tbk,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,1990-05-07,ACTIVE
+SDRA,SDRA.JK,PT Bank Woori Saudara Indonesia 1906 Tbk,Keuangan,Bank,2006-12-15,ACTIVE
+SEMA,SEMA.JK,PT Semacom Integrated Tbk,Energi,Energi Alternatif,2022-01-10,ACTIVE
+SFAN,SFAN.JK,PT Surya Fajar Capital Tbk,Keuangan,Perusahaan Holding & Investasi,2019-06-19,ACTIVE
+SGER,SGER.JK,PT Sumber Global Energy Tbk.,Energi,"Minyak, Gas & Batu Bara",2020-08-10,ACTIVE
+SGRO,SGRO.JK,PT Prime Agri Resources Tbk,Barang Konsumen Primer,Makanan & Minuman,2007-06-18,ACTIVE
+SHID,SHID.JK,Hotel Sahid Jaya Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,1990-05-08,ACTIVE
+SHIP,SHIP.JK,PT Sillo Maritime Perdana Tbk,Energi,"Minyak, Gas & Batu Bara",2016-06-16,ACTIVE
+SICO,SICO.JK,PT Sigma Energy Compressindo Tbk,Energi,"Minyak, Gas & Batu Bara",2022-04-08,ACTIVE
+SIDO,SIDO.JK,PT Industri Jamu Dan Farmasi Sido Muncul Tbk,Kesehatan,Farmasi & Riset Kesehatan,2013-12-18,ACTIVE
+SILO,SILO.JK,PT Siloam International Hospitals Tbk.,Kesehatan,Jasa & Peralatan Kesehatan,2013-09-12,ACTIVE
+SIMA,SIMA.JK,Siwani Makmur Tbk,Barang Baku,Barang Baku,1994-06-03,ACTIVE
+SIMP,SIMP.JK,Salim Ivomas Pratama Tbk,Barang Konsumen Primer,Makanan & Minuman,2011-06-09,ACTIVE
+SINI,SINI.JK,PT Singaraja Putra Tbk.,Perindustrian,Barang Perindustrian,2019-11-08,ACTIVE
+SIPD,SIPD.JK,PT Sreeya Sewu Indonesia Tbk,Barang Konsumen Primer,Makanan & Minuman,1996-12-27,ACTIVE
+SKBM,SKBM.JK,Sekar Bumi Tbk,Barang Konsumen Primer,Makanan & Minuman,2012-09-28,ACTIVE
+SKLT,SKLT.JK,Sekar Laut Tbk,Barang Konsumen Primer,Makanan & Minuman,1993-09-08,ACTIVE
+SKRN,SKRN.JK,PT Superkrane Mitra Utama Tbk,Perindustrian,Barang Perindustrian,2018-10-11,ACTIVE
+SKYB,SKYB.JK,PT Northcliff Citranusa Indonesia Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2010-07-07,ACTIVE
+SLIS,SLIS.JK,PT Gaya Abadi Sempurna Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2019-10-07,ACTIVE
+SMAR,SMAR.JK,PT Sinar Mas Agro Resources and Technology Tbk,Barang Konsumen Primer,Makanan & Minuman,1992-11-20,ACTIVE
+SMBR,SMBR.JK,PT Semen Baturaja (Persero) Tbk,Barang Baku,Barang Baku,2013-06-28,ACTIVE
+SMCB,SMCB.JK,PT Solusi Bangun Indonesia Tbk,Barang Baku,Barang Baku,1977-08-10,ACTIVE
+SMDM,SMDM.JK,Suryamas Dutamakmur Tbk,Properti & Real Estat,Properti & Real Estat,1995-10-12,ACTIVE
+SMDR,SMDR.JK,Samudera Indonesia Tbk,Transportasi & Logistik,Logistik & Pengantaran,1999-07-05,ACTIVE
+SMGA,SMGA.JK,PT Sumber Mineral Global Abadi Tbk,Barang Baku,Barang Baku,2024-01-30,ACTIVE
+SMGR,SMGR.JK,Semen Indonesia (Persero) Tbk,Barang Baku,Barang Baku,1991-07-08,ACTIVE
+SMIL,SMIL.JK,PT Sarana Mitra Luas Tbk,Perindustrian,Barang Perindustrian,2023-05-12,ACTIVE
+SMKL,SMKL.JK,PT Satyamitra Kemas Lestari Tbk,Barang Baku,Barang Baku,2019-07-11,ACTIVE
+SMKM,SMKM.JK,PT Sumber Mas Konstruksi Tbk,Infrastruktur,Konstruksi Bangunan,2022-03-09,ACTIVE
+SMLE,SMLE.JK,PT Sinergi Multi Lestarindo Tbk,Barang Baku,Barang Baku,2024-01-10,ACTIVE
+SMMA,SMMA.JK,PT Sinar Mas Multiartha Tbk,Keuangan,Perusahaan Holding & Investasi,1995-07-05,ACTIVE
+SMMT,SMMT.JK,GOLDEN EAGLE ENERGY Tbk,Energi,"Minyak, Gas & Batu Bara",1997-12-01,ACTIVE
+SMRA,SMRA.JK,PT Summarecon Agung Tbk,Properti & Real Estat,Properti & Real Estat,1990-05-07,ACTIVE
+SMRU,SMRU.JK,SMR Utama Tbk,Energi,"Minyak, Gas & Batu Bara",2011-10-10,ACTIVE
+SMSM,SMSM.JK,Selamat Sempurna Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,1996-09-09,ACTIVE
+SNLK,SNLK.JK,PT Sunter Lakeside Hotel Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2021-03-29,ACTIVE
+SOCI,SOCI.JK,PT Soechi Lines Tbk.,Energi,"Minyak, Gas & Batu Bara",2014-12-03,ACTIVE
+SOFA,SOFA.JK,PT Solusi Environment Asia Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2020-07-07,ACTIVE
+SOHO,SOHO.JK,PT Soho Global Health Tbk,Kesehatan,Farmasi & Riset Kesehatan,2020-09-08,ACTIVE
+SOLA,SOLA.JK,PT Xolare RCR Energy Tbk,Barang Baku,Barang Baku,2024-05-08,ACTIVE
+SONA,SONA.JK,Sona Topas Tourism Industry Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,1992-07-21,ACTIVE
+SOSS,SOSS.JK,PT ALSOK Indonesia Services Tbk,Perindustrian,Jasa Perindustrian,2018-11-06,ACTIVE
+SOTS,SOTS.JK,PT Satria Mega Kencana Tbk.,Barang Konsumen Non-Primer,Jasa Konsumen,2018-12-10,ACTIVE
+SOUL,SOUL.JK,PT Mitra Tirta Buwana Tbk,Barang Konsumen Primer,Makanan & Minuman,2023-01-06,ACTIVE
+SPMA,SPMA.JK,Suparma Tbk,Barang Baku,Barang Baku,1994-11-16,ACTIVE
+SPRE,SPRE.JK,PT Soraya Berjaya Indonesia Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,2024-07-03,ACTIVE
+SPTO,SPTO.JK,PT Surya Pertiwi Tbk,Perindustrian,Barang Perindustrian,2018-05-14,ACTIVE
+SQMI,SQMI.JK,Wilton Makmur Indonesia Tbk,Barang Baku,Barang Baku,2004-07-15,ACTIVE
+SRAJ,SRAJ.JK,Sejahteraraya Anugrahjaya Tbk,Kesehatan,Jasa & Peralatan Kesehatan,2011-04-11,ACTIVE
+SRIL,SRIL.JK,PT Sri Rejeki Isman Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,2013-06-17,ACTIVE
+SRSN,SRSN.JK,Indo Acidatama Tbk,Barang Baku,Barang Baku,1993-01-11,ACTIVE
+SRTG,SRTG.JK,PT Saratoga Investama Sedaya Tbk.,Keuangan,Perusahaan Holding & Investasi,2013-06-26,ACTIVE
+SSIA,SSIA.JK,PT Surya Semesta Internusa Tbk,Infrastruktur,Konstruksi Bangunan,1997-03-27,ACTIVE
+SSMS,SSMS.JK,PT Sawit Sumbermas Sarana Tbk.,Barang Konsumen Primer,Makanan & Minuman,2013-12-12,ACTIVE
+SSTM,SSTM.JK,Sunson Textile Manufacturer Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1997-08-20,ACTIVE
+STAA,STAA.JK,PT Sumber Tani Agung Resources Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-03-10,ACTIVE
+STAR,STAR.JK,PT Buana Artha Anugerah Tbk.,Keuangan,Perusahaan Holding & Investasi,2011-07-13,ACTIVE
+STRK,STRK.JK,PT Lovina Beach Brewery Tbk.,Barang Konsumen Primer,Makanan & Minuman,2023-10-10,ACTIVE
+STTP,STTP.JK,PT Siantar Top Tbk,Barang Konsumen Primer,Makanan & Minuman,1996-12-16,ACTIVE
+SUGI,SUGI.JK,Sugih Energy Tbk,Energi,"Minyak, Gas & Batu Bara",2002-06-19,ACTIVE
+SULI,SULI.JK,PT SLJ Global Tbk,Barang Baku,Barang Baku,1994-03-21,ACTIVE
+SUNI,SUNI.JK,PT Sunindo Pratama Tbk,Energi,"Minyak, Gas & Batu Bara",2023-01-09,ACTIVE
+SUPA,SUPA.JK,PT Super Bank Indonesia Tbk,Keuangan,Bank,2025-12-17,ACTIVE
+SUPR,SUPR.JK,Solusi Tunas Pratama Tbk,Infrastruktur,Telekomunikasi,2011-10-11,ACTIVE
+SURE,SURE.JK,PT Super Energy Tbk.,Energi,"Minyak, Gas & Batu Bara",2018-10-05,ACTIVE
+SURI,SURI.JK,PT Maja Agung Latexindo Tbk.,Kesehatan,Jasa & Peralatan Kesehatan,2023-12-07,ACTIVE
+SWAT,SWAT.JK,PT Sriwahana Adityakarta Tbk.,Barang Baku,Barang Baku,2018-06-08,ACTIVE
+SWID,SWID.JK,PT Saraswanti Indoland Development Tbk,Barang Konsumen Non-Primer,Jasa Konsumen,2022-07-07,ACTIVE
+TALF,TALF.JK,PT Tunas Alfin Tbk,Barang Baku,Barang Baku,2014-01-17,ACTIVE
+TAMA,TAMA.JK,PT Lancartama Sejati Tbk.,Infrastruktur,Konstruksi Bangunan,2020-02-10,ACTIVE
+TAMU,TAMU.JK,PT Pelayaran Tamarin Samudra Tbk.,Energi,"Minyak, Gas & Batu Bara",2017-05-10,ACTIVE
+TAPG,TAPG.JK,PT Triputra Agro Persada Tbk.,Barang Konsumen Primer,Makanan & Minuman,2021-04-12,ACTIVE
+TARA,TARA.JK,PT Agung Semesta Sejahtera Tbk,Properti & Real Estat,Properti & Real Estat,2014-07-11,ACTIVE
+TAXI,TAXI.JK,Express Transindo Utama Tbk,Transportasi & Logistik,Transportasi,2012-11-02,ACTIVE
+TAYS,TAYS.JK,PT Jaya Swarasa Agung Tbk,Barang Konsumen Primer,Makanan & Minuman,2021-12-06,ACTIVE
+TBIG,TBIG.JK,PT Tower Bersama Infrastructure Tbk,Infrastruktur,Telekomunikasi,2010-10-26,ACTIVE
+TBLA,TBLA.JK,Tunas Baru Lampung Tbk,Barang Konsumen Primer,Makanan & Minuman,2000-02-14,ACTIVE
+TBMS,TBMS.JK,Tembaga Mulia Semanan Tbk,Barang Baku,Barang Baku,1990-05-23,ACTIVE
+TCID,TCID.JK,Mandom Indonesia Tbk,Barang Konsumen Primer,Produk Rumah Tangga Tidak Tahan Lama,1993-09-30,ACTIVE
+TCPI,TCPI.JK,PT Transcoal Pacific Tbk.,Energi,"Minyak, Gas & Batu Bara",2018-07-06,ACTIVE
+TDPM,TDPM.JK,PT Tianrong Chemicals Industry Tbk,Barang Baku,Barang Baku,2018-04-09,ACTIVE
+TEBE,TEBE.JK,PT Dana Brata Luhur Tbk.,Energi,"Minyak, Gas & Batu Bara",2019-11-18,ACTIVE
+TECH,TECH.JK,PT Indosterling Technomedia Tbk,Teknologi,Perangkat Lunak & Jasa TI,2020-06-04,ACTIVE
+TELE,TELE.JK,PT Omni Inovasi Indonesia Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2012-01-12,ACTIVE
+TFAS,TFAS.JK,PT Telefast Indonesia Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2019-09-17,ACTIVE
+TFCO,TFCO.JK,Tifico Fiber Indonesia Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,1980-02-26,ACTIVE
+TGKA,TGKA.JK,Tigaraksa Satria Tbk,Barang Konsumen Primer,Makanan & Minuman,1990-06-11,ACTIVE
+TGRA,TGRA.JK,PT Terregra Asia Energy,Infrastruktur,Utilitas,2017-05-16,ACTIVE
+TGUK,TGUK.JK,PT Platinum Wahab Nusantara Tbk.,Barang Konsumen Primer,Makanan & Minuman,2023-07-10,ACTIVE
+TIFA,TIFA.JK,KDB Tifa Finance Tbk,Keuangan,Jasa Pembiayaan,2011-07-08,ACTIVE
+TINS,TINS.JK,PT TIMAH (Persero) Tbk,Barang Baku,Barang Baku,1995-10-19,ACTIVE
+TIRA,TIRA.JK,Tira Austenite Tbk,Perindustrian,Jasa Perindustrian,1993-07-27,ACTIVE
+TIRT,TIRT.JK,Tirta Mahakam Resources Tbk,Barang Baku,Barang Baku,1999-12-13,ACTIVE
+TKIM,TKIM.JK,Pabrik Kertas Tjiwi Kimia Tbk,Barang Baku,Barang Baku,1990-04-03,ACTIVE
+TLDN,TLDN.JK,PT Teladan Prima Agro Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-04-12,ACTIVE
+TLKM,TLKM.JK,PT Telkom Indonesia (Persero) Tbk,Infrastruktur,Telekomunikasi,1995-11-14,ACTIVE
+TMAS,TMAS.JK,PT Temas Tbk.,Transportasi & Logistik,Logistik & Pengantaran,2003-07-09,ACTIVE
+TMPO,TMPO.JK,Tempo Inti Media Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2001-01-08,ACTIVE
+TNCA,TNCA.JK,PT Trimuda Nuansa Citra Tbk.,Transportasi & Logistik,Logistik & Pengantaran,2018-06-28,ACTIVE
+TOBA,TOBA.JK,PT TBS Energi Utama Tbk,Energi,"Minyak, Gas & Batu Bara",2012-07-06,ACTIVE
+TOOL,TOOL.JK,PT Rohartindo Nusantara Luas Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2022-08-09,ACTIVE
+TOPS,TOPS.JK,PT Totalindo Eka Persada Tbk.,Infrastruktur,Konstruksi Bangunan,2017-06-16,ACTIVE
+TOSK,TOSK.JK,PT Topindo Solusi Komunika Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2024-02-07,ACTIVE
+TOTL,TOTL.JK,Total Bangun Persada Tbk,Infrastruktur,Konstruksi Bangunan,2006-07-25,ACTIVE
+TOTO,TOTO.JK,Surya Toto Indonesia Tbk,Perindustrian,Barang Perindustrian,1990-10-30,ACTIVE
+TOWR,TOWR.JK,Sarana Menara Nusantara Tbk,Infrastruktur,Telekomunikasi,2010-03-08,ACTIVE
+TOYS,TOYS.JK,PT Sunindo Adipersada Tbk.,Barang Konsumen Non-Primer,Barang Rekreasi,2020-08-06,ACTIVE
+TPIA,TPIA.JK,PT Chandra Asri Pacific Tbk,Barang Baku,Barang Baku,2008-05-26,ACTIVE
+TPMA,TPMA.JK,Trans Power Marine Tbk,Energi,"Minyak, Gas & Batu Bara",2013-02-20,ACTIVE
+TRAM,TRAM.JK,Trada Alam Minera Tbk.,Energi,"Minyak, Gas & Batu Bara",2008-09-10,ACTIVE
+TRGU,TRGU.JK,PT Cerestar Indonesia Tbk,Barang Konsumen Primer,Makanan & Minuman,2022-07-08,ACTIVE
+TRIL,TRIL.JK,Triwira Insanlestari Tbk,Perindustrian,Jasa Perindustrian,2008-01-28,ACTIVE
+TRIM,TRIM.JK,PT Trimegah Sekuritas Indonesia Tbk,Keuangan,Jasa Investasi,2000-01-31,ACTIVE
+TRIN,TRIN.JK,PT Perintis Triniti Properti Tbk,Properti & Real Estat,Properti & Real Estat,2020-01-15,ACTIVE
+TRIO,TRIO.JK,Trikomsel Oke Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2009-04-14,ACTIVE
+TRIS,TRIS.JK,Trisula International Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,2012-06-28,ACTIVE
+TRJA,TRJA.JK,PT Transkon Jaya Tbk.,Transportasi & Logistik,Transportasi,2020-08-27,ACTIVE
+TRON,TRON.JK,PT Teknologi Karya Digital Nusa Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2023-03-08,ACTIVE
+TRST,TRST.JK,Trias Sentosa Tbk,Barang Baku,Barang Baku,1990-07-02,ACTIVE
+TRUE,TRUE.JK,PT Triniti Dinamik Tbk,Properti & Real Estat,Properti & Real Estat,2021-06-10,ACTIVE
+TRUK,TRUK.JK,PT Guna Timur Raya Tbk.,Transportasi & Logistik,Logistik & Pengantaran,2018-05-23,ACTIVE
+TRUS,TRUS.JK,Trust Finance Indonesia Tbk,Keuangan,Jasa Pembiayaan,2002-11-28,ACTIVE
+TSPC,TSPC.JK,Tempo Scan Pacific Tbk,Kesehatan,Farmasi & Riset Kesehatan,1994-06-17,ACTIVE
+TUGU,TUGU.JK,PT Asuransi Tugu Pratama Indonesia Tbk,Keuangan,Asuransi,2018-05-28,ACTIVE
+TYRE,TYRE.JK,PT King Tire Indonesia Tbk.,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,2023-05-08,ACTIVE
+UANG,UANG.JK,PT Pakuan Tbk,Properti & Real Estat,Properti & Real Estat,2020-07-06,ACTIVE
+UCID,UCID.JK,PT Uni-Charm Indonesia Tbk.,Barang Konsumen Primer,Produk Rumah Tangga Tidak Tahan Lama,2019-12-20,ACTIVE
+UDNG,UDNG.JK,PT Agro Bahari Nusantara Tbk,Barang Konsumen Primer,Makanan & Minuman,2023-10-31,ACTIVE
+UFOE,UFOE.JK,PT Damai Sejahtera Abadi Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2021-02-01,ACTIVE
+ULTJ,ULTJ.JK,PT Ultrajaya Milk Industry & Trading Company Tbk,Barang Konsumen Primer,Makanan & Minuman,1990-07-02,ACTIVE
+UNIC,UNIC.JK,Unggul Indah Cahaya Tbk,Barang Baku,Barang Baku,1989-11-06,ACTIVE
+UNIQ,UNIQ.JK,PT Ulima Nitra Tbk,Energi,"Minyak, Gas & Batu Bara",2021-03-08,ACTIVE
+UNIT,UNIT.JK,Nusantara Inti Corpora Tbk,Barang Konsumen Non-Primer,Pakaian & Barang Mewah,2002-04-18,ACTIVE
+UNSP,UNSP.JK,Bakrie Sumatera Plantations Tbk,Barang Konsumen Primer,Makanan & Minuman,1990-03-06,ACTIVE
+UNTD,UNTD.JK,PT Terang Dunia Internusa Tbk.,Barang Konsumen Non-Primer,Barang Rekreasi,2024-02-07,ACTIVE
+UNTR,UNTR.JK,United Tractors Tbk,Perindustrian,Barang Perindustrian,1989-09-19,ACTIVE
+UNVR,UNVR.JK,Unilever Indonesia Tbk,Barang Konsumen Primer,Produk Rumah Tangga Tidak Tahan Lama,1982-01-11,ACTIVE
+URBN,URBN.JK,PT Urban Jakarta Propertindo Tbk.,Properti & Real Estat,Properti & Real Estat,2018-12-10,ACTIVE
+UVCR,UVCR.JK,PT Trimegah Karya Pratama Tbk.,Teknologi,Perangkat Lunak & Jasa TI,2021-07-27,ACTIVE
+VAST,VAST.JK,PT Vastland Indonesia Tbk,Properti & Real Estat,Properti & Real Estat,2023-02-08,ACTIVE
+VERN,VERN.JK,PT Verona Indah Pictures Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2024-10-08,ACTIVE
+VICI,VICI.JK,PT Victoria Care Indonesia Tbk,Barang Konsumen Primer,Produk Rumah Tangga Tidak Tahan Lama,2020-12-17,ACTIVE
+VICO,VICO.JK,PT Victoria Investama Tbk.,Keuangan,Perusahaan Holding & Investasi,2013-07-08,ACTIVE
+VINS,VINS.JK,PT Victoria Insurance Tbk.,Keuangan,Asuransi,2015-09-28,ACTIVE
+VISI,VISI.JK,PT Satu Visi Putra Tbk.,Perindustrian,Jasa Perindustrian,2024-02-27,ACTIVE
+VIVA,VIVA.JK,PT Visi Media Asia Tbk,Barang Konsumen Non-Primer,Media & Hiburan,2011-11-21,ACTIVE
+VKTR,VKTR.JK,PT VKTR Teknologi Mobilitas Tbk,Barang Konsumen Non-Primer,Otomotif & Komponen Otomotif,2023-06-19,ACTIVE
+VOKS,VOKS.JK,Voksel Electric Tbk,Perindustrian,Barang Perindustrian,1990-12-20,ACTIVE
+VRNA,VRNA.JK,PT Mizuho Leasing Indonesia Tbk,Keuangan,Jasa Pembiayaan,2008-06-25,ACTIVE
+VTNY,VTNY.JK,PT Venteny Fortuna International Tbk,Keuangan,Jasa Pembiayaan,2022-12-15,ACTIVE
+WAPO,WAPO.JK,Wahana Pronatural Tbk,Barang Konsumen Primer,Makanan & Minuman,2001-06-22,ACTIVE
+WBSA,WBSA.JK,PT BSA Logistics Indonesia Tbk,Transportasi & Logistik,Logistik & Pengantaran,2026-04-10,ACTIVE
+WEGE,WEGE.JK,PT Wijaya Karya Bangunan Gedung Tbk.,Infrastruktur,Konstruksi Bangunan,2017-11-30,ACTIVE
+WEHA,WEHA.JK,PT WEHA Transportasi Indonesia Tbk,Transportasi & Logistik,Transportasi,2007-05-31,ACTIVE
+WGSH,WGSH.JK,PT Wira Global Solusi Tbk,Teknologi,Perangkat Lunak & Jasa TI,2021-12-06,ACTIVE
+WICO,WICO.JK,Wicaksana Overseas International Tbk,Barang Konsumen Primer,Perdagangan Ritel Barang Primer,1994-08-08,ACTIVE
+WIDI,WIDI.JK,PT Widiant Jaya Krenindo Tbk.,Perindustrian,Barang Perindustrian,2023-07-10,ACTIVE
+WIFI,WIFI.JK,PT Solusi Sinergi Digital Tbk,Teknologi,Perangkat Lunak & Jasa TI,2020-12-30,ACTIVE
+WIIM,WIIM.JK,Wismilak Inti Makmur Tbk,Barang Konsumen Primer,Rokok,2012-12-18,ACTIVE
+WIKA,WIKA.JK,PT Wijaya Karya (Persero) Tbk,Infrastruktur,Konstruksi Bangunan,2007-10-29,ACTIVE
+WINE,WINE.JK,PT Hatten Bali Tbk,Barang Konsumen Primer,Makanan & Minuman,2023-01-10,ACTIVE
+WINR,WINR.JK,PT Winner Nusantara Jaya Tbk,Properti & Real Estat,Properti & Real Estat,2022-04-25,ACTIVE
+WINS,WINS.JK,Wintermar Offshore Marine Tbk,Energi,"Minyak, Gas & Batu Bara",2010-11-29,ACTIVE
+WIRG,WIRG.JK,PT WIR ASIA Tbk,Teknologi,Perangkat Lunak & Jasa TI,2022-04-04,ACTIVE
+WMPP,WMPP.JK,PT Widodo Makmur Perkasa Tbk,Barang Konsumen Primer,Makanan & Minuman,2021-12-06,ACTIVE
+WMUU,WMUU.JK,PT Widodo Makmur Unggas Tbk,Barang Konsumen Primer,Makanan & Minuman,2021-02-02,ACTIVE
+WOMF,WOMF.JK,PT Wahana Ottomitra Multiartha Tbk,Keuangan,Jasa Pembiayaan,2004-12-13,ACTIVE
+WOOD,WOOD.JK,PT Integra Indocabinet Tbk,Barang Konsumen Non-Primer,Barang Rumah Tangga,2017-06-21,ACTIVE
+WOWS,WOWS.JK,PT Ginting Jaya Energi Tbk,Energi,"Minyak, Gas & Batu Bara",2019-11-08,ACTIVE
+WSBP,WSBP.JK,PT Waskita Beton Precast Tbk.,Barang Baku,Barang Baku,2016-09-20,ACTIVE
+WSKT,WSKT.JK,PT Waskita Karya (Persero) Tbk,Infrastruktur,Konstruksi Bangunan,2012-12-19,ACTIVE
+WTON,WTON.JK,Wijaya Karya Beton,Barang Baku,Barang Baku,2014-04-08,ACTIVE
+YELO,YELO.JK,PT Yelooo Integra Datanet Tbk.,Barang Konsumen Non-Primer,Perdagangan Ritel,2018-10-29,ACTIVE
+YOII,YOII.JK,PT Asuransi Digital Bersama Tbk,Keuangan,Asuransi,2025-01-08,ACTIVE
+YPAS,YPAS.JK,Yanaprima Hastapersada Tbk,Barang Baku,Barang Baku,2008-03-05,ACTIVE
+YULE,YULE.JK,Yulie Sekuritas Indonesia Tbk,Keuangan,Jasa Investasi,2004-12-10,ACTIVE
+YUPI,YUPI.JK,PT Yupi Indo Jelly Gum Tbk,Barang Konsumen Primer,Makanan & Minuman,2025-03-25,ACTIVE
+ZATA,ZATA.JK,PT Bersama Zatta Jaya Tbk,Barang Konsumen Non-Primer,Perdagangan Ritel,2022-11-10,ACTIVE
+ZBRA,ZBRA.JK,PT Dosni Roha Indonesia Tbk,Perindustrian,Perusahaan Holding Multi Sektor,1991-08-01,ACTIVE
+ZINC,ZINC.JK,PT Kapuas Prima Coal Tbk,Barang Baku,Barang Baku,2017-10-16,ACTIVE
+ZONE,ZONE.JK,PT Mega Perintis Tbk.,Barang Konsumen Non-Primer,Perdagangan Ritel,2018-12-12,ACTIVE
+ZYRX,ZYRX.JK,PT Zyrexindo Mandiri Buana Tbk,Teknologi,Perangkat Keras & Peralatan Teknologi,2021-03-30,ACTIVE

@@ -9,22 +9,27 @@ vi.mock("@/lib/api/client", () => ({
   apiClient: { GET: vi.fn(async () => ({ data: {}, error: undefined })) },
 }));
 
-import { Nav } from "./nav";
+let mockPathname = "/overview";
+vi.mock("next/navigation", () => ({
+  usePathname: () => mockPathname,
+}));
 
-function renderNav() {
+import { Sidebar } from "./sidebar";
+
+function renderSidebar() {
   const queryClient = makeQueryClient();
   return render(
     <ThemeProvider attribute="class">
       <QueryClientProvider client={queryClient}>
-        <Nav />
+        <Sidebar />
       </QueryClientProvider>
     </ThemeProvider>,
   );
 }
 
-describe("Nav", () => {
+describe("Sidebar", () => {
   it("renders a link for every dashboard section", () => {
-    renderNav();
+    renderSidebar();
 
     const expected: [string, string][] = [
       ["Overview", "/overview"],
@@ -41,10 +46,28 @@ describe("Nav", () => {
   });
 
   it("renders the brand link back to the home page", () => {
-    renderNav();
+    renderSidebar();
     expect(screen.getByRole("link", { name: "IDX Swing Trading Assistant" })).toHaveAttribute(
       "href",
       "/",
     );
+  });
+
+  it("highlights the active route's link distinctly from the others", () => {
+    mockPathname = "/scanner";
+    renderSidebar();
+
+    const scannerClass = screen.getByRole("link", { name: "Scanner" }).className;
+    const overviewClass = screen.getByRole("link", { name: "Overview" }).className;
+    expect(scannerClass).not.toBe(overviewClass);
+  });
+
+  it("also highlights nested detail routes under their parent section", () => {
+    mockPathname = "/positions/abc-123";
+    renderSidebar();
+
+    const positionsClass = screen.getByRole("link", { name: "Positions" }).className;
+    const scannerClass = screen.getByRole("link", { name: "Scanner" }).className;
+    expect(positionsClass).not.toBe(scannerClass);
   });
 });

@@ -41,11 +41,11 @@ export function PositionsList({
             <TableCell>
               <Badge variant={STATUS_BADGE_VARIANT[position.status]}>{position.status}</Badge>
             </TableCell>
-            <TableCell className="text-right tabular-nums">{position.quantity_open}</TableCell>
-            <TableCell className="text-right tabular-nums">
+            <TableCell className="text-right font-mono tabular-nums">{position.quantity_open}</TableCell>
+            <TableCell className="text-right font-mono tabular-nums">
               {position.avg_entry_price ?? "—"}
             </TableCell>
-            <TableCell className="text-right tabular-nums">{position.realized_pnl}</TableCell>
+            <TableCell className="text-right font-mono tabular-nums">{position.realized_pnl}</TableCell>
             <TableCell className="text-muted-foreground">{position.opened_at ?? "—"}</TableCell>
             <TableCell className="text-muted-foreground">{position.closed_at ?? "—"}</TableCell>
           </TableRow>

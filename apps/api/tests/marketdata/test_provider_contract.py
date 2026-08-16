@@ -20,7 +20,11 @@ def test_fixture_provider_defaults_to_seed_instruments() -> None:
     instruments = provider.get_instruments()
     symbols = {i.symbol for i in instruments}
     assert "BBCA" in symbols
-    assert len(instruments) == 10
+    # Full IDX universe (app/marketdata/seed/idx_instruments.csv) — not a
+    # magic exact count, since the seed is expected to grow as IDX lists
+    # new companies; the real invariant is "the full universe, not a
+    # placeholder handful."
+    assert len(instruments) > 900
 
 
 def test_fixture_provider_filters_bars_by_date_range() -> None:
