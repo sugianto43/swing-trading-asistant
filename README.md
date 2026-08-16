@@ -704,3 +704,38 @@ link to `/positions?symbol=&trade_plan_id=`, continuing the Scanner→Risk→Pos
 etc.) Radix's `Select` uses internally, which throws on the first `userEvent`-driven option click in
 a fresh test file. No-op stubs added to `vitest.setup.ts` project-wide (same category as the
 existing `matchMedia` polyfill) rather than working around it per test file.
+
+## AI Analyst UI (Phase 16)
+
+`/ai` replaces its stub with an analyze form (`POST /ai/analyze`) + recent-analyses list;
+`/ai/[id]` is a new detail route. Consumes Phase 8's existing endpoints only — no backend changes.
+No client-side conversation state is invented — each question is a stateless request/response pair;
+"history" is `GET /ai/snapshots` re-fetched (`invalidateQueries`) after each successful analyze, the
+same list-invalidation idiom as Phases 14/15's forms, not a fake multi-turn chat transcript.
+
+**Guardrail flags and `DATA_UNAVAILABLE` are never hidden — the single most safety-critical UI
+behavior this phase.** `guardrail_flags` (a best-effort red-flag scan over the response text, per
+`app/ai/guardrails.py`) renders as a visible banner whenever non-empty, but the flagged response
+text itself is still shown underneath it, never suppressed or auto-retried. Both directions are
+explicitly tested: the banner appears when flags are present and is absent (not an empty box) when
+they aren't.
+
+**`tool_calls` and `structured_data_snapshot` are literally the same data, not two different
+views.** Read `app/ai/orchestrator.py` before building UI around an assumed shape: the orchestrator
+appends the identical `{tool_name, arguments, result}` entry to both lists for every tool call.
+`AnalysisResult` renders only `tool_calls` — concatenating both (an early draft's mistake, caught by
+its own regression test before ever running) would have silently doubled every tool result on
+screen. `DATA_UNAVAILABLE` isn't a top-level field either — it lives inside each entry's own
+`result.status`, so a response can have some tool calls that succeeded and others that didn't in the
+same snapshot; each is labeled independently.
+
+**A 503 (no LLM provider configured, e.g. `GEMINI_API_KEY` unset) renders the backend's exact
+message plainly**, not wrapped in a generic "couldn't reach API" string — the TDD is explicit about
+this, and it's the same verbatim-passthrough discipline as Phase 15's execution errors (there is no
+VALID/REJECTED-both-normal duality here either, same as Phase 15, unlike Phase 14's trade plans).
+
+**`AnalysisSnapshotOut` has no `symbol` field, only a nullable `instrument_id`** — same join gap as
+Phases 14/15. Reuses the existing `fetchInstrumentsById()` unchanged.
+
+**Instrument-detail integration**: `InstrumentHeader` gets an "Ask AI about this stock →" link to
+`/ai?symbol=`, continuing the Scanner→Risk→Positions→AI chain (MASTER-PRD §24's golden journey).

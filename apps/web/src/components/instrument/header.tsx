@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Badge } from "@/components/ui/badge";
 import type { Instrument } from "@/lib/queries/instruments";
 
@@ -18,6 +20,12 @@ export function InstrumentHeader({ instrument }: { instrument: Instrument }) {
       <span className="text-muted-foreground">{instrument.company_name}</span>
       {instrument.sector && <Badge variant="outline">{instrument.sector}</Badge>}
       <Badge variant={STATUS_VARIANT[instrument.status]}>{instrument.status}</Badge>
+      <Link
+        href={`/ai?symbol=${instrument.symbol}`}
+        className="text-sm text-primary hover:underline"
+      >
+        Ask AI about this stock →
+      </Link>
     </div>
   );
 }

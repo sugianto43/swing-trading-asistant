@@ -1,5 +1,12 @@
-import { StubPage } from "@/components/layout/stub-page";
+import { Suspense } from "react";
+
+import { AiPageContent } from "@/components/ai/ai-page-content";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function AiPage() {
-  return <StubPage title="AI Analyst" phase={16} />;
+  return (
+    <Suspense fallback={<Skeleton className="m-6 h-96" />}>
+      <AiPageContent />
+    </Suspense>
+  );
 }
