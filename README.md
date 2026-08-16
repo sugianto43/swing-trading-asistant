@@ -8,10 +8,10 @@
 - QUANT-TRADING-RULES.md
 - AI-GUARDRAILS.md
 - DECISION-LOG.md
-- docs/phase-01..11/PRD.md
-- docs/phase-01..11/TDD.md
+- docs/phase-01..18/PRD.md
+- docs/phase-01..18/TDD.md
 - prompts/global/*
-- prompts/phase-01..11/*
+- prompts/phase-01..18/*
 
 ## Recommended Claude Code Workflow
 

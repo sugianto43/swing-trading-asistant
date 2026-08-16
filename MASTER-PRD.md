@@ -581,7 +581,7 @@ Version:
 
 Historical results must be traceable to the exact configuration that generated them.
 
-## 22. 11-Phase Roadmap
+## 22. 18-Phase Roadmap
 
 ### Phase 1 — Foundation
 Repository, app skeleton, configuration, DB, migrations, API conventions, testing, CI.
@@ -616,10 +616,31 @@ Workers, Redis, scheduling, alerts, observability, reliability, deployment.
 ### Phase 11 — E2E Hardening
 End-to-end, security, quantitative audit, AI audit, disaster recovery, release readiness.
 
+### Phase 12 — Web Foundation
+Next.js app shell, layout/navigation, typed API client, environment configuration, CI wiring.
+
+### Phase 13 — Market Overview & Scanner UI
+Market overview, top swing candidates, watchlist, instrument detail with indicators.
+
+### Phase 14 — Risk & Trade Plan UI
+Build and review trade plans; transparent rejection reasons.
+
+### Phase 15 — Positions, Journal & Performance UI
+Manual execution recording, open positions, journal, performance dashboards.
+
+### Phase 16 — AI Analyst UI
+Chat/analyze interface, guardrail-flag and DATA_UNAVAILABLE transparency, AI review.
+
+### Phase 17 — Alerts & Realtime UI
+Alerts list, SSE live updates.
+
+### Phase 18 — Web E2E Hardening
+Golden end-to-end journey through the real UI, accessibility, performance budget, release readiness.
+
 ## 23. Phase Dependency
 
 ```text
-1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11
+1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14 → 15 → 16 → 17 → 18
 ```
 
 Do not implement future-phase functionality prematurely.
