@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom/vitest";
 
 import { cleanup } from "@testing-library/react";
-import { afterEach } from "vitest";
+import { afterEach, vi } from "vitest";
 
 // Without vitest's `test.globals: true` (deliberately not set, to keep
 // test-only globals out of app code's type-checking), @testing-library/
@@ -10,6 +10,15 @@ import { afterEach } from "vitest";
 // the same file. Registering it explicitly here fixes that project-wide.
 afterEach(() => {
   cleanup();
+});
+
+// Module-level vi.fn() mocks (the standard pattern for vi.mock("@/lib/...")
+// in this codebase) otherwise accumulate call history across every test in
+// the file — a later test's `mock.calls[0]` silently picks up an earlier
+// test's call instead of its own. Clearing between tests project-wide
+// avoids re-discovering this once per test file.
+afterEach(() => {
+  vi.clearAllMocks();
 });
 
 // jsdom doesn't implement matchMedia — next-themes' system-theme

@@ -576,3 +576,42 @@ end-to-end — verified against the real Dockerized backend, not just mocked in 
 **Known gap fixed this phase**: `vitest.config.mts` only matched `src/**/*.test.tsx`, silently
 skipping any plain `.test.ts` file (e.g. the API client's own unit tests) — pre-existing since
 Phase 1, never noticed until a non-component test actually needed to run.
+
+## Market Overview & Scanner UI (Phase 13)
+
+`/overview`, `/scanner`, and a new `/instruments/[symbol]` detail route replace their Phase 12
+stubs with real screens over Phases 2/3/4/9's existing endpoints — no backend changes.
+
+**Query layer**: one file per endpoint group (`src/lib/queries/{breadth,sector-performance,scanner,
+instruments,indicators}.ts`), each a typed async function over `apiClient`. Two backend quirks
+worth knowing if you extend these: `GET /intelligence/breadth` 404s until a snapshot has been
+computed (surfaced as `NOT_FOUND`, rendered as an explicit empty state, not an error); price bars
+and indicator snapshots come back **newest-first** from the API, reversed client-side into
+chronological order for charting.
+
+**Scanner filters are scoped to what the backend actually supports** (`sector`, `setup`,
+`min_score`, `sort`) — MASTER-PRD §15 lists a larger aspirational filter set (liquidity, price,
+trend, volume, volatility, market regime) that Phase 4 never implemented. The UI doesn't imply
+filters that don't exist.
+
+**Sector performance chains off the breadth snapshot's own `as_of`**, not "today" — the backend
+requires an explicit date with no default, and querying "today" would show an empty result on any
+day nothing's been computed yet (the realistic common case for a personal-use tool). Chaining onto
+a date already known to have data means the populated state is what most people see first.
+
+**Price chart**: `lightweight-charts` (candlestick + volume + SMA20/SMA50 overlay), colors from the
+`dataviz` skill's own validated defaults — shadcn's `--chart-*` tokens are pure grayscale (neutral
+preset), so up/down (a genuine polarity signal) and the two SMA lines (an identity pair) use the
+skill's status good/critical and categorical slots 1/2 respectively, not invented colors.
+**lightweight-charts renders to `<canvas>`, outside the CSS cascade** — it cannot resolve
+`var(--foo)` or `color-mix()`, only literal color values, so chart chrome (gridlines/text) uses
+resolved hex per light/dark mode rather than shadcn's CSS custom properties (caught live: it threw
+`Failed to parse color` at runtime, not at build or test time).
+
+**Test coverage note**: `filters.test.tsx` only exercises the plain-`Input`-backed filters (sector,
+min-score) — Radix `Select` interaction in jsdom is known to be brittle and wasn't worth fighting
+for this phase; the select-backed filters (setup, sort) are covered by the live browser
+verification instead.
+
+Live-verified against a real seeded backend (Docker): a real BREAKOUT candidate, real breadth/
+sector data, and a real rendered candlestick chart — not just empty-state screenshots.
